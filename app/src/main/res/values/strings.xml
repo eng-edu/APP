@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ARCO</string>
+    <string name="btn_entar">ENTRAR</string>
+    <string name="ed_hint_email">Email</string>
+    <string name="ed_hint_senha">Senha</string>
+    <string name="tw_cadastrese">Não possui login? Cadastre-se!</string>
+    <string name="radio_discente">Discente</string>
+    <string name="radio_docente">Docente</string>
 </resources>
