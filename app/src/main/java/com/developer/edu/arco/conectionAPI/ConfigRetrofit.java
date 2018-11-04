@@ -4,6 +4,7 @@ package com.developer.edu.arco.conectionAPI;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
+
 public class ConfigRetrofit {
 
     public static RetrofitService getService() {

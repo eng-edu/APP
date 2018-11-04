@@ -33,6 +33,26 @@
                 android:layout_gravity="center"
                 app:srcCompat="@mipmap/ic_user" />
 
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/groupLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radio_discente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/radio_discente" />
+
+                <RadioButton
+                    android:id="@+id/radio_docente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_docente" />
+            </RadioGroup>
+
             <EditText
                 android:id="@+id/editText_login_email"
                 android:layout_width="match_parent"
@@ -51,27 +71,6 @@
                 android:hint="@string/ed_hint_senha"
                 android:inputType="textPassword" />
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/groupLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/radio_discente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/radio_discente"
-                    />
-
-                <RadioButton
-                    android:id="@+id/radio_docente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/radio_docente"
-                    />
-            </RadioGroup>
 
             <Button
                 android:id="@+id/button_login_entrar"

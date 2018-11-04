@@ -20,8 +20,8 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\User\Downloads\2x\baseline_account_circle_black_48dp.png" />
-                                      <entry key="outputName" value="ic_user" />
+                                      <entry key="imageAsset" value="C:\Users\User\Downloads\2x\baseline_arrow_back_white_48dp.png" />
+                                      <entry key="outputName" value="ic_logout" />
                                     </map>
                                   </option>
                                 </PersistentState>

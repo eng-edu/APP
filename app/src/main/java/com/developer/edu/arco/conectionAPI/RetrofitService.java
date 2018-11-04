@@ -19,6 +19,27 @@ public interface RetrofitService {
                        @Path("SENHA") String SENHA);
 
 
+
+    @POST("discente/{NOME}/{INSTITUICAO}/{EMAIL}/{SENHA}")
+    Call<String> cadastarDiscente(@Header("token") String TOKIENAPI,
+                                 @Path("NOME") String NOME,
+                                 @Path("INSTITUICAO") String INSTITUICAO,
+                                 @Path("EMAIL") String EMAIL,
+                                 @Path("SENHA") String SENHA);
+
+
+    @POST("docente/{NOME}/{FORMACAO}/{EMAIL}/{SENHA}")
+    Call<String> cadastarDocente(@Header("token") String TOKIENAPI,
+                                  @Path("NOME") String NOME,
+                                  @Path("FORMACAO") String FORMACAO,
+                                  @Path("EMAIL") String EMAIL,
+                                  @Path("SENHA") String SENHA);
+
+
+
+
+
+
     //MANTER CATADOR ---------------------------------------------------------------------
     @POST("catador/{CPF}/{NOME}/{TELEFONE}/{ENDERECO}/{DATA_NASCIMENTO}/{ASSOC_COOP_ID}")
     Call<String> cadastarCatador(@Header("token") String tokenAPI,

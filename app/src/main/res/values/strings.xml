@@ -6,4 +6,10 @@
     <string name="tw_cadastrese">Não possui login? Cadastre-se!</string>
     <string name="radio_discente">Discente</string>
     <string name="radio_docente">Docente</string>
+    <string name="preference_key">KEY</string>
+    <string name="TOKENAPI">TOKENAPI</string>
+    <string name="btn_cadastrar">CADASTRAR</string>
+    <string name="ed_hint_formacao">Formação</string>
+    <string name="ed_hint_instituicao">Instituição</string>
+    <string name="ed_hint_nome">Nome</string>
 </resources>
