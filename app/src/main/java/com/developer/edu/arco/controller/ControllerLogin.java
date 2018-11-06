@@ -21,6 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.EUICC_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ControllerLogin {
@@ -31,25 +32,19 @@ public class ControllerLogin {
     public void logar(final Context context, String email, String senha, final boolean discente, final boolean docente) {
 
 
-        final SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_key), MODE_PRIVATE).edit();
-
 
         if (email.length() > 0 && senha.length() > 0) {
 
             if (docente) {
                 stringCall = ConfigRetrofit.getService().logarDocente(email, senha);
-
-                editor.putString(String.valueOf(R.string.tipo_login), String.valueOf(1));
+                final SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_config), MODE_PRIVATE).edit();
+                editor.putString(String.valueOf(R.string.tipo_login), "docente");
                 editor.apply();
-
 
             }
 
             if (discente) {
                 stringCall = ConfigRetrofit.getService().logarDiscente(email, senha);
-
-                editor.putString(String.valueOf(R.string.tipo_login), String.valueOf(2));
-                editor.apply();
             }
 
             final ProgressDialog dialog = new ProgressDialog(context);
@@ -69,25 +64,27 @@ public class ControllerLogin {
                             JSONObject object = new JSONObject(response.body());
 
                             if (docente) {
-                                new DocenteDAO().inserir(context,
-                                        object.getString("ID"),
-                                        object.getString("NOME"),
-                                        object.getString("FORMACAO"),
-                                        object.getString("EMAIL"),
-                                        object.getString("SENHA"));
+
+                                final SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_config), MODE_PRIVATE).edit();
+                                editor.putString(String.valueOf(R.string.TOKENAPI), object.getString("TOKENAPI"));
+                                editor.putString(String.valueOf(R.string.ID), object.getString("ID"));
+                                editor.putString(String.valueOf(R.string.NOME), object.getString("NOME"));
+                                editor.putString(String.valueOf(R.string.FORMACAO), object.getString("FORMACAO"));
+                                editor.putString(String.valueOf(R.string.EMAIL), object.getString("EMAIL"));
+                                editor.putString(String.valueOf(R.string.SENHA), object.getString("TOKENAPI"));
+                                editor.apply();
+
                             } else if (discente) {
-                                new DiscenteDAO().inserir(context,
-                                        object.getString("ID"),
-                                        object.getString("NOME"),
-                                        object.getString("INSTITUICAO"),
-                                        object.getString("EMAIL"),
-                                        object.getString("SENHA"));
+
+                                final SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_config), MODE_PRIVATE).edit();
+                                editor.putString(String.valueOf(R.string.TOKENAPI), object.getString("TOKENAPI"));
+                                editor.putString(String.valueOf(R.string.ID), object.getString("ID"));
+                                editor.putString(String.valueOf(R.string.NOME), object.getString("NOME"));
+                                editor.putString(String.valueOf(R.string.INSTITUICAO), object.getString("INSTITUICAO"));
+                                editor.putString(String.valueOf(R.string.EMAIL), object.getString("EMAIL"));
+                                editor.putString(String.valueOf(R.string.SENHA), object.getString("TOKENAPI"));
+                                editor.apply();
                             }
-
-
-                            editor.putString(String.valueOf(R.string.TOKENAPI), object.getString("TOKENAPI"));
-                            editor.apply();
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -124,15 +121,9 @@ public class ControllerLogin {
 
     public void logout(Context context) {
         Toast.makeText(context, "Saindo...", Toast.LENGTH_LONG).show();
-        SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_key), MODE_PRIVATE).edit();
-        editor.putString(String.valueOf(R.string.TOKENAPI), "");
+        SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_config), MODE_PRIVATE).edit();
+        editor.clear();
         editor.apply();
-
-        DiscenteDAO discenteDAO = new DiscenteDAO();
-        discenteDAO.deletAll(context);
-
-        DocenteDAO docenteDAO = new DocenteDAO();
-        docenteDAO.deletAll(context);
 
         Intent mudarParaMain = new Intent(context, Login.class);
         context.startActivity(mudarParaMain);

@@ -6,8 +6,8 @@
     tools:context=".view.NovoArco">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
 
         <LinearLayout
@@ -16,9 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="32dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/btn_novoarco_cancelar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:hint="@string/ed_hint_tituloarco"
+                android:inputType=""
                 android:minWidth="300dp"
                 android:textSize="12sp" />
 
@@ -54,11 +55,12 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:minWidth="300dp"
-                android:text="DISCENTES"
+                android:text="DISCENTES SELECIONADOS"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textSize="14sp"
@@ -74,26 +76,18 @@
         </LinearLayout>
 
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/float_novoarco_adddiscentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@android:drawable/ic_menu_add"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent" />
-
         <Button
             android:id="@+id/btn_novoarco_cancelar"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
+            android:maxWidth="60dp"
             android:text="@string/btn_cancelar"
             android:textAlignment="center"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent" />
@@ -101,16 +95,17 @@
         <Button
             android:id="@+id/btn_novoarco_criar"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_marginStart="2dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
+            android:text="@string/btn_criar"
             android:textAlignment="center"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            tools:text="@string/btn_criar" />
+            app:layout_constraintStart_toStartOf="@+id/guideline" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
@@ -118,6 +113,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@android:drawable/ic_menu_add"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

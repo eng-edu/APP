@@ -6,8 +6,6 @@
     <string name="tw_cadastrese">Não possui login? Cadastre-se!</string>
     <string name="radio_discente">Discente</string>
     <string name="radio_docente">Docente</string>
-    <string name="preference_key">KEY</string>
-    <string name="TOKENAPI">TOKENAPI</string>
     <string name="btn_cadastrar">CADASTRAR</string>
     <string name="ed_hint_formacao">Formação</string>
     <string name="ed_hint_instituicao">Instituição</string>
@@ -21,7 +19,19 @@
     <string name="ed_hint_orientador">ORIENTADOR</string>
     <string name="btn_cancelar">CANCELAR</string>
     <string name="btn_criar">CRIAR</string>
+
+
+    <string name="TOKENAPI">TOKENAPI</string>
     <string name="tipo_login">TIPOLOGIN</string>
+    <string name="preference_config">MYPREFERENCE</string>
+    <string name="ID">ID</string>
+    <string name="NOME">NOME</string>
+    <string name="FORMACAO">FORMACAO</string>
+    <string name="INSTITUICAO">INSTITUICAO</string>
+    <string name="EMAIL">EMAIL</string>
+    <string name="SENHA">SENHA</string>
+
+
 
     />
 </resources>

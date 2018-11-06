@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerLogin;
@@ -25,7 +26,7 @@ public class MenuPrincipal extends AppCompatActivity {
         Button meus_arcos = (Button) findViewById(R.id.btn_principal_meusarcos);
         Button arcos_compartilhados = (Button) findViewById(R.id.btn_principal_arcoscompartilhados);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_key), Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
 
 
@@ -34,16 +35,14 @@ public class MenuPrincipal extends AppCompatActivity {
         novo_solic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (result.length() > 0) {
-                    if (result.equals(1)) {
 
-                        Intent mudarParaNovoArco = new Intent(getApplicationContext(), NovoArco.class);
-                        startActivity(mudarParaNovoArco);
-                        finish();
-
-                    } else if (result.equals(2)) {
-
+                    if (result.equals("docente")) {
+                        Intent intent = new Intent(MenuPrincipal.this, NovoArco.class);
+                        startActivity(intent);
                     }
+
                 }
             }
         });
