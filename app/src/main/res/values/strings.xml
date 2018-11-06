@@ -12,4 +12,16 @@
     <string name="ed_hint_formacao">Formação</string>
     <string name="ed_hint_instituicao">Instituição</string>
     <string name="ed_hint_nome">Nome</string>
+    <string name="btn_principal_novo_arco">Novo Arco</string>
+    <string name="btn_principal_meusarcos">MEUS ARCOS</string>
+    <string name="btn_principal_arcoscompartilhados">ARCOS COMPARTILHADOS</string>
+    <string name="btn_principal_solicitacoes">SOLICITAÇÕES DE NOVOS ARCOS</string>
+    <string name="ed_hint_nomegrupo">NOME DO GRUPO</string>
+    <string name="ed_hint_tituloarco">TÍTULO</string>
+    <string name="ed_hint_orientador">ORIENTADOR</string>
+    <string name="btn_cancelar">CANCELAR</string>
+    <string name="btn_criar">CRIAR</string>
+    <string name="tipo_login">TIPOLOGIN</string>
+
+    />
 </resources>

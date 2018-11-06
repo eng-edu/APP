@@ -60,7 +60,8 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/editText_login_senha"
@@ -69,14 +70,16 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_senha"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="12sp" />
 
 
             <Button
                 android:id="@+id/button_login_entrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_entar" />
+                android:text="@string/btn_entar"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textView_login_cadastrese"
@@ -84,7 +87,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:text="@string/tw_cadastrese"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="14sp" />
 
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

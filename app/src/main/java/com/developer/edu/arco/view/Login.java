@@ -26,9 +26,10 @@ public class Login extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_key), Context.MODE_PRIVATE);
         String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
 
+
         //verifica se o usuario já está logado
         if (result.length()>0) {
-            Intent mudarParaMain = new Intent(getApplicationContext(), Main.class);
+            Intent mudarParaMain = new Intent(getApplicationContext(), MenuPrincipal.class);
             startActivity(mudarParaMain);
             finish();
         }

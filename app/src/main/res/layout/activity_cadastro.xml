@@ -60,7 +60,8 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_nome"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/editText_cadastro_formacao_instituicao"
@@ -69,7 +70,8 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_instituicao"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/editText_cadastro_email"
@@ -78,7 +80,8 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/editText_cadastro_senha"
@@ -87,15 +90,16 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_senha"
-                android:inputType="textPassword" />
-
+                android:inputType="textPassword"
+                android:textSize="12sp" />
 
 
             <Button
                 android:id="@+id/button_cadastro_cadastrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_cadastrar" />
+                android:text="@string/btn_cadastrar"
+                android:textSize="12sp" />
 
 
         </LinearLayout>

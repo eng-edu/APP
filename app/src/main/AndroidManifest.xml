@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.Main" />
-        <activity android:name=".view.Cadastro"></activity>
+        <activity android:name=".view.MenuPrincipal" />
+        <activity android:name=".view.Cadastro" />
+        <activity android:name=".view.NovoArco"></activity>
     </application>
 
 </manifest>

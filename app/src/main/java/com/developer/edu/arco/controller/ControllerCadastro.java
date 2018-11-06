@@ -1,10 +1,7 @@
 package com.developer.edu.arco.controller;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.widget.Toast;
-
-import com.developer.edu.arco.R;
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 
 import retrofit2.Call;
@@ -51,8 +48,6 @@ public class ControllerCadastro {
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
-
-
 
         } else {
             Toast.makeText(context, "Preencha todos os campos!", Toast.LENGTH_LONG).show();

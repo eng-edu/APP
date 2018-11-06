@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.view.View;
 import android.widget.Toast;
 
 import com.developer.edu.arco.R;
@@ -13,7 +12,7 @@ import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.dao.DiscenteDAO;
 import com.developer.edu.arco.dao.DocenteDAO;
 import com.developer.edu.arco.view.Login;
-import com.developer.edu.arco.view.Main;
+import com.developer.edu.arco.view.MenuPrincipal;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,14 +31,25 @@ public class ControllerLogin {
     public void logar(final Context context, String email, String senha, final boolean discente, final boolean docente) {
 
 
+        final SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_key), MODE_PRIVATE).edit();
+
+
         if (email.length() > 0 && senha.length() > 0) {
 
             if (docente) {
                 stringCall = ConfigRetrofit.getService().logarDocente(email, senha);
+
+                editor.putString(String.valueOf(R.string.tipo_login), String.valueOf(1));
+                editor.apply();
+
+
             }
 
             if (discente) {
                 stringCall = ConfigRetrofit.getService().logarDiscente(email, senha);
+
+                editor.putString(String.valueOf(R.string.tipo_login), String.valueOf(2));
+                editor.apply();
             }
 
             final ProgressDialog dialog = new ProgressDialog(context);
@@ -75,7 +85,6 @@ public class ControllerLogin {
                             }
 
 
-                            SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_key), MODE_PRIVATE).edit();
                             editor.putString(String.valueOf(R.string.TOKENAPI), object.getString("TOKENAPI"));
                             editor.apply();
 
@@ -87,7 +96,7 @@ public class ControllerLogin {
                         dialog.dismiss();
                         Toast.makeText(context, "Login realizado com sucesso!", Toast.LENGTH_LONG).show();
 
-                        Intent mudarParaMain = new Intent(context, Main.class);
+                        Intent mudarParaMain = new Intent(context, MenuPrincipal.class);
                         context.startActivity(mudarParaMain);
                         ((Activity) context).finish();
 
