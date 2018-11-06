@@ -115,6 +115,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/float_novoarco_novoDiscente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"

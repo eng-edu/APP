@@ -22,6 +22,8 @@ public class DocenteDAO {
         bd.close();
         return result;
     }
+
+
     public void deletAll(Context context){
 
         SQLiteDatabase bd = ConectarBanco.getConnection(context).getWritableDatabase();

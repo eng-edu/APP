@@ -20,6 +20,8 @@ public interface RetrofitService {
 
 
 
+
+
     @POST("discente/{NOME}/{INSTITUICAO}/{EMAIL}/{SENHA}")
     Call<String> cadastarDiscente(@Header("token") String TOKIENAPI,
                                  @Path("NOME") String NOME,
@@ -35,7 +37,11 @@ public interface RetrofitService {
                                   @Path("EMAIL") String EMAIL,
                                   @Path("SENHA") String SENHA);
 
+    @GET("docente/list")
+    Call<String> buscarTodosDocentes(@Header("token") String TOKIENAPI);
 
+    @GET("docente/list")
+    Call<String> buscarTodosDiscentes(@Header("token") String TOKIENAPI);
 
 
 
