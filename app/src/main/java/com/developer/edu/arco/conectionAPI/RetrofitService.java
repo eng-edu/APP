@@ -40,7 +40,7 @@ public interface RetrofitService {
     @GET("docente/list")
     Call<String> buscarTodosDocentes(@Header("token") String TOKIENAPI);
 
-    @GET("docente/list")
+    @GET("discente/list")
     Call<String> buscarTodosDiscentes(@Header("token") String TOKIENAPI);
 
 

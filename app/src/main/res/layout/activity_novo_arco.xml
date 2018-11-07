@@ -46,6 +46,7 @@
                 android:textSize="12sp" />
 
             <EditText
+                android:editable="false"
                 android:id="@+id/ed_novoarco_orientador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
