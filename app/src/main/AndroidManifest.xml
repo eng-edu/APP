@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".view.MenuPrincipal" />
         <activity android:name=".view.Cadastro" />
-        <activity android:name=".view.NovoArco"></activity>
+        <activity android:name=".view.NovoArco" />
+        <activity android:name=".view.Arco"></activity>
     </application>
 
 </manifest>

@@ -43,6 +43,35 @@ public interface RetrofitService {
     @GET("discente/list")
     Call<String> buscarTodosDiscentes(@Header("token") String TOKIENAPI);
 
+    @POST("arco/{json}")
+    Call<String> novoArco(@Header("token") String TOKIENAPI,
+                                  @Path("json") String json);
+
+
+    @GET("/arco/{DISCENTE_ID}")
+    Call<String> buscarMeusArcosDiscente(@Header("token") String TOKIENAPI,
+            @Path("DISCENTE_ID") String DISCENTE_ID);
+
+    @GET("/etapa/{ID}")
+    Call<String> buscarEtapasArco(@Header("token") String TOKIENAPI,
+                                         @Path("ID") String ARCO_ID);
+
+
+    @GET("/arco/compartilhados")
+    Call<String> buscarArcosCompartilhados(@Header("token") String TOKIENAPI);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

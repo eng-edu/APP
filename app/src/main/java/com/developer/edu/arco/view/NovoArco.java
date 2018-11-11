@@ -1,6 +1,8 @@
 package com.developer.edu.arco.view;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.model.Discente;
 import com.developer.edu.arco.model.Docente;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +49,9 @@ public class NovoArco extends AppCompatActivity {
         listaDiscentes.setAdapter(arrayAdapter);
         arrayAdapter.notifyDataSetChanged();
 
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.ID), "");
+
 
         final ControllerArco controllerArco = new ControllerArco();
         final LayoutInflater inflater = getLayoutInflater();
@@ -60,7 +67,7 @@ public class NovoArco extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 discentes.clear();
-                controllerArco.selecionarDiscente(NovoArco.this, inflater, listaDiscentes, arrayAdapter);
+                controllerArco.selecionarDiscente(NovoArco.this, result, inflater, listaDiscentes, arrayAdapter);
             }
         });
 
@@ -68,7 +75,12 @@ public class NovoArco extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                controllerArco.criarArco(titulo.getText().toString(), nomegrpo.getText().toString(), getDocente(), getDiscentes());
+                try {
+
+                    controllerArco.criarArco(NovoArco.this, titulo.getText().toString(), nomegrpo.getText().toString(), result, getDocente(), getDiscentes());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -78,6 +90,8 @@ public class NovoArco extends AppCompatActivity {
             public void onClick(View v) {
                 docente = null;
                 discentes.clear();
+                finish();
+
             }
         });
 
@@ -90,11 +104,6 @@ public class NovoArco extends AppCompatActivity {
 
 
     public static int verificarSize(Context context) {
-
-        if(discentes.size()>=10){
-            Toast.makeText(context, "limite máximo atingido!", Toast.LENGTH_SHORT).show();
-        }
-
         return discentes.size();
     }
 

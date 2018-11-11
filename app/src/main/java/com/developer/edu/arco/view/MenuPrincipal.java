@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.developer.edu.arco.R;
+import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.controller.ControllerLogin;
 
 public class MenuPrincipal extends AppCompatActivity {
@@ -21,6 +23,9 @@ public class MenuPrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+        final ControllerArco controllerArco = new ControllerArco();
+        final LayoutInflater inflater = getLayoutInflater();
 
         Button novo_solic = (Button) findViewById(R.id.btn_principal_novoarco_solicitacoes);
         Button meus_arcos = (Button) findViewById(R.id.btn_principal_meusarcos);
@@ -36,14 +41,42 @@ public class MenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //verifica se foi dsicente
                 if (result.length() > 0) {
 
-                    if (result.equals("docente")) {
+                    if (result.equals("discente")) {
                         Intent intent = new Intent(MenuPrincipal.this, NovoArco.class);
                         startActivity(intent);
                     }
 
                 }
+            }
+        });
+
+        //meus arcos
+        meus_arcos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                //verifica se foi dsicente
+                if (result.length() > 0) {
+                    Intent intent = new Intent(MenuPrincipal.this, Arco.class);
+                    if (result.equals("discente")) {
+                        controllerArco.buscarMeusArcosDiscentes(MenuPrincipal.this, inflater, intent);
+                    }
+
+                }
+
+
+            }
+        });
+
+        arcos_compartilhados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuPrincipal.this, Arco.class);
+                controllerArco.buscarArcosCompartilhados(MenuPrincipal.this, inflater, intent);
             }
         });
 

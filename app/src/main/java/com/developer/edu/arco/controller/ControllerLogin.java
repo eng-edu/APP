@@ -45,6 +45,9 @@ public class ControllerLogin {
 
             if (discente) {
                 stringCall = ConfigRetrofit.getService().logarDiscente(email, senha);
+                final SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_config), MODE_PRIVATE).edit();
+                editor.putString(String.valueOf(R.string.tipo_login), "discente");
+                editor.apply();
             }
 
             final ProgressDialog dialog = new ProgressDialog(context);
