@@ -6,8 +6,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.Toast;
+
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
 
@@ -30,18 +35,27 @@ public class Arco extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String ARCO_ID = intent.getStringExtra("ARCO_ID");
+        final String ARCO_ID = intent.getStringExtra("ARCO_ID");
         String NOME = intent.getStringExtra("NOME");
         String COMPARTILHADO = intent.getStringExtra("COMPARTILHADO");
 
-        Switch s = (Switch) findViewById(R.id.switch1);
+        final Switch s = (Switch) findViewById(R.id.switch1);
         if(COMPARTILHADO.equals("1")){
             s.setChecked(true);
+            s.setText("Compartilhado");
         }else {
             s.setChecked(false);
+            s.setText("Não compartilhado");
         }
 
-        controllerArco.alterarCompartilhado(Arco.this, ARCO_ID, s.isChecked());
+        s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                controllerArco.alterarCompartilhado(Arco.this, ARCO_ID, isChecked, s);
+            }
+        });
+
+
 
         e1 = (Button) findViewById(R.id.btn_e1);
         e2 = (Button) findViewById(R.id.btn_e2);

@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.developer.edu.arco.R;
@@ -33,8 +34,10 @@ import com.developer.edu.arco.model.*;
 import com.developer.edu.arco.view.MenuPrincipal;
 import com.developer.edu.arco.view.NovoArco;
 import com.developer.edu.arco.view.adapter.Adapterdiscente;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -267,10 +270,9 @@ public class ControllerArco {
                     Toast.makeText(context, "Arco criado com sucesso!", Toast.LENGTH_LONG).show();
 
                     Intent mudarParaMain = new Intent(context, MenuPrincipal.class);
-                        context.startActivity(mudarParaMain);
-                        ((Activity) context).finish();
-                        dialog.dismiss();
-
+                    context.startActivity(mudarParaMain);
+                    ((Activity) context).finish();
+                    dialog.dismiss();
 
 
                 } else if (response.code() == 405) {
@@ -327,7 +329,7 @@ public class ControllerArco {
 
                         for (int i = 0; i < sizeArray; i++) {
                             JSONObject object = array.getJSONObject(i);
-                             arcoDAO.inserir(context,
+                            arcoDAO.inserir(context,
                                     object.getString("ID"),
                                     object.getString("NOME"),
                                     object.getString("STATUS"),
@@ -432,7 +434,6 @@ public class ControllerArco {
                                 object.getString("ARCO_ID"));
 
 
-
                         if (object.getString("NOME").equals("OBSERVAÇÃO DA REALIDADE")) {
                             definirIconeEcliclavel(object, context, e1);
                         } else if (object.getString("NOME").equals("PONTOS CHAVES")) {
@@ -466,30 +467,30 @@ public class ControllerArco {
 
     }
 
-    public void definirIconeEcliclavel(JSONObject object ,Context context, Button ed) throws JSONException {
+    public void definirIconeEcliclavel(JSONObject object, Context context, Button ed) throws JSONException {
         Drawable ic = null;
 
         //verifico o status e chamo o icone e se o botão é clicavel
-        if(object.getString("STATUS").equals("1")){
+        if (object.getString("STATUS").equals("1")) {
             ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
             ed.setEnabled(true);
-        }else if(object.getString("STATUS").equals("2")){
+        } else if (object.getString("STATUS").equals("2")) {
             ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
             ed.setEnabled(false);
-        }else if(object.getString("STATUS").equals("3")){
+        } else if (object.getString("STATUS").equals("3")) {
             ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
             ed.setEnabled(true);
-        }else if(object.getString("STATUS").equals("4")){
+        } else if (object.getString("STATUS").equals("4")) {
             ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
             ed.setEnabled(true);
-        }else if(object.getString("STATUS").equals("5")){
+        } else if (object.getString("STATUS").equals("5")) {
             ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
             ed.setEnabled(false);
         }
 
         ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
 
-        ed.setCompoundDrawables(null,null, ic, null);
+        ed.setCompoundDrawables(null, null, ic, null);
 
     }
 
@@ -502,13 +503,12 @@ public class ControllerArco {
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
         final ArrayAdapter<Arco> arrayAdapter = new ArrayAdapter<Arco>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
 
-        final ProgressDialog dialog = new ProgressDialog(view.getContext());
+        final ProgressDialog dialog = new ProgressDialog(context);
         dialog.setTitle("Aguarde...");
         dialog.show();
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
-        final String id = sharedPreferences.getString(String.valueOf(R.string.ID), "");
 
         final ArcoDAO arcoDAO = new ArcoDAO();
 
@@ -575,7 +575,6 @@ public class ControllerArco {
             }
         });
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -598,8 +597,49 @@ public class ControllerArco {
 
     }
 
-    public void alterarCompartilhado(final Context context, String ARCO_ID, final Boolean switchState) {
+    public void alterarCompartilhado(final Context context, String ARCO_ID, final Boolean switchState, final Switch s) {
 
+
+        String comp = "";
+
+        if (switchState) {
+            comp = "1";
+        } else {
+            comp = "2";
+        }
+
+
+        final ProgressDialog dialog = new ProgressDialog(context);
+        dialog.setTitle("Aguarde...");
+        dialog.show();
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+
+        Call<String> stringCall = ConfigRetrofit.getService().atulizarCompartilhamento(result, ARCO_ID, comp);
+        stringCall.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                if (response.isSuccessful()) {
+                    if (switchState) {
+                        s.setText("Compartilhado");
+
+                    } else {
+                        s.setText("Não compartilhado");
+
+                    }
+
+                }
+
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                dialog.dismiss();
+            }
+        });
 
 
     }
