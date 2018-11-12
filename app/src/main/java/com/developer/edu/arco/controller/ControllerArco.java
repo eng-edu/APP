@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
-import android.renderscript.Allocation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,6 +34,7 @@ import com.developer.edu.arco.model.*;
 import com.developer.edu.arco.view.MenuPrincipal;
 import com.developer.edu.arco.view.NovoArco;
 import com.developer.edu.arco.view.adapter.Adapterdiscente;
+import com.developer.edu.arco.view.adapter.Adaptersolicitacao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +50,7 @@ public class ControllerArco {
 
         final AlertDialog[] alert = new AlertDialog[1];
 
-        final View view = inflater.inflate(R.layout.lista_docentes_discente_dialog, null);
+        final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
         final ArrayAdapter<Docente> arrayAdapter = new ArrayAdapter<Docente>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
@@ -141,7 +141,7 @@ public class ControllerArco {
 
     public void selecionarDiscente(final Context context, final String id_criador, final LayoutInflater inflater, final ListView discentes, final ArrayAdapter<Discente> adapter) {
 
-        final View view = inflater.inflate(R.layout.lista_docentes_discente_dialog, null);
+        final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
         final ArrayAdapter<Discente> arrayAdapter = new Adapterdiscente(context, new ArrayList<Discente>());
@@ -275,6 +275,9 @@ public class ControllerArco {
                     ((Activity) context).finish();
                     dialog.dismiss();
 
+                    NovoArco.setDocente(null);
+                    NovoArco.discentes.clear();
+
 
                 } else if (response.code() == 405) {
                     Toast.makeText(context, response.body(), Toast.LENGTH_LONG).show();
@@ -296,7 +299,7 @@ public class ControllerArco {
 
         final AlertDialog[] alert = new AlertDialog[1];
 
-        final View view = inflater.inflate(R.layout.lista_docentes_discente_dialog, null);
+        final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
         final ArrayAdapter<Arco> arrayAdapter = new ArrayAdapter<Arco>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
@@ -499,7 +502,7 @@ public class ControllerArco {
 
         final AlertDialog[] alert = new AlertDialog[1];
 
-        final View view = inflater.inflate(R.layout.lista_docentes_discente_dialog, null);
+        final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
         final ArrayAdapter<Arco> arrayAdapter = new ArrayAdapter<Arco>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
@@ -669,7 +672,7 @@ public class ControllerArco {
 
         final AlertDialog[] alert = new AlertDialog[1];
 
-        final View view = inflater.inflate(R.layout.lista_docentes_discente_dialog, null);
+        final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
         final ArrayAdapter<Arco> arrayAdapter = new ArrayAdapter<Arco>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
@@ -774,10 +777,10 @@ public class ControllerArco {
 
         final AlertDialog[] alert = new AlertDialog[1];
 
-        final View view = inflater.inflate(R.layout.lista_docentes_discente_dialog, null);
+        final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
-        final ArrayAdapter<Solicitacao> arrayAdapter = new ArrayAdapter<Solicitacao>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
+        final ArrayAdapter<Solicitacao> arrayAdapter = new Adaptersolicitacao(context, new ArrayList<Solicitacao>());
 
         final ProgressDialog dialog = new ProgressDialog(view.getContext());
         dialog.setTitle("Aguarde...");
@@ -848,8 +851,20 @@ public class ControllerArco {
             }
         });
 
-
     }
 
 
+    public void aceitarSolicitacao(Context context, String id, String arco_id, Button aceitar) {
+
+
+        //deleta a solicitacao pelo id
+        //pega a primeira etapa do arco pelo id e atiliza o status.
+        
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+
+        aceitar.setText("Aguarde!!!");
+        aceitar.setClickable(false);
+    }
 }
