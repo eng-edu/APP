@@ -30,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.developer.edu.arco.dao.EtapaDAO;
+import com.developer.edu.arco.dao.SolicitacaoDAO;
 import com.developer.edu.arco.model.*;
 import com.developer.edu.arco.view.MenuPrincipal;
 import com.developer.edu.arco.view.NovoArco;
@@ -604,14 +605,11 @@ public class ControllerArco {
 
         if (switchState) {
             comp = "1";
+            s.setText("Compartilhado");
         } else {
             comp = "2";
+            s.setText("Não compartilhado");
         }
-
-
-        final ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle("Aguarde...");
-        dialog.show();
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
@@ -621,14 +619,37 @@ public class ControllerArco {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                if (response.isSuccessful()) {
-                    if (switchState) {
-                        s.setText("Compartilhado");
+            }
 
-                    } else {
-                        s.setText("Não compartilhado");
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
 
-                    }
+            }
+        });
+
+
+    }
+
+    public void excluirArco(final Context context, String ARCO_ID) {
+
+        final ProgressDialog dialog = new ProgressDialog(context);
+        dialog.setTitle("Aguarde...");
+        dialog.show();
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+
+
+        Call<String> stringCall = ConfigRetrofit.getService().deletarArco(result, ARCO_ID);
+        stringCall.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                if(response.isSuccessful()){
+
+                    Intent mudarParaMain = new Intent(context, MenuPrincipal.class);
+                    context.startActivity(mudarParaMain);
+                    ((Activity) context).finish();
 
                 }
 
@@ -644,6 +665,191 @@ public class ControllerArco {
 
     }
 
-    public void excluirArco(final Context context) {
+    public void buscarMeusArcosDocente(final Context context, final LayoutInflater inflater, final Intent intent) {
+
+        final AlertDialog[] alert = new AlertDialog[1];
+
+        final View view = inflater.inflate(R.layout.lista_docentes_discente_dialog, null);
+
+        final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
+        final ArrayAdapter<Arco> arrayAdapter = new ArrayAdapter<Arco>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
+
+        final ProgressDialog dialog = new ProgressDialog(view.getContext());
+        dialog.setTitle("Aguarde...");
+        dialog.show();
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+        final String id = sharedPreferences.getString(String.valueOf(R.string.ID), "");
+
+        final ArcoDAO arcoDAO = new ArcoDAO();
+
+        Call<String> stringCall = ConfigRetrofit.getService().buscarMeusArcosDocente(result, id);
+        stringCall.enqueue(new Callback<String>() {
+
+
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                arcoDAO.deletAll(context);
+
+                if (response.isSuccessful()) {
+
+                    try {
+
+                        JSONArray array = new JSONArray(response.body());
+
+                        int sizeArray = array.length();
+
+                        for (int i = 0; i < sizeArray; i++) {
+                            JSONObject object = array.getJSONObject(i);
+                            arcoDAO.inserir(context,
+                                    object.getString("ID"),
+                                    object.getString("NOME"),
+                                    object.getString("STATUS"),
+                                    object.getString("ID_CRIADOR"),
+                                    object.getString("DOCENTE_ID"),
+                                    object.getString("COMPARTILHADO"));
+
+                        }
+
+                        arrayAdapter.clear();
+                        arrayAdapter.addAll(arcoDAO.buscarTodos(view.getContext()));
+                        listView.setAdapter(arrayAdapter);
+                        arrayAdapter.notifyDataSetChanged();
+
+                        dialog.dismiss();
+
+
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                        builder.setTitle("SELECIONAR O ARCO");
+                        builder.setView(view);
+                        alert[0] = builder.create();
+                        alert[0].show();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                } else {
+                    Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Arco arco = arrayAdapter.getItem(position);
+
+                arco.toString();
+
+                //abrir a activity que tem as etapas dos arcos
+
+                intent.putExtra("ARCO_ID", arco.getID());
+                intent.putExtra("NOME", arco.getNOME());
+                intent.putExtra("STATUS", arco.getSTATUS());
+                intent.putExtra("COMPARTILHADO", arco.getCOMPARTILHADO());
+                context.startActivity(intent);
+                alert[0].dismiss();
+            }
+        });
+
+
     }
+
+    public void buscarSolicitações(final Context context, LayoutInflater inflater) {
+
+        final AlertDialog[] alert = new AlertDialog[1];
+
+        final View view = inflater.inflate(R.layout.lista_docentes_discente_dialog, null);
+
+        final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
+        final ArrayAdapter<Solicitacao> arrayAdapter = new ArrayAdapter<Solicitacao>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
+
+        final ProgressDialog dialog = new ProgressDialog(view.getContext());
+        dialog.setTitle("Aguarde...");
+        dialog.show();
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+
+        final SolicitacaoDAO solicitacaoDAO = new SolicitacaoDAO();
+
+        Call<String> stringCall = ConfigRetrofit.getService().buscarSolicitacoes(result);
+        stringCall.enqueue(new Callback<String>() {
+
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                solicitacaoDAO.deletAll(context);
+
+                if (response.isSuccessful()) {
+
+                    try {
+
+                        JSONArray array = new JSONArray(response.body());
+
+                        int sizeArray = array.length();
+
+                        for (int i = 0; i < sizeArray; i++) {
+                            JSONObject object = array.getJSONObject(i);
+                            solicitacaoDAO.inserir(context,
+                                    object.getString("ID"),
+                                    object.getString("ARCO_ID"),
+                                    object.getString("DOCENTE_ID"),
+                                    object.getString("NOME"));
+
+                        }
+
+                        arrayAdapter.clear();
+                        arrayAdapter.addAll(solicitacaoDAO.buscarTodos(view.getContext()));
+                        listView.setAdapter(arrayAdapter);
+                        arrayAdapter.notifyDataSetChanged();
+
+                        dialog.dismiss();
+
+
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                        builder.setTitle("SOLICITAÇÕES");
+                        builder.setView(view);
+                        alert[0] = builder.create();
+                        alert[0].show();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                } else {
+                    Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+
+    }
+
+
 }

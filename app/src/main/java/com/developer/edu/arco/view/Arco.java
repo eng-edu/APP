@@ -94,7 +94,7 @@ public class Arco extends AppCompatActivity {
         if (item.getItemId() == R.id.sinc) {
             controllerArco.bucarEtapasArco(Arco.this, ARCO_ID, e1, e2, e3, e4, e5);
         } else if (item.getItemId() == R.id.lixo) {
-            controllerArco.excluirArco(Arco.this);
+            controllerArco.excluirArco(Arco.this, ARCO_ID);
         } else if (item.getItemId() == R.id.msg) {
 
         }

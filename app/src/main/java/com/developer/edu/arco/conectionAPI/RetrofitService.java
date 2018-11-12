@@ -63,4 +63,15 @@ public interface RetrofitService {
                                           @Path("ID") String ID,
                                           @Path("COMPARTILHADO") String COMPARTILHADO);
 
+    @DELETE("/arco/{ID}")
+    Call<String> deletarArco(@Header("token") String TOKIENAPI,
+                             @Path("ID") String ID);
+    @GET("/arco3/{DOCENTE_ID}")
+    Call<String> buscarMeusArcosDocente(@Header("token") String TOKIENAPI,
+                                         @Path("DOCENTE_ID") String DOCENTE_ID);
+
+    @GET("/arco4/solicitacoes/")
+    Call<String> buscarSolicitacoes(@Header("token") String TOKIENAPI);
+
+
 }

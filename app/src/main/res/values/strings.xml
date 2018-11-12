@@ -22,6 +22,7 @@
 
 
     <string name="TOKENAPI">TOKENAPI</string>
+    <string name="posso_editar">posso_editar</string>
     <string name="tipo_login">TIPOLOGIN</string>
     <string name="preference_config">MYPREFERENCE</string>
     <string name="ID">ID</string>

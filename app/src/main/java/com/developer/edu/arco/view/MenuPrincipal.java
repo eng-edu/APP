@@ -3,6 +3,7 @@ package com.developer.edu.arco.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.util.MeasureUnit;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,6 +35,9 @@ public class MenuPrincipal extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
 
+        if (result.equals("docente")) {
+            novo_solic.setText("Solicitações de orientação");
+        }
 
         //pensa na logica de como chamr o novo arco... //pegar por shraedpreferences...
 
@@ -47,6 +51,8 @@ public class MenuPrincipal extends AppCompatActivity {
                     if (result.equals("discente")) {
                         Intent intent = new Intent(MenuPrincipal.this, NovoArco.class);
                         startActivity(intent);
+                    }else if(result.equals("docente")){
+                        controllerArco.buscarSolicitações(MenuPrincipal.this, inflater);
                     }
 
                 }
@@ -58,12 +64,13 @@ public class MenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 //verifica se foi dsicente
                 if (result.length() > 0) {
                     Intent intent = new Intent(MenuPrincipal.this, Arco.class);
                     if (result.equals("discente")) {
                         controllerArco.buscarMeusArcosDiscentes(MenuPrincipal.this, inflater, intent);
+                    }else if(result.equals("docente")){
+                        controllerArco.buscarMeusArcosDocente(MenuPrincipal.this, inflater, intent);
                     }
 
                 }
