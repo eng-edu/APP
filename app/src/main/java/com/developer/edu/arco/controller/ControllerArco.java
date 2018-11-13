@@ -854,17 +854,41 @@ public class ControllerArco {
     }
 
 
-    public void aceitarSolicitacao(Context context, String id, String arco_id, Button aceitar) {
+    public void aceitarSolicitacao(Context context, String id, String arco_id, final Button aceitar) {
 
 
         //deleta a solicitacao pelo id
         //pega a primeira etapa do arco pelo id e atiliza o status.
-        
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
 
         aceitar.setText("Aguarde!!!");
         aceitar.setClickable(false);
+
+
+        Call<String> stringCall = ConfigRetrofit.getService().aceitarSolicao(result, id, arco_id);
+        stringCall.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()){
+                    aceitar.setText(" ---- ");
+                    aceitar.setEnabled(true);
+                }else {
+                    aceitar.setText("Aceitar");
+                    aceitar.setClickable(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                aceitar.setText("Aceitar");
+                aceitar.setClickable(true);
+            }
+        });
+
+
+
+
     }
 }
