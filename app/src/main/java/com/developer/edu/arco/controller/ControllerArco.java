@@ -872,7 +872,7 @@ public class ControllerArco {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
-                    aceitar.setText(" ---- ");
+                    aceitar.setText(" --- ");
                     aceitar.setEnabled(true);
                 }else {
                     aceitar.setText("Aceitar");
