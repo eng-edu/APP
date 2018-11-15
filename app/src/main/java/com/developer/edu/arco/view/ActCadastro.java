@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerCadastro;
 
-public class Cadastro extends AppCompatActivity {
+public class ActCadastro extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

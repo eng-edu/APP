@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.developer.edu.arco.model.Arco;
+import com.developer.edu.arco.model.Etapa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,33 +38,33 @@ public class EtapaDAO {
     }
 
 
-    public List<Arco> buscarTodos(Context context) {
+    public Etapa buscarEtapa(Context context, String nome) {
 
         SQLiteDatabase bd = ConectarBanco.getConnection(context).getWritableDatabase();
 
-        List<Arco> arcos = new ArrayList<>();
         String colunas[] = new String[]{"ID", "NOME", "RESUMO", "STATUS", "ARCO_ID"};
-        Cursor cursor = bd.query("ETAPA", colunas, null, null, null, null, null);
+        Cursor cursor = bd.query("ETAPA", colunas, "NOME = ?", new String[]{nome}, null, null, null);
+
+        Etapa modelEtapa = new Etapa();
 
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                Arco arco = new Arco();
-                arco.setID(cursor.getString(0));
-                arco.setNOME(cursor.getString(1));
-                arco.setSTATUS(cursor.getString(2));
-                arco.setID_CRIADOR(cursor.getString(3));
-                arco.setDOCENTE_ID(cursor.getString(4));
-                arco.setCOMPARTILHADO(cursor.getString(5));
 
-                arcos.add(arco);
+                modelEtapa.setID(cursor.getString(0));
+                modelEtapa.setNOME(cursor.getString(1));
+                modelEtapa.setRESUMO(cursor.getString(2));
+                modelEtapa.setSTATUS(cursor.getString(3));
+                modelEtapa.setARCO_ID(cursor.getString(4));
 
             } while (cursor.moveToNext());
 
         }
-        return arcos;
+
+        return modelEtapa;
 
     }
+
 
     public void deletAll(Context context) {
 

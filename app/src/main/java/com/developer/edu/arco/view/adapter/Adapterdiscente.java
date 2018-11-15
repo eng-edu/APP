@@ -10,11 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.model.Discente;
-import com.developer.edu.arco.view.NovoArco;
+import com.developer.edu.arco.view.ActNovoArco;
 
 import java.util.List;
 
@@ -48,13 +47,13 @@ public class Adapterdiscente extends ArrayAdapter<Discente> {
 
                 if (isChecked) {
 
-                    if (NovoArco.verificarSize(context)<10) {
-                        NovoArco.addDiscente(getItem(position));
+                    if (ActNovoArco.verificarSize(context)<10) {
+                        ActNovoArco.addDiscente(getItem(position));
                         discente.setCHEKED(true);
                     }
 
                 } else {
-                    NovoArco.rmDiscente(getItem(position));
+                    ActNovoArco.rmDiscente(getItem(position));
                     discente.setCHEKED(false);
 
                 }

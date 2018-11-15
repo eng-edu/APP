@@ -8,17 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
-import com.developer.edu.arco.controller.ControllerLogin;
-import com.developer.edu.arco.model.Discente;
 import com.developer.edu.arco.model.Solicitacao;
-import com.developer.edu.arco.view.NovoArco;
 
 import java.util.List;
 

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerLogin;
 
-public class Login extends AppCompatActivity {
+public class ActLogin extends AppCompatActivity {
 
     ControllerLogin controllerLogin = new ControllerLogin();
 
@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
 
         //verifica se o usuario já está logado
         if (result.length()>0) {
-            Intent mudarParaMain = new Intent(getApplicationContext(), MenuPrincipal.class);
+            Intent mudarParaMain = new Intent(getApplicationContext(), ActMenuPrincipal.class);
             startActivity(mudarParaMain);
             finish();
         }
@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
         cadastrese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mudarParaCadastro = new Intent(getApplicationContext(), Cadastro.class);
+                Intent mudarParaCadastro = new Intent(getApplicationContext(), ActCadastro.class);
                 startActivity(mudarParaCadastro);
             }
         });

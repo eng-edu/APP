@@ -9,10 +9,8 @@ import android.widget.Toast;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
-import com.developer.edu.arco.dao.DiscenteDAO;
-import com.developer.edu.arco.dao.DocenteDAO;
-import com.developer.edu.arco.view.Login;
-import com.developer.edu.arco.view.MenuPrincipal;
+import com.developer.edu.arco.view.ActLogin;
+import com.developer.edu.arco.view.ActMenuPrincipal;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +19,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.content.Context.EUICC_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ControllerLogin {
@@ -94,9 +91,9 @@ public class ControllerLogin {
                         }
 
                         dialog.dismiss();
-                        Toast.makeText(context, "Login realizado com sucesso!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "ActLogin realizado com sucesso!", Toast.LENGTH_LONG).show();
 
-                        Intent mudarParaMain = new Intent(context, MenuPrincipal.class);
+                        Intent mudarParaMain = new Intent(context, ActMenuPrincipal.class);
                         context.startActivity(mudarParaMain);
                         ((Activity) context).finish();
 
@@ -128,7 +125,7 @@ public class ControllerLogin {
         editor.clear();
         editor.apply();
 
-        Intent mudarParaMain = new Intent(context, Login.class);
+        Intent mudarParaMain = new Intent(context, ActLogin.class);
         context.startActivity(mudarParaMain);
         ((Activity) context).finish();
 

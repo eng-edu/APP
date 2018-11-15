@@ -1,7 +1,6 @@
 package com.developer.edu.arco.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
@@ -24,7 +22,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NovoArco extends AppCompatActivity {
+public class ActNovoArco extends AppCompatActivity {
 
     public static Docente docente;
     public static List<Discente> discentes = new ArrayList<>();
@@ -42,7 +40,7 @@ public class NovoArco extends AppCompatActivity {
         FloatingActionButton novoDiscente = (FloatingActionButton) findViewById(R.id.float_novoarco_novoDiscente);
         Button criar = (Button) findViewById(R.id.btn_novoarco_criar);
         Button cancelar = (Button) findViewById(R.id.btn_novoarco_cancelar);
-        final ArrayAdapter<Discente> arrayAdapter = new ArrayAdapter<Discente>(NovoArco.this, R.layout.support_simple_spinner_dropdown_item);
+        final ArrayAdapter<Discente> arrayAdapter = new ArrayAdapter<Discente>(ActNovoArco.this, R.layout.support_simple_spinner_dropdown_item);
 
         arrayAdapter.clear();
         arrayAdapter.addAll(getDiscentes());
@@ -59,7 +57,7 @@ public class NovoArco extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                controllerArco.selecionarDocente(NovoArco.this, inflater, orientador);
+                controllerArco.selecionarDocente(ActNovoArco.this, inflater, orientador);
             }
         });
 
@@ -67,7 +65,7 @@ public class NovoArco extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 discentes.clear();
-                controllerArco.selecionarDiscente(NovoArco.this, result, inflater, listaDiscentes, arrayAdapter);
+                controllerArco.selecionarDiscente(ActNovoArco.this, result, inflater, listaDiscentes, arrayAdapter);
             }
         });
 
@@ -77,7 +75,7 @@ public class NovoArco extends AppCompatActivity {
 
                 try {
 
-                    controllerArco.criarArco(NovoArco.this, titulo.getText().toString(), nomegrpo.getText().toString(), result, getDocente(), getDiscentes());
+                    controllerArco.criarArco(ActNovoArco.this, titulo.getText().toString(), nomegrpo.getText().toString(), result, getDocente(), getDiscentes());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -110,13 +108,13 @@ public class NovoArco extends AppCompatActivity {
     public static void addDiscente(Discente discente) {
 
         if (!discentes.contains(discente)) {
-            NovoArco.discentes.add(discente);
+            ActNovoArco.discentes.add(discente);
         }
 
     }
 
     public static void rmDiscente(Discente discente) {
-        NovoArco.discentes.remove(discente);
+        ActNovoArco.discentes.remove(discente);
     }
 
     public static Docente getDocente() {
@@ -124,6 +122,6 @@ public class NovoArco extends AppCompatActivity {
     }
 
     public static void setDocente(Docente docente) {
-        NovoArco.docente = docente;
+        ActNovoArco.docente = docente;
     }
 }

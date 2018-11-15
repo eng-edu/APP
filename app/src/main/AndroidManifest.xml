@@ -11,17 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.Login">
+        <activity android:name=".view.ActLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MenuPrincipal" />
-        <activity android:name=".view.Cadastro" />
-        <activity android:name=".view.NovoArco" />
-        <activity android:name=".view.Arco"></activity>
+        <activity android:name=".view.ActMenuPrincipal" />
+        <activity android:name=".view.ActCadastro" />
+        <activity android:name=".view.ActNovoArco" />
+        <activity android:name=".view.ActArco" />
+        <activity android:name=".view.ActEtapa"></activity>
     </application>
 
 </manifest>

@@ -31,8 +31,8 @@ import org.json.JSONObject;
 import com.developer.edu.arco.dao.EtapaDAO;
 import com.developer.edu.arco.dao.SolicitacaoDAO;
 import com.developer.edu.arco.model.*;
-import com.developer.edu.arco.view.MenuPrincipal;
-import com.developer.edu.arco.view.NovoArco;
+import com.developer.edu.arco.view.ActMenuPrincipal;
+import com.developer.edu.arco.view.ActNovoArco;
 import com.developer.edu.arco.view.adapter.Adapterdiscente;
 import com.developer.edu.arco.view.adapter.Adaptersolicitacao;
 
@@ -131,7 +131,7 @@ public class ControllerArco {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 orientador.setText(arrayAdapter.getItem(position).toString());
-                NovoArco.setDocente(arrayAdapter.getItem(position));
+                ActNovoArco.setDocente(arrayAdapter.getItem(position));
                 alert[0].dismiss();
             }
         });
@@ -202,7 +202,7 @@ public class ControllerArco {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 adapter.clear();
-                                adapter.addAll(NovoArco.getDiscentes());
+                                adapter.addAll(ActNovoArco.getDiscentes());
                                 discentes.setAdapter(adapter);
                                 adapter.notifyDataSetChanged();
                             }
@@ -268,15 +268,15 @@ public class ControllerArco {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.code() == 201) {
 
-                    Toast.makeText(context, "Arco criado com sucesso!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "ActArco criado com sucesso!", Toast.LENGTH_LONG).show();
 
-                    Intent mudarParaMain = new Intent(context, MenuPrincipal.class);
+                    Intent mudarParaMain = new Intent(context, ActMenuPrincipal.class);
                     context.startActivity(mudarParaMain);
                     ((Activity) context).finish();
                     dialog.dismiss();
 
-                    NovoArco.setDocente(null);
-                    NovoArco.discentes.clear();
+                    ActNovoArco.setDocente(null);
+                    ActNovoArco.discentes.clear();
 
 
                 } else if (response.code() == 405) {
@@ -650,7 +650,7 @@ public class ControllerArco {
 
                 if(response.isSuccessful()){
 
-                    Intent mudarParaMain = new Intent(context, MenuPrincipal.class);
+                    Intent mudarParaMain = new Intent(context, ActMenuPrincipal.class);
                     context.startActivity(mudarParaMain);
                     ((Activity) context).finish();
 
