@@ -63,13 +63,18 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\User\Desktop\logo.png" />
-                                      <entry key="outputName" value="ic_logo2" />
+                                      <entry key="imageAsset" value="C:\Users\User\Pictures\ic\2x\baseline_info_white_18dp.png" />
+                                      <entry key="outputName" value="ic_info" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>

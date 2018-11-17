@@ -6,6 +6,9 @@ import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerLogin;
+import com.developer.edu.arco.view.adapter.ActInfo;
 
 public class ActLogin extends AppCompatActivity {
 
@@ -60,5 +64,24 @@ public class ActLogin extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_login, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.info_login) {
+
+            startActivity(new Intent(ActLogin.this, ActInfo.class).putExtra("login_info", "S"));
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

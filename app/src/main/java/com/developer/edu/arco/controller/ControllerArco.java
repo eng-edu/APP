@@ -367,6 +367,12 @@ public class ControllerArco {
                         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                         builder.setTitle("SELECIONAR O ARCO");
                         builder.setView(view);
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
                         alert[0] = builder.create();
                         alert[0].show();
 
@@ -504,7 +510,7 @@ public class ControllerArco {
                 //verifico o status e chamo o icone e se o botão é clicavel
                 if (object.getString("STATUS").equals("1")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
-                    ed.setEnabled(true);
+                    ed.setEnabled(false);
                 } else if (object.getString("STATUS").equals("2")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
                     ed.setEnabled(false);
@@ -663,13 +669,14 @@ public class ControllerArco {
                         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                         builder.setTitle("SELECIONAR O ARCO");
                         builder.setView(view);
-                        alert[0] = builder.create();
-                        alert[0].show();
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         });
+                        alert[0] = builder.create();
+                        alert[0].show();
+
 
 
                     } catch (JSONException e) {
@@ -839,13 +846,14 @@ public class ControllerArco {
                         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                         builder.setTitle("SELECIONAR O ARCO");
                         builder.setView(view);
-                        alert[0] = builder.create();
-                        alert[0].show();
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         });
+                        alert[0] = builder.create();
+                        alert[0].show();
+
 
 
                     } catch (JSONException e) {

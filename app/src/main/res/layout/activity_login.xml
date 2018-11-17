@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,14 +34,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
                 android:fontFamily="cursive"
                 android:text="Arco didático da problematização"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:typeface="sans"
-                android:layout_marginBottom="50dp"/>
+                android:typeface="sans" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/groupLogin"

@@ -36,5 +36,117 @@
     <string name="adapter_nome_discente" />
 
 
+    <string name="texto_inicial">
+Olá, seja bem-vindo ao ADP!
+Sou um aplicativo, para mediar a prática didática e pedagógica da comunidade acadêmica, com a metodologia ativa da problematização, através de uma tecnologia educativa de processo denominada Arco de Maguerez. Em um ambiente organizado por meio das etapas, é possível que docentes e discentes através de dicas e orientações deste APP, construam juntos uma trajetória flexível, emergidas do contexto de aulas teóricas e práticas.
+Esta tecnologia educativa faz parte do produto de uma pesquisa de dissertação, vinculada ao Programa de Mestrado Profissional em Ensino e Saúde na Amazônia da Universidade do Estado do Pará.
+
+    </string>
+
+    <string name="texto_docente_menu">
+
+
+        Prezado docente, esta área de acesso representa, sua área de trabalho, funciona através de dicas orientadoras inseridas neste APP, para possibilitar que você realize a validação, dos pontos essências para cada etapa de elaboração do Arco Maguerez. De acordo, com a frequência do envio de arquivos pelos grupos de trabalho de discentes, você poderá inseri, comentários e correções, indicado o avanço ou não das etapas do Arco pelos discentes.
+
+1ª. Etapa do arco - Observação da Realidade
+Esta etapa do arco orienta uma trajetória pedagógica que tem seu ponto de partida na realidade, em que se insere os discentes da aprendizagem, por meio da seleção de uma situação a ser problematizada ou seja orientar os discentes a eleger um problema de estudo, esse momento objetiva realizar uma leitura sincrética ou ingênua da realidade – o que chamamos de Síncrese.
+Você docente deve orienta-los metodologicamente a observarem a realidade com registro de informações colhidas em diferentes formas de acessar a realidade.
+- Os discentes devem ser direcionados a observar a realidade;
+- Captar diferentes aspectos da realidade observada;
+- Observação analítica e crítica da realidade (utilizando os conhecimentos prévios);
+Investigar o contexto dos envolvidos com o problema:
+- pessoal;
+- Geográfico;
+ - Histórico;
+- Cultural;
+ - Social;
+ - Econômico.
+Nota: Nesta etapa deve ser desestimulado a consulta de informações em bancos de dados formais, deve provoca-los para uma discussão em grupo a partir do esgotamento dos conhecimentos prévios. Todas as etapas devem ser registradas pelos discentes através de parágrafos contextualizados
+
+2ª. Etapa do arco - Levantamento de pontos chaves
+Nesta etapa você docente deve orientar os discentes a refletirem sobre o problema escolhido na etapa anterior e os possíveis fatores associados ao problema, mantendo a discussão entre os componentes do grupo, sem consultas formais, através de lembranças vivências, de leituras, notícias e favorecendo o aprendizados significativo e mantendo uma visão sincrética do problema.
+Desse modo deve-se estimula-los a pensarem nos possíveis determinantes maiores para o problema que exigem aprofundamentos conceituais, os chamados pontos chaves, pontos de pesquisa ou pontos chaves para estudar.
+- Orienta-los a realizar o levantamento de questões fundamentais para o contexto pesquisado; (usuário ou comunidade, ou pontos importantes para a o embasamento teórico);
+- Destacam do que foi observado o que é verdadeiramente importante;
+- Variáveis mais significativas que determinam a realidade analisada;
+- Seleção de pontos de compreensão que podem contribuir para a solução do problema evidenciado.
+
+3ª. Etapa do arco - Teorização
+Esta etapa representa o aprendizado fundamentado no rigor científico, a partir da pesquisa dos pontos chaves em fontes de buscas formais, apontados na etapa anterior, pretende-se com o estudo dar respostas fidedignas ao problema extraído de uma parcela da realidade.
+Você deve orienta-los ao registro de toda a teorização construindo um texto com base na análise teórica das etapas anteriores (referencial teórico).  Pode ser desenvolvida através de levantamento bibliográfico, aplicação de questionário ou entrevista com pessoas que vivenciam o problema, estimulando a busca por meio de várias fontes de pesquisa: teóricas, legais e históricas.
+- Orientar o desenvolvimento da Teorização do problema, através da pesquisa bibliográfica;
+- Investigação dos pontos chaves do problema;
+- Confronto dos aspectos observados na realidade com a cientificidade;
+- Processo de estudo e reflexão;
+- Estimular a compreensão profunda sobre a estrutura do problema e suas consequências;
+
+4ª. Etapa do arco – Hipóteses de solução –
+Nesta etapa, você deve orientar a elaboração das hipóteses de solução do problema, os discentes poderão desenvolver diferentes instâncias de ação ou níveis de ação, baseado nas reflexões e teorização das etapas anteriores, tendo em vista o foco do problema, deverão ser orientados a elaborar explicações e argumentos para suas hipóteses de solução, através do registro e contextualização de toda a elaboração da proposta de solução.
+- Estimular a elaboração de hipóteses de soluções viáveis;
+- Cultivo da criatividade e a originalidade;
+- Recomendar a utilização como referência de todo o estudo nas etapas anteriores;
+- Orientar a considerar os condicionamentos e limitação da realidade;
+
+5ª. Etapa do arco – Aplicação à realidade –
+Esta etapa representa, a descrição do método de ação, a partir da escolha de uma ou mais hipóteses de solução elencadas no tópico anterior, por meio da descrição da ação proposta, caracterizando a práxis como ação transformadora.
+Você deve orientar os discentes à desenvolverem a capacidade de atuar, conhecer e intervir sobre os problemas, com estímulo à prática da tomada de decisão, apropriada para situações específicas e viáveis a seu nível de aprendizado, por meio da descrição das etapas do planejamento da ação, senso de responsabilidade e compromisso social.
+- Orientar a descrição metodológica da ação (O que? Como? Quando? Com quem? Recursos necessários? Quais terão que obter? As ações deverão beneficiar a quem?) ;
+- Incentivar a prática das soluções proposta, viáveis e aplicáveis;
+- Encorajar para a construção de uma atividade transformadora da realidade;
+-  Acompanhar a execução efetiva da realidade com algum grau de intervenção;
+- Incitar a utilização dos conceitos aprendidos em situações diferentes.
+
+
+    </string>
+
+    <string name="texto_discente_menu">
+
+        Prezado acadêmico, esta área de acesso representa, sua área de trabalho, funciona através da construção de cinco etapas do Arco Maguerez. Inicialmente, é necessário que você insira os componentes do seu grupo de pesquisa, bem como, o docente orientador (o grupo deve conter entre 8 a 10 componentes no máximo). Todos devem ter acesso ao cadastro deste APP, após o termino da elaboração de cada etapa, encaminhe o arquivo para a validação do docente, após o parecer favorável do mesmo, prossiga na construção das outras etapas, até a conclusão do Arco.
+
+1ª. Etapa do arco - Observação da Realidade
+Ponto de partida:  Você discente deve eleger um problema da sua realidade para estudo, deve emergir de vivências de campo de estágio, experiências, dúvidas levantadas em aulas teóricas, o problema é como uma situação da realidade que precisa ser modificada, situação sobre a qual se deseja agir e conteúdos que se deseja discutir.
+•	Elabore parágrafos, justificando o contexto que despertou o interesse pelo tema (problema) com exposição de determinado assunto;
+•	Apresentar a necessidade de uma intervenção na realidade;
+•	Descrever minuciosamente a realidade, valorizando pontos do contexto pessoal, geográfico, histórico, social, econômico dos envolvidos e o número de dias que durou a observação;
+•	Realizar uma leitura através da sua percepção pessoal, do conhecimento prévio ou imaturo sobre o assunto, deve ser levantado uma contextualização com as próprias palavras emergidas da discussão entre o grupo (sem consulta em fontes formais de pesquisa);
+
+2ª. Etapa do arco – Pontos chaves
+Esta fase consiste em uma reflexão inicial através da discussão com seu grupo, por meio dos conhecimentos prévios, experiências e vivências relacionadas, as informações sobre o problema escolhido na etapa anterior, essa etapa deve ser construída sem consultas em fontes formais de pesquisa, elabore parágrafos baseados nas dicas abaixo:
+•	Realizar um discursão contextualizada sobre os fatores e determinantes do problema no sentido de tentar compreender o problema;
+•	Refletir com o grupo sobre os fatores associados para a ocorrência dos problemas detectados;
+•	Elaborar através do conhecimento prévio, algumas hipóteses explicativas sobre os possíveis motivos da ocorrência do problema;
+•	Nesta etapa você, deve separar o que é superficial (o que já sabe sobre o assunto através da discussão entre o grupo) daquilo que é importante saber (o que precisa ser pesquisado);
+•	Definir o que precisa ser pesquisado os PONTOS CHAVES, à estudar com profundidade, ou seja elaborar alguns questionamentos para o porquê da ocorrência do problema e definir pontos de pesquisa;
+•	Redigir com clareza o problema, de modo que, nele conste o cerne da questão para qual necessitam buscar respostas;
+Importante: Se necessário, explore com os usuários as informações vinculadas ao problema, reconheça as suas crenças, os seus valores e as suas práticas. Busque compreender seu ponto de vista, e então, juntos, determinem os pontos- chaves que constituirão os “conteúdos” a serem desenvolvidos na sua pesquisa. Pontos- chaves são, portanto, as variáveis mais significativas que determinam a realidade analisada e sua compreensão pode contribuir para a solução do problema evidenciado.
+
+3ª. Etapa do arco – Teorização
+Esta etapa você discente, deve reconhecer a importante da relação entre a teoria e prática ao longo do percurso do estudo, representa a construção do referencial teórico da pesquisa.
+•	Buscar explicação para as perguntas suscitadas a partir da observação, elencadas na etapa anterior (pontos- chaves), da realidade agora a partir outras fontes de informações;
+•	Buscar compressão do problema em seus princípios teóricos e explicativos;
+•	A natureza da busca pode ocorrer por meio de informações: teóricas, legais, históricas, experienciais (entrevistas) e políticas;
+•	Você pode utilizar de diferentes recursos e estratégias de coletas de informações, filmes, vídeos, histórias de vida, entrevistas com especialistas, vivências, experimentação, entre outros;
+•	Pode recorrer a construção de instrumentos para coleta de informações, questionário, entrevistas, ou realizar observação da prática com roteiro;
+•	Listar e contextualizar as informações colhidas sobre diferentes fontes analisando se há complementaridade ou contradições;
+•	Relacionar as informações, das hipóteses explicativas iniciais (registrados na segunda etapa) se foram confirmadas ou negadas na teorização;
+
+4ª. Etapa do arco – Hipóteses de soluções
+Com base na teorização da etapa anterior, nesta etapa, você deve elaborar as hipóteses de solução para o problema.
+•	Construir propostas para a intervenção consciente e informada para tentar solucionar os problemas detectados na realidade, baseados na pesquisa científica;
+•	Usar a criatividade para encontrar ações novas, para diferentes sujeitos e setores;
+•	Elaborar explicações e argumentos para suas hipóteses de solução, por meio de embasamento teórico;
+•	Registrar de forma contextualizada toda a elaboração para as propostas de solução.
+
+5ª. Etapa do arco – Intervenção na realidade
+Esta etapa representa a ação, você deve eleger uma ou mais hipótese de solução da etapa anterior, para intervenção na sua realidade, de acordo com o que é viável ao seu contexto.
+•	Desenvolver a capacidade de intervir na realidade com respaldo teórico, sobre situações/ problemas da sua área de atuação;
+•	Descrição de todo o planejamento da execução das ações pelas quais se comprometem em realizar;
+•	Deverão contextualizar o desenvolvimento de toda a ação, através da descrição da intervenção da realidade (O que farão? Como farão? Quando? Com quem? Do que necessitam para isso? Com que recursos já podem contar? Quais terão que obter? As ações deverão beneficiar a quem?);
+•	Registrar, pormenorizando todas as etapas do processo da ação e analisar os resultados da ação sempre que for possível
+
+
+    </string>
+
+
     />
 </resources>

@@ -37,13 +37,19 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/text_etapa_resumo"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:ems="10"
-                android:inputType="textLongMessage"
-                android:singleLine="false" />
+                android:layout_height="match_parent">
+                <EditText
+                    android:layout_gravity="center"
+                    android:id="@+id/text_etapa_resumo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:singleLine="false" />
+            </ScrollView>
+
+
 
             <ImageView
                 android:id="@+id/iv_etapa_arquivos"

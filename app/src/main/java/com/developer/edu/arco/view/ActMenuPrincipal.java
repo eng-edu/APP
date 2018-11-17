@@ -3,6 +3,7 @@ package com.developer.edu.arco.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.controller.ControllerLogin;
+import com.developer.edu.arco.view.adapter.ActInfo;
 
 public class ActMenuPrincipal extends AppCompatActivity {
 
@@ -22,6 +24,9 @@ public class ActMenuPrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+        ActionBar bar = getSupportActionBar();
+        bar.setTitle("MENU PRINCIPAL");
 
         final ControllerArco controllerArco = new ControllerArco();
         final LayoutInflater inflater = getLayoutInflater();
@@ -49,7 +54,7 @@ public class ActMenuPrincipal extends AppCompatActivity {
                     if (result.equals("discente")) {
                         Intent intent = new Intent(ActMenuPrincipal.this, ActNovoArco.class);
                         startActivity(intent);
-                    }else if(result.equals("docente")){
+                    } else if (result.equals("docente")) {
                         controllerArco.buscarSolicitações(ActMenuPrincipal.this, inflater);
                     }
 
@@ -68,7 +73,7 @@ public class ActMenuPrincipal extends AppCompatActivity {
                     if (result.equals("discente")) {
                         intent.putExtra("ACESSO_RESTRITO", "N");
                         controllerArco.buscarMeusArcosDiscentes(ActMenuPrincipal.this, inflater, intent);
-                    }else if(result.equals("docente")){
+                    } else if (result.equals("docente")) {
                         intent.putExtra("ACESSO_RESTRITO", "N");
                         controllerArco.buscarMeusArcosDocente(ActMenuPrincipal.this, inflater, intent);
                     }
@@ -106,6 +111,13 @@ public class ActMenuPrincipal extends AppCompatActivity {
 
         if (item.getItemId() == R.id.logout) {
             new ControllerLogin().logout(this);
+        }
+
+
+        if (item.getItemId() == R.id.info) {
+
+            startActivity(new Intent(ActMenuPrincipal.this, ActInfo.class));
+
         }
 
         return super.onOptionsItemSelected(item);
