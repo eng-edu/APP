@@ -3,6 +3,7 @@ package com.developer.edu.arco.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,12 +24,15 @@ public class ActLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-               SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        ActionBar bar = getSupportActionBar();
+        bar.setTitle("LOGIN");
+
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
 
 
         //verifica se o usuario já está logado
-        if (result.length()>0) {
+        if (result.length() > 0) {
             Intent mudarParaMain = new Intent(getApplicationContext(), ActMenuPrincipal.class);
             startActivity(mudarParaMain);
             finish();

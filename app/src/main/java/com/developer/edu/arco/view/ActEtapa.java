@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.developer.edu.arco.R;
@@ -63,7 +64,7 @@ public class ActEtapa extends AppCompatActivity {
             btn_salvar_reprovar.setText("SALVAR");
             btn_submeter_aprovar.setText("SUBMETER");
             resumo.setEnabled(true);
-        }else if(ACESSO_RESTRITO.equals("N")){
+        } else if (ACESSO_RESTRITO.equals("N")) {
             resumo.setEnabled(false);
         }
 
@@ -72,12 +73,12 @@ public class ActEtapa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-     if (result.equals("docente")) {
+                if (result.equals("docente")) {
 
-         int prox = Integer.parseInt(modelEtapa.getID()) + 1;
+                    int prox = Integer.parseInt(modelEtapa.getID()) + 1;
 
-                    if(UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
-                    controllerEtapa.aprovarEtapa(ActEtapa.this, modelEtapa.getID(), String.valueOf(prox), ARCO_ID);
+                    if (UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
+                        controllerEtapa.aprovarEtapa(ActEtapa.this, modelEtapa.getID(), String.valueOf(prox), ARCO_ID);
 
                 } else if (result.equals("discente")) {
 
@@ -90,6 +91,17 @@ public class ActEtapa extends AppCompatActivity {
 
             }
         });
+
+        ImageView folder = (ImageView)findViewById(R.id.iv_etapa_arquivos);
+        folder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActEtapa.this, ActArquivo.class));
+
+            }
+        });
+
+
 
 
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ARCO</string>
+    <string name="app_name">ADP</string>
     <string name="btn_entar">ENTRAR</string>
     <string name="ed_hint_email">Email</string>
     <string name="ed_hint_senha">Senha</string>

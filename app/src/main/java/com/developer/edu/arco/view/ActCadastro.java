@@ -1,5 +1,6 @@
 package com.developer.edu.arco.view;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,9 @@ public class ActCadastro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+        ActionBar bar = getSupportActionBar();
+        bar.setTitle("CADASTRO");
 
         final EditText nome = (EditText) findViewById(R.id.editText_cadastro_nome);
         final EditText inst_form = (EditText) findViewById(R.id.editText_cadastro_formacao_instituicao);

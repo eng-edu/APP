@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="32dp"
             android:orientation="vertical"
@@ -28,10 +27,22 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                app:srcCompat="@mipmap/ic_user" />
+                app:srcCompat="@mipmap/ic_logo2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:fontFamily="cursive"
+                android:text="Arco didático da problematização"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/groupCadastro"
@@ -98,7 +109,9 @@
                 android:id="@+id/button_cadastro_cadastrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
                 android:text="@string/btn_cadastrar"
+                android:textColor="@color/ic_launcher_background"
                 android:textSize="12sp" />
 
 
