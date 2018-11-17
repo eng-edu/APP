@@ -30,21 +30,27 @@
                 android:id="@+id/btn_principal_novoarco_solicitacoes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#2962ff"
                 android:text="@string/btn_principal_novo_arco"
+                android:textColor="@color/ic_launcher_background"
                 android:textSize="12sp" />
 
             <Button
                 android:id="@+id/btn_principal_meusarcos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#1e88e5"
                 android:text="@string/btn_principal_meusarcos"
+                android:textColor="@color/ic_launcher_background"
                 android:textSize="12sp" />
 
             <Button
                 android:id="@+id/btn_principal_arcoscompartilhados"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#64b5f6"
                 android:text="@string/btn_principal_arcoscompartilhados"
+                android:textColor="@color/ic_launcher_background"
                 android:textSize="12sp" />
 
 
