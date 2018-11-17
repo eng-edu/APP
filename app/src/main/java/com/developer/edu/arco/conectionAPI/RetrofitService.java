@@ -10,6 +10,8 @@ import retrofit2.http.Path;
 
 public interface RetrofitService {
 
+    //login--------------------------------------------------------------------
+
     @GET("/loginDocente/{EMAIL}/{SENHA}")
     Call<String> logarDocente(@Path("EMAIL") String EMAIL,
                               @Path("SENHA") String SENHA);
@@ -18,6 +20,8 @@ public interface RetrofitService {
     Call<String> logarDiscente(@Path("EMAIL") String EMAIL,
                                @Path("SENHA") String SENHA);
 
+
+    //user-----------------------------------------------------------------------
 
     @POST("discente/{NOME}/{INSTITUICAO}/{EMAIL}/{SENHA}")
     Call<String> cadastarDiscente(@Header("token") String TOKIENAPI,
@@ -40,44 +44,68 @@ public interface RetrofitService {
     @GET("discente/list")
     Call<String> buscarTodosDiscentes(@Header("token") String TOKIENAPI);
 
-    @POST("arco/{json}")
+
+    //ARCO ------------------------------------------------------------------------------------------------
+
+    @POST("arco/novoArco/{JSON}")
     Call<String> novoArco(@Header("token") String TOKIENAPI,
-                          @Path("json") String json);
+                          @Path("JSON") String json);
 
-
-    @GET("/arco/{DISCENTE_ID}")
+    @GET("arco/buscarArcoDiscente/{DISCENTE_ID}")
     Call<String> buscarMeusArcosDiscente(@Header("token") String TOKIENAPI,
                                          @Path("DISCENTE_ID") String DISCENTE_ID);
 
-    @GET("/etapa/{ID}")
-    Call<String> buscarEtapasArco(@Header("token") String TOKIENAPI,
-                                  @Path("ID") String ARCO_ID);
 
-
-    @GET("/arco2/compartilhados")
+    @GET("/arco/bucarArcosCompartilhados")
     Call<String> buscarArcosCompartilhados(@Header("token") String TOKIENAPI);
 
 
-    @PUT("/arco/{ID}/{COMPARTILHADO}")
+    @PUT("/arco/compartilharArco/{ID}/{COMPARTILHADO}")
     Call<String> atulizarCompartilhamento(@Header("token") String TOKIENAPI,
                                           @Path("ID") String ID,
                                           @Path("COMPARTILHADO") String COMPARTILHADO);
 
-    @DELETE("/arco/{ID}")
+    @DELETE("/arco/excluirArco/{ID}")
     Call<String> deletarArco(@Header("token") String TOKIENAPI,
                              @Path("ID") String ID);
 
-    @GET("/arco3/{DOCENTE_ID}")
+    @GET("/arco/buscarArcoDocente/{DOCENTE_ID}")
     Call<String> buscarMeusArcosDocente(@Header("token") String TOKIENAPI,
                                         @Path("DOCENTE_ID") String DOCENTE_ID);
 
-    @GET("/arco4/solicitacoes/")
+    @GET("/arco/buscarSolicitacoes")
     Call<String> buscarSolicitacoes(@Header("token") String TOKIENAPI);
 
-    @PUT("/arco2/{ID}/{ARCO_ID}")
+    @PUT("/arco/aceitarSolicitacao/{ID}/{ARCO_ID}")
     Call<String> aceitarSolicao(@Header("token") String TOKIENAPI,
                                 @Path("ID") String id,
                                 @Path("ARCO_ID") String arco_id);
 
+//ETAPA ---------------------------------------------------------------
+
+
+    @PUT("/etapa/aprovarEtapa/{ID}/{PROX_ID}")
+    Call<String> aprovar(@Header("token") String TOKIENAPI,
+                                @Path("ID") String id,
+                                @Path("PROX_ID") String prox_id);
+
+    @PUT("/etapa/reprovarEtapa/{ID}")
+    Call<String> reprovar(@Header("token") String TOKIENAPI,
+                         @Path("ID") String id);
+
+    @PUT("/etapa/submeterEtapa/{ID}/{RESUMO}")
+    Call<String> submeter(@Header("token") String TOKIENAPI,
+                         @Path("ID") String id,
+                         @Path("RESUMO") String resumo);
+
+    @PUT("/etapa/salvarEtapa/{ID}/{RESUMO}/")
+    Call<String> salvar(@Header("token") String TOKIENAPI,
+                          @Path("ID") String id,
+                          @Path("RESUMO") String resumo);
+
+
+    @GET("/etapa/listarEtapasArco/{ARCO_ID}")
+    Call<String> buscarEtapasArco(@Header("token") String TOKIENAPI,
+                                  @Path("ARCO_ID") String ARCO_ID);
 
 }

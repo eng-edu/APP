@@ -1,6 +1,8 @@
 package com.developer.edu.arco.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.Switch;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
+import com.developer.edu.arco.util.UtilArco;
 
 public class ActArco extends AppCompatActivity {
 
@@ -23,7 +26,6 @@ public class ActArco extends AppCompatActivity {
     Button e3;
     Button e4;
     Button e5;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +49,17 @@ public class ActArco extends AppCompatActivity {
             s.setText("Não compartilhado");
         }
 
+        final String ID_CRIADOR = getIntent().getStringExtra("ID_CRIADOR");
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
+
         s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                controllerArco.alterarCompartilhado(ActArco.this, ARCO_ID, isChecked, s);
+                if (UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO"))) {
+                    controllerArco.alterarCompartilhado(ActArco.this, ARCO_ID, isChecked, s);
+                }
+
             }
         });
 
@@ -61,11 +70,11 @@ public class ActArco extends AppCompatActivity {
         e4 = (Button) findViewById(R.id.btn_e4);
         e5 = (Button) findViewById(R.id.btn_e5);
 
-        e1.setEnabled(true);
-        e2.setEnabled(true);
-        e3.setEnabled(true);
-        e4.setEnabled(true);
-        e5.setEnabled(true);
+        e1.setEnabled(false);
+        e2.setEnabled(false);
+        e3.setEnabled(false);
+        e4.setEnabled(false);
+        e5.setEnabled(false);
 
         controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5);
 
@@ -75,8 +84,11 @@ public class ActArco extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ActArco.this, ActEtapa.class);
                 intent.putExtra("ARCO_ID", ARCO_ID);
+                intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "OBSERVAÇÃO DA REALIDADE");
+                intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -87,9 +99,11 @@ public class ActArco extends AppCompatActivity {
                 Intent intent = new Intent(ActArco.this, ActEtapa.class);
 
                 intent.putExtra("ARCO_ID", ARCO_ID);
+                intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "PONTOS CHAVES");
+                intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
-
+                finish();
             }
         });
 
@@ -99,9 +113,11 @@ public class ActArco extends AppCompatActivity {
                 Intent intent = new Intent(ActArco.this, ActEtapa.class);
 
                 intent.putExtra("ARCO_ID", ARCO_ID);
+                intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "TEORIZAÇÃO");
+                intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
-
+                finish();
             }
         });
 
@@ -111,9 +127,11 @@ public class ActArco extends AppCompatActivity {
                 Intent intent = new Intent(ActArco.this, ActEtapa.class);
 
                 intent.putExtra("ARCO_ID", ARCO_ID);
+                intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "HIPÓTESES DE SOLUÇÃO");
+                intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
-
+                finish();
             }
         });
 
@@ -123,9 +141,11 @@ public class ActArco extends AppCompatActivity {
                 Intent intent = new Intent(ActArco.this, ActEtapa.class);
 
                 intent.putExtra("ARCO_ID", ARCO_ID);
+                intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "APLICAÇÃO A REALIDADE");
+                intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
-
+                finish();
             }
         });
 
@@ -147,12 +167,18 @@ public class ActArco extends AppCompatActivity {
 
         Intent intent = getIntent();
         String ARCO_ID = intent.getStringExtra("ARCO_ID");
-
+        String ID_CRIADOR = intent.getStringExtra("ID_CRIADOR");
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
 
         if (item.getItemId() == R.id.sinc) {
             controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5);
         } else if (item.getItemId() == R.id.lixo) {
-            controllerArco.excluirArco(ActArco.this, ARCO_ID);
+
+            if (UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID,getIntent().getStringExtra("ACESSO_RESTRITO"))) {
+                controllerArco.excluirArco(ActArco.this, ARCO_ID);
+            }
+
         } else if (item.getItemId() == R.id.msg) {
 
         }

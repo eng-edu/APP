@@ -17,17 +17,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
-
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.dao.ArcoDAO;
 import com.developer.edu.arco.dao.DiscenteDAO;
 import com.developer.edu.arco.dao.DocenteDAO;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.developer.edu.arco.dao.EtapaDAO;
 import com.developer.edu.arco.dao.SolicitacaoDAO;
 import com.developer.edu.arco.model.*;
@@ -35,10 +32,8 @@ import com.developer.edu.arco.view.ActMenuPrincipal;
 import com.developer.edu.arco.view.ActNovoArco;
 import com.developer.edu.arco.view.adapter.Adapterdiscente;
 import com.developer.edu.arco.view.adapter.Adaptersolicitacao;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -105,6 +100,11 @@ public class ControllerArco {
                         builder.setView(view);
                         alert[0] = builder.create();
                         alert[0].show();
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
 
 
                     } catch (JSONException e) {
@@ -236,62 +236,69 @@ public class ControllerArco {
 
     public void criarArco(final Context context, String titulo, String tituloGrupo, String id_criador, final Docente docente, List<Discente> discentes) throws JSONException {
 
-        final ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle("Aguarde...");
-        dialog.setCancelable(false);
-        dialog.show();
 
-        JSONArray discentes_id = new JSONArray();
-
-        for (Discente d : discentes) {
-            JSONObject discente_id = new JSONObject();
-            discente_id.put("DISCENTE_ID", d.getID());
-            discentes_id.put(discente_id);
-        }
-
-        JSONObject arco = new JSONObject();
-        arco.put("NOMEARCO", titulo);
-        arco.put("NOMEGRUPO", tituloGrupo);
-        arco.put("ID_CRIADOR", id_criador);
-        arco.put("DISCENTES_ID", discentes_id);
-        arco.put("DOCENTE_ID", docente.getID());
-
-        arco.toString();
+        if (ActNovoArco.getDiscentes().size() > 0 && titulo.length() > 0 && tituloGrupo.length() > 0 && id_criador.length() > 0 && ActNovoArco.getDocente() != null) {
 
 
-        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
-        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+            final ProgressDialog dialog = new ProgressDialog(context);
+            dialog.setTitle("Aguarde...");
+            dialog.setCancelable(false);
+            dialog.show();
 
-        Call<String> stringCall = ConfigRetrofit.getService().novoArco(result, arco.toString());
-        stringCall.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.code() == 201) {
+            JSONArray discentes_id = new JSONArray();
 
-                    Toast.makeText(context, "ActArco criado com sucesso!", Toast.LENGTH_LONG).show();
+            for (Discente d : discentes) {
+                JSONObject discente_id = new JSONObject();
+                discente_id.put("DISCENTE_ID", d.getID());
+                discentes_id.put(discente_id);
+            }
 
-                    Intent mudarParaMain = new Intent(context, ActMenuPrincipal.class);
-                    context.startActivity(mudarParaMain);
-                    ((Activity) context).finish();
-                    dialog.dismiss();
+            JSONObject arco = new JSONObject();
+            arco.put("NOMEARCO", titulo);
+            arco.put("NOMEGRUPO", tituloGrupo);
+            arco.put("ID_CRIADOR", id_criador);
+            arco.put("DISCENTES_ID", discentes_id);
+            arco.put("DOCENTE_ID", docente.getID());
 
-                    ActNovoArco.setDocente(null);
-                    ActNovoArco.discentes.clear();
+            arco.toString();
 
 
-                } else if (response.code() == 405) {
-                    Toast.makeText(context, response.body(), Toast.LENGTH_LONG).show();
+            SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+            final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+
+            Call<String> stringCall = ConfigRetrofit.getService().novoArco(result, arco.toString());
+            stringCall.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if (response.code() == 201) {
+
+                        Toast.makeText(context, "ActArco criado com sucesso!", Toast.LENGTH_LONG).show();
+
+                        ((Activity) context).finish();
+                        dialog.dismiss();
+
+                        ActNovoArco.setDocente(null);
+                        ActNovoArco.discentes.clear();
+
+
+                    } else if (response.code() == 405) {
+                        Toast.makeText(context, response.body(), Toast.LENGTH_LONG).show();
+                        dialog.dismiss();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
                     dialog.dismiss();
                 }
-            }
+            });
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
-                dialog.dismiss();
-            }
-        });
 
+        } else {
+            Toast.makeText(context, "Preencha todos os campos", Toast.LENGTH_LONG).show();
+
+        }
 
     }
 
@@ -392,6 +399,7 @@ public class ControllerArco {
                 intent.putExtra("NOME", arco.getNOME());
                 intent.putExtra("STATUS", arco.getSTATUS());
                 intent.putExtra("COMPARTILHADO", arco.getCOMPARTILHADO());
+                intent.putExtra("ID_CRIADOR", arco.getID_CRIADOR());
                 context.startActivity(intent);
                 alert[0].dismiss();
             }
@@ -421,43 +429,49 @@ public class ControllerArco {
             public void onResponse(Call<String> call, Response<String> response) {
 
 
-                try {
-                    etapaDAO.deletAll(context);
-
-                    JSONArray array = new JSONArray(response.body());
-
-                    int sizeArray = array.length();
-
-                    for (int i = 0; i < sizeArray; i++) {
-                        JSONObject object = array.getJSONObject(i);
-                        etapaDAO.inserir(context,
-                                object.getString("ID"),
-                                object.getString("NOME"),
-                                object.getString("RESUMO"),
-                                object.getString("STATUS"),
-                                object.getString("ARCO_ID"));
+                if (response.code() == 200) {
 
 
-                        if (object.getString("NOME").equals("OBSERVAÇÃO DA REALIDADE")) {
-                            definirIconeEcliclavel(object, context, e1);
-                        } else if (object.getString("NOME").equals("PONTOS CHAVES")) {
-                            definirIconeEcliclavel(object, context, e2);
-                        } else if (object.getString("NOME").equals("TEORIZAÇÃO")) {
-                            definirIconeEcliclavel(object, context, e3);
-                        } else if (object.getString("NOME").equals("HIPÓTESES DE SOLUÇÃO")) {
-                            definirIconeEcliclavel(object, context, e4);
-                        } else if (object.getString("NOME").equals("APLICAÇÃO A REALIDADE")) {
-                            definirIconeEcliclavel(object, context, e5);
+                    try {
+                        etapaDAO.deletAll(context);
+
+
+                        JSONArray array = new JSONArray(response.body().toString());
+
+                        int sizeArray = array.length();
+
+                        for (int i = 0; i < sizeArray; i++) {
+                            JSONObject object = array.getJSONObject(i);
+                            etapaDAO.inserir(context,
+                                    object.getString("ID"),
+                                    object.getString("NOME"),
+                                    object.getString("RESUMO"),
+                                    object.getString("STATUS"),
+                                    object.getString("ARCO_ID"));
+
+
+                            if (object.getString("NOME").equals("OBSERVAÇÃO DA REALIDADE")) {
+                                definirIconeEcliclavel(object, context, e1);
+                            } else if (object.getString("NOME").equals("PONTOS CHAVES")) {
+                                definirIconeEcliclavel(object, context, e2);
+                            } else if (object.getString("NOME").equals("TEORIZAÇÃO")) {
+                                definirIconeEcliclavel(object, context, e3);
+                            } else if (object.getString("NOME").equals("HIPÓTESES DE SOLUÇÃO")) {
+                                definirIconeEcliclavel(object, context, e4);
+                            } else if (object.getString("NOME").equals("APLICAÇÃO A REALIDADE")) {
+                                definirIconeEcliclavel(object, context, e5);
+                            }
+
                         }
 
+                        dialog.dismiss();
+
+                    } catch (Exception e) {
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+
+                        dialog.dismiss();
                     }
 
-                    dialog.dismiss();
-
-                } catch (Exception e) {
-                    Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-
-                    dialog.dismiss();
                 }
 
             }
@@ -558,6 +572,11 @@ public class ControllerArco {
                         builder.setView(view);
                         alert[0] = builder.create();
                         alert[0].show();
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
 
 
                     } catch (JSONException e) {
@@ -648,7 +667,7 @@ public class ControllerArco {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
                     Intent mudarParaMain = new Intent(context, ActMenuPrincipal.class);
                     context.startActivity(mudarParaMain);
@@ -729,6 +748,12 @@ public class ControllerArco {
                         builder.setView(view);
                         alert[0] = builder.create();
                         alert[0].show();
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+
 
 
                     } catch (JSONException e) {
@@ -765,6 +790,7 @@ public class ControllerArco {
                 intent.putExtra("NOME", arco.getNOME());
                 intent.putExtra("STATUS", arco.getSTATUS());
                 intent.putExtra("COMPARTILHADO", arco.getCOMPARTILHADO());
+                intent.putExtra("ID_CRIADOR", arco.getID_CRIADOR());
                 context.startActivity(intent);
                 alert[0].dismiss();
             }
@@ -830,6 +856,12 @@ public class ControllerArco {
                         builder.setView(view);
                         alert[0] = builder.create();
                         alert[0].show();
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+
 
 
                     } catch (JSONException e) {
@@ -853,7 +885,6 @@ public class ControllerArco {
 
     }
 
-
     public void aceitarSolicitacao(Context context, String id, String arco_id, final Button aceitar) {
 
 
@@ -871,10 +902,10 @@ public class ControllerArco {
         stringCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     aceitar.setText(" --- ");
                     aceitar.setEnabled(true);
-                }else {
+                } else {
                     aceitar.setText("Aceitar");
                     aceitar.setClickable(true);
                 }
@@ -886,8 +917,6 @@ public class ControllerArco {
                 aceitar.setClickable(true);
             }
         });
-
-
 
 
     }

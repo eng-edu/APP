@@ -66,8 +66,10 @@ public class ActMenuPrincipal extends AppCompatActivity {
                 if (result.length() > 0) {
                     Intent intent = new Intent(ActMenuPrincipal.this, ActArco.class);
                     if (result.equals("discente")) {
+                        intent.putExtra("ACESSO_RESTRITO", "N");
                         controllerArco.buscarMeusArcosDiscentes(ActMenuPrincipal.this, inflater, intent);
                     }else if(result.equals("docente")){
+                        intent.putExtra("ACESSO_RESTRITO", "N");
                         controllerArco.buscarMeusArcosDocente(ActMenuPrincipal.this, inflater, intent);
                     }
 
@@ -80,7 +82,9 @@ public class ActMenuPrincipal extends AppCompatActivity {
         arcos_compartilhados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(ActMenuPrincipal.this, ActArco.class);
+                intent.putExtra("ACESSO_RESTRITO", "S");
                 controllerArco.buscarArcosCompartilhados(ActMenuPrincipal.this, inflater, intent);
             }
         });
