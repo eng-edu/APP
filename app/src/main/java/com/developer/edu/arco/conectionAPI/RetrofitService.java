@@ -84,24 +84,25 @@ public interface RetrofitService {
 //ETAPA ---------------------------------------------------------------
 
 
-    @PUT("/etapa/aprovarEtapa/{ID}/{PROX_ID}")
+    @PUT("/etapa/aprovarEtapa/{ID}/{PROX_ID}/{ARCO_ID}")
     Call<String> aprovar(@Header("token") String TOKIENAPI,
-                                @Path("ID") String id,
-                                @Path("PROX_ID") String prox_id);
+                         @Path("ID") String id,
+                         @Path("PROX_ID") String prox_id,
+                         @Path("ARCO_ID") String arco_id);
 
     @PUT("/etapa/reprovarEtapa/{ID}")
     Call<String> reprovar(@Header("token") String TOKIENAPI,
-                         @Path("ID") String id);
+                          @Path("ID") String id);
 
     @PUT("/etapa/submeterEtapa/{ID}/{RESUMO}")
     Call<String> submeter(@Header("token") String TOKIENAPI,
-                         @Path("ID") String id,
-                         @Path("RESUMO") String resumo);
+                          @Path("ID") String id,
+                          @Path("RESUMO") String resumo);
 
     @PUT("/etapa/salvarEtapa/{ID}/{RESUMO}/")
     Call<String> salvar(@Header("token") String TOKIENAPI,
-                          @Path("ID") String id,
-                          @Path("RESUMO") String resumo);
+                        @Path("ID") String id,
+                        @Path("RESUMO") String resumo);
 
 
     @GET("/etapa/listarEtapasArco/{ARCO_ID}")

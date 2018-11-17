@@ -56,12 +56,15 @@ public class ActEtapa extends AppCompatActivity {
 
             btn_salvar_reprovar.setText("REPROVAR");
             btn_submeter_aprovar.setText("APROVAR");
+            resumo.setEnabled(false);
 
         } else if (result.equals("discente")) {
 
             btn_salvar_reprovar.setText("SALVAR");
             btn_submeter_aprovar.setText("SUBMETER");
-
+            resumo.setEnabled(true);
+        }else if(ACESSO_RESTRITO.equals("N")){
+            resumo.setEnabled(false);
         }
 
 
@@ -69,11 +72,12 @@ public class ActEtapa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+     if (result.equals("docente")) {
 
-                if (result.equals("docente")) {
+         int prox = Integer.parseInt(modelEtapa.getID()) + 1;
 
                     if(UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
-                    controllerEtapa.aprovarEtapa(ActEtapa.this, modelEtapa.getID(), modelEtapa.getID() + 1);
+                    controllerEtapa.aprovarEtapa(ActEtapa.this, modelEtapa.getID(), String.valueOf(prox), ARCO_ID);
 
                 } else if (result.equals("discente")) {
 

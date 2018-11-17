@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,14 +18,17 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
+
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.dao.ArcoDAO;
 import com.developer.edu.arco.dao.DiscenteDAO;
 import com.developer.edu.arco.dao.DocenteDAO;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.developer.edu.arco.dao.EtapaDAO;
 import com.developer.edu.arco.dao.SolicitacaoDAO;
 import com.developer.edu.arco.model.*;
@@ -32,8 +36,10 @@ import com.developer.edu.arco.view.ActMenuPrincipal;
 import com.developer.edu.arco.view.ActNovoArco;
 import com.developer.edu.arco.view.adapter.Adapterdiscente;
 import com.developer.edu.arco.view.adapter.Adaptersolicitacao;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -408,7 +414,7 @@ public class ControllerArco {
 
     }
 
-    public void bucarEtapasArco(final Context context, final String arco_id, final Button e1, final Button e2, final Button e3, final Button e4, final Button e5) {
+    public void bucarEtapasArco(final Context context, final String arco_id, final Button e1, final Button e2, final Button e3, final Button e4, final Button e5, final String restrito) {
 
 
         final ProgressDialog dialog = new ProgressDialog(context);
@@ -422,6 +428,8 @@ public class ControllerArco {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+        final String tipo_login = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
+
 
         Call<String> stringCall = ConfigRetrofit.getService().buscarEtapasArco(result, arco_id);
         stringCall.enqueue(new Callback<String>() {
@@ -451,15 +459,15 @@ public class ControllerArco {
 
 
                             if (object.getString("NOME").equals("OBSERVAÇÃO DA REALIDADE")) {
-                                definirIconeEcliclavel(object, context, e1);
+                                definirIconeEcliclavel(object, context, e1, tipo_login, restrito);
                             } else if (object.getString("NOME").equals("PONTOS CHAVES")) {
-                                definirIconeEcliclavel(object, context, e2);
+                                definirIconeEcliclavel(object, context, e2, tipo_login, restrito);
                             } else if (object.getString("NOME").equals("TEORIZAÇÃO")) {
-                                definirIconeEcliclavel(object, context, e3);
+                                definirIconeEcliclavel(object, context, e3, tipo_login, restrito);
                             } else if (object.getString("NOME").equals("HIPÓTESES DE SOLUÇÃO")) {
-                                definirIconeEcliclavel(object, context, e4);
+                                definirIconeEcliclavel(object, context, e4, tipo_login, restrito);
                             } else if (object.getString("NOME").equals("APLICAÇÃO A REALIDADE")) {
-                                definirIconeEcliclavel(object, context, e5);
+                                definirIconeEcliclavel(object, context, e5, tipo_login, restrito);
                             }
 
                         }
@@ -485,30 +493,115 @@ public class ControllerArco {
 
     }
 
-    public void definirIconeEcliclavel(JSONObject object, Context context, Button ed) throws JSONException {
+    public void definirIconeEcliclavel(JSONObject object, Context context, Button ed, String tipo_login, String restrito) throws JSONException {
         Drawable ic = null;
 
-        //verifico o status e chamo o icone e se o botão é clicavel
-        if (object.getString("STATUS").equals("1")) {
-            ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
-            ed.setEnabled(true);
-        } else if (object.getString("STATUS").equals("2")) {
-            ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
-            ed.setEnabled(false);
-        } else if (object.getString("STATUS").equals("3")) {
-            ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
-            ed.setEnabled(true);
-        } else if (object.getString("STATUS").equals("4")) {
-            ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
-            ed.setEnabled(true);
-        } else if (object.getString("STATUS").equals("5")) {
-            ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
-            ed.setEnabled(false);
+
+        if (restrito.equalsIgnoreCase("S")) {
+
+
+            if (tipo_login.equalsIgnoreCase("discente")) {
+                //verifico o status e chamo o icone e se o botão é clicavel
+                if (object.getString("STATUS").equals("1")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
+                    ed.setEnabled(true);
+                } else if (object.getString("STATUS").equals("2")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
+                    ed.setEnabled(false);
+                } else if (object.getString("STATUS").equals("3")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
+                    ed.setEnabled(false);
+                } else if (object.getString("STATUS").equals("4")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
+                    ed.setEnabled(false);
+                } else if (object.getString("STATUS").equals("5")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
+                    ed.setEnabled(false);
+                }
+
+                ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
+
+                ed.setCompoundDrawables(null, null, ic, null);
+
+            } else if (tipo_login.equalsIgnoreCase("docente")) {
+
+                //verifico o status e chamo o icone e se o botão é clicavel
+                if (object.getString("STATUS").equals("1")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
+                    ed.setEnabled(true);
+                } else if (object.getString("STATUS").equals("2")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
+                    ed.setEnabled(false);
+                } else if (object.getString("STATUS").equals("3")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
+                    ed.setEnabled(false);
+                } else if (object.getString("STATUS").equals("4")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
+                    ed.setEnabled(false);
+                } else if (object.getString("STATUS").equals("5")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
+                    ed.setEnabled(false);
+                }
+
+                ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
+
+                ed.setCompoundDrawables(null, null, ic, null);
+
+
+            }
+
+        } else {
+
+            if (tipo_login.equalsIgnoreCase("discente")) {
+                //verifico o status e chamo o icone e se o botão é clicavel
+                if (object.getString("STATUS").equals("1")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
+                    ed.setEnabled(true);
+                } else if (object.getString("STATUS").equals("2")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
+                    ed.setEnabled(false);
+                } else if (object.getString("STATUS").equals("3")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
+                    ed.setEnabled(true);
+                } else if (object.getString("STATUS").equals("4")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
+                    ed.setEnabled(true);
+                } else if (object.getString("STATUS").equals("5")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
+                    ed.setEnabled(false);
+                }
+
+                ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
+
+                ed.setCompoundDrawables(null, null, ic, null);
+
+            } else if (tipo_login.equalsIgnoreCase("docente")) {
+
+                //verifico o status e chamo o icone e se o botão é clicavel
+                if (object.getString("STATUS").equals("1")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
+                    ed.setEnabled(false);
+                } else if (object.getString("STATUS").equals("2")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
+                    ed.setEnabled(true);
+                } else if (object.getString("STATUS").equals("3")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
+                    ed.setEnabled(true);
+                } else if (object.getString("STATUS").equals("4")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
+                    ed.setEnabled(false);
+                } else if (object.getString("STATUS").equals("5")) {
+                    ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
+                    ed.setEnabled(false);
+                }
+
+                ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
+
+                ed.setCompoundDrawables(null, null, ic, null);
+
+
+            }
         }
-
-        ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
-
-        ed.setCompoundDrawables(null, null, ic, null);
 
     }
 
@@ -755,7 +848,6 @@ public class ControllerArco {
                         });
 
 
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
@@ -861,7 +953,6 @@ public class ControllerArco {
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         });
-
 
 
                     } catch (JSONException e) {

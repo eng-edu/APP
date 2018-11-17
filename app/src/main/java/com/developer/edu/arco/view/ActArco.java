@@ -76,7 +76,7 @@ public class ActArco extends AppCompatActivity {
         e4.setEnabled(false);
         e5.setEnabled(false);
 
-        controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5);
+        controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5, getIntent().getStringExtra("ACESSO_RESTRITO"));
 
 
         e1.setOnClickListener(new View.OnClickListener() {
@@ -172,10 +172,10 @@ public class ActArco extends AppCompatActivity {
         final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
 
         if (item.getItemId() == R.id.sinc) {
-            controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5);
+            controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5, getIntent().getStringExtra("ACESSO_RESTRITO"));
         } else if (item.getItemId() == R.id.lixo) {
 
-            if (UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID,getIntent().getStringExtra("ACESSO_RESTRITO"))) {
+            if (UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO"))) {
                 controllerArco.excluirArco(ActArco.this, ARCO_ID);
             }
 

@@ -15,7 +15,6 @@ import retrofit2.Response;
 
 public class ControllerEtapa {
 
-
     public void submeterEtapa(final Context context, String id, String resumo) {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
@@ -34,7 +33,7 @@ public class ControllerEtapa {
 
                 if (response.code() == 200) {
 
-                    Intent intent = new Intent(context, ActArco.class);
+                 //   Intent intent = new Intent(context, ActArco.class);
                     Toast.makeText(context, "Submetido com sucesso!", Toast.LENGTH_LONG).show();
                     ((Activity) context).finish();
                     dialog.dismiss();
@@ -56,7 +55,7 @@ public class ControllerEtapa {
 
     }
 
-    public void aprovarEtapa(final Context context, String id, String s) {
+    public void aprovarEtapa(final Context context, String id, String s, String arco_id) {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
@@ -67,17 +66,17 @@ public class ControllerEtapa {
         dialog.show();
 
 
-        Call<String> stringCall = ConfigRetrofit.getService().aprovar(result, id, s);
+        Call<String> stringCall = ConfigRetrofit.getService().aprovar(result, id, s, arco_id);
         stringCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                if (response.code() == 201) {
+                if (response.isSuccessful()) {
 
                     Toast.makeText(context, "Aprovado com sucesso!", Toast.LENGTH_LONG).show();
 
-                    Intent mudarParaMain = new Intent(context, ActArco.class);
-                    context.startActivity(mudarParaMain);
+                  //  Intent mudarParaMain = new Intent(context, ActArco.class);
+                  //  context.startActivity(mudarParaMain);
                     ((Activity) context).finish();
                     dialog.dismiss();
 
