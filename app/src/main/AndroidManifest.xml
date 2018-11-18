@@ -25,7 +25,7 @@
         <activity android:name=".view.ActArco" />
         <activity android:name=".view.ActEtapa" />
         <activity android:name=".view.ActArquivo" />
-        <activity android:name=".view.adapter.ActInfo"></activity>
+        <activity android:name=".view.ActInfo"></activity>
     </application>
 
 </manifest>

@@ -86,12 +86,36 @@ public class ActEtapa extends AppCompatActivity {
                     if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
                         controllerEtapa.submeterEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString());
 
+                }
+
+            }
+        });
+
+        btn_salvar_reprovar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (result.equals("docente")) {
+
+                    if (UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
+                        controllerEtapa.reprovarEtapa(ActEtapa.this, modelEtapa.getID());
+
+                } else if (result.equals("discente")) {
+
+                    if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
+                        controllerEtapa.salvarEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString());
+
 
                 }
 
 
             }
         });
+
+
+
+
+
 
         ImageView folder = (ImageView)findViewById(R.id.iv_etapa_arquivos);
         folder.setOnClickListener(new View.OnClickListener() {

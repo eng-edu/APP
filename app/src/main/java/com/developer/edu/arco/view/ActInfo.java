@@ -1,4 +1,4 @@
-package com.developer.edu.arco.view.adapter;
+package com.developer.edu.arco.view;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerLogin;
-import com.developer.edu.arco.view.adapter.ActInfo;
 
 public class ActLogin extends AppCompatActivity {
 

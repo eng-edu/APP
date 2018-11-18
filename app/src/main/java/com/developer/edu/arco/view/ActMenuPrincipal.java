@@ -16,7 +16,6 @@ import android.widget.Button;
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.controller.ControllerLogin;
-import com.developer.edu.arco.view.adapter.ActInfo;
 
 public class ActMenuPrincipal extends AppCompatActivity {
 

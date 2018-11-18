@@ -21,6 +21,7 @@ import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.dao.DocenteDAO;
 import com.developer.edu.arco.model.Docente;
 import com.developer.edu.arco.view.ActArco;
+import com.developer.edu.arco.view.ActEtapa;
 import com.developer.edu.arco.view.ActNovoArco;
 
 import org.json.JSONArray;
@@ -100,6 +101,81 @@ public class ControllerEtapa {
 
 
                 } else if (response.code() == 405) {
+                    Toast.makeText(context, response.body(), Toast.LENGTH_LONG).show();
+                    dialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
+        });
+
+    }
+
+    public void reprovarEtapa(final Context context, String id) {
+        //muda o status da etapa
+        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+
+        final ProgressDialog dialog = new ProgressDialog(context);
+        dialog.setTitle("Aguarde...");
+        dialog.setCancelable(false);
+        dialog.show();
+
+        Call<String> stringCall = ConfigRetrofit.getService().reprovar(result, id);
+        stringCall.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+
+                    Toast.makeText(context, "Reprovado com sucesso!", Toast.LENGTH_LONG).show();
+                    ((Activity) context).finish();
+                    dialog.dismiss();
+
+                } else if (response.code() == 405) {
+
+                    Toast.makeText(context, response.body(), Toast.LENGTH_LONG).show();
+                    dialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+                dialog.dismiss();
+            }
+        });
+
+
+    }
+
+    public void salvarEtapa(final Context context, String id, String resumo) {
+        //só da um update sem fazer nada com status
+
+        //muda o status da etapa
+        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+
+        final ProgressDialog dialog = new ProgressDialog(context);
+        dialog.setTitle("Aguarde...");
+        dialog.setCancelable(false);
+        dialog.show();
+
+        Call<String> stringCall = ConfigRetrofit.getService().salvar(result, id, resumo);
+        stringCall.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+
+                    Toast.makeText(context, "Salvo com sucesso!", Toast.LENGTH_LONG).show();
+                    ((Activity) context).finish();
+                    dialog.dismiss();
+
+                } else if (response.code() == 405) {
+
                     Toast.makeText(context, response.body(), Toast.LENGTH_LONG).show();
                     dialog.dismiss();
                 }
