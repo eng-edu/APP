@@ -40,13 +40,18 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <EditText
-                    android:layout_gravity="center"
                     android:id="@+id/text_etapa_resumo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:ems="10"
-                    android:singleLine="false" />
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="8sp"
+                    android:singleLine="false"
+                    android:textAlignment="textStart"
+                    android:typeface="sans" />
             </ScrollView>
 
 
@@ -70,9 +75,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="8dp"
+            android:background="#64b5f6"
             android:gravity="center"
             android:maxWidth="60dp"
             android:textAlignment="center"
+            android:textColor="@color/ic_launcher_background"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -85,8 +92,10 @@
             android:layout_marginStart="2dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:background="#0d47a1"
             android:gravity="center"
             android:textAlignment="center"
+            android:textColor="@color/ic_launcher_background"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
