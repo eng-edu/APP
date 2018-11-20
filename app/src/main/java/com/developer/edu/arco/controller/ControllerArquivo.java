@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developer.edu.arco.R;
@@ -48,6 +49,10 @@ public class ControllerArquivo {
         stringCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+
+                if(response.isSuccessful()){
+                    Toast.makeText(context, "Upload feito com sucesso!", Toast.LENGTH_LONG).show();
+                }
 
                 dialog.dismiss();
 
