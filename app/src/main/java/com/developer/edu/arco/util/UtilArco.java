@@ -15,9 +15,6 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 
-import static com.developer.edu.arco.view.ActArquivo.getArquivo;
-
-
 public class UtilArco {
 
     public static boolean verificarPermissao(Context context, String ID_CRIADOR, String ID, String acesso) {
@@ -48,11 +45,11 @@ public class UtilArco {
     }
 
 
-    public static String toPathFileBase64() throws Exception {
+    public static String toPathFileBase64(String path) throws Exception {
 
 
         final String[] resultr = {""};
-        File file = new File(getArquivo().getCAMINHO());
+        File file = new File(path);
         int length = (int) file.length();
         BufferedInputStream reader = new BufferedInputStream(new FileInputStream(file));
         final byte[] bytes = new byte[length];
@@ -63,10 +60,8 @@ public class UtilArco {
         String base64 = Base64.encodeToString(bytes, Base64.DEFAULT);
         resultr[0] = base64.toString();
 
-        getArquivo().setBASE64(resultr[0]);
-        //aqui já faz a requisição e manda pro servirdor
 
-        Log.i("DEVEDU", getArquivo().getBASE64());
+        Log.i("DEVEDU", resultr[0]);
 
         return resultr[0];
 

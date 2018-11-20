@@ -3,51 +3,64 @@ package com.developer.edu.arco.view;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.AndroidRuntimeException;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArquivo;
+import com.developer.edu.arco.controller.ControllerEtapa;
 import com.developer.edu.arco.model.Arquivo;
 import com.developer.edu.arco.util.UtilArco;
+import com.nbsp.materialfilepicker.MaterialFilePicker;
+import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
 import java.io.File;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class ActArquivo extends AppCompatActivity {
 
-    public static final int code = 12;
+    public static List<Arquivo> arquivos = new ArrayList<>();
+    ListView listView;
+    ArrayAdapter<Arquivo> adapter;
+    Button upload;
+    TextView selecioando;
+    public static Arquivo arquivo;
 
-    public static Arquivo arquivo = new Arquivo();
 
-    public static Arquivo getArquivo() {
-
-        if(arquivo == null){
-            arquivo = new Arquivo();
-        }
-
-        return arquivo;
-    }
-
-    public static void setArquivo(Arquivo arquivo) {
-        ActArquivo.arquivo = arquivo;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_arquivos);
 
+        upload = (Button) findViewById(R.id.upload);
+        selecioando = (TextView) findViewById(R.id.selecionado);
+
+        listView = (ListView) findViewById(R.id.lista_arquivos);
+        adapter = new ArrayAdapter<Arquivo>(ActArquivo.this, R.layout.support_simple_spinner_dropdown_item);
 
         if (ActivityCompat.checkSelfPermission(ActArquivo.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -62,9 +75,30 @@ public class ActArquivo extends AppCompatActivity {
         novoarquivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selecionarArquivo(v);
+                new MaterialFilePicker()
+                        .withActivity(ActArquivo.this)
+                        .withRequestCode(1)
+                        .withFilter(Pattern.compile(".*\\.pdf$")) // Filtering files and directories by file name using regexp
+                        .withHiddenFiles(true) // Show hidden files and folders
+                        .start();
             }
         });
+
+
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(arquivo!= null){
+                   ControllerArquivo controllerArquivo = new ControllerArquivo();
+                    try {
+                        controllerArquivo.novoArquivo(ActArquivo.this, arquivo);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
     }
 
 
@@ -72,55 +106,32 @@ public class ActArquivo extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK) {
-            if (requestCode == 0) {
-
-                ContentResolver cr = getContentResolver();
-                Uri uri = MediaStore.Files.getContentUri("external");
-
-                final String column = "_data";
-                final String[] projection = {column};
-
-                String sortOrder = null; //
-
-                String selectionMimeType = MediaStore.Files.FileColumns.MIME_TYPE + "=?";
-                String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension("pdf");
-                String[] selectionArgsPdf = new String[]{mimeType};
-                Cursor allPdfFiles = cr.query(uri, projection, selectionMimeType, selectionArgsPdf, sortOrder);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
+            Log.i("DEVEDU", filePath);
 
 
-                allPdfFiles.moveToFirst();
+            File file = new File(filePath);
 
-                int indexColuna = allPdfFiles.getColumnIndex(projection[0]);
-                String pathImg = allPdfFiles.getString(indexColuna);
-                allPdfFiles.close();
+            //falta o id DA ETAPA E DO ARCO
 
-                File originalFile = new File(pathImg);
+            arquivo = null;
 
-                String fileName = originalFile.getName();
-                String filePath = originalFile.getPath();;
-
-
-                getArquivo().setNOME(fileName);
-                getArquivo().setCAMINHO(filePath);
-
-                try {
-                    UtilArco.toPathFileBase64();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+            arquivo = new Arquivo();
+            arquivo.setARCO_ID(getIntent().getStringExtra("ARCO_ID"));
+            arquivo.setETAPA_ID(getIntent().getStringExtra("ETAPA_ARCO_ID"));
+            arquivo.setNOME(file.getName());
+            arquivo.setCAMINHO(file.getPath());
+            try {
+                arquivo.setBASE64(UtilArco.toPathFileBase64(filePath));
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }
-    }
 
-    // Botão que abre a galeria de mídia para
-    // selecionar um arquivo
-    public void selecionarArquivo(View v) {
-        Intent intent = new Intent();
-        intent.setType("application/pdf");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, 0);
+
+            selecioando.setText(arquivo.toString());
+
+        }
     }
 
 }

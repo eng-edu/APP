@@ -36,9 +36,8 @@ public class ControllerArquivo {
 
         JSONObject OBJarquivo = new JSONObject();
         OBJarquivo.put("NOME", arquivo.getNOME());
-        OBJarquivo.put("CAMINHO", arquivo.getCAMINHO());
-        OBJarquivo.put("ARCO_ID", arquivo.getARCO_ID());
-        OBJarquivo.put("ETAPA_ARCO_ID", arquivo.getETAPA_ID());
+        OBJarquivo.put("ETAPA_ID", arquivo.getETAPA_ID());
+        OBJarquivo.put("ETAPA_ARCO_ID", arquivo.getARCO_ID());
         OBJarquivo.put("BASE64", arquivo.getBASE64());
 
 
@@ -50,7 +49,9 @@ public class ControllerArquivo {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
+                dialog.dismiss();
 
+                //atualiza a lista de arquivos
             }
 
             @Override

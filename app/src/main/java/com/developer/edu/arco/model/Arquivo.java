@@ -58,6 +58,6 @@ public class Arquivo {
 
     @Override
     public String toString() {
-        return "NOME: " + NOME;
+        return NOME;
     }
 }

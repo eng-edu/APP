@@ -121,7 +121,14 @@ public class ActEtapa extends AppCompatActivity {
         folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActEtapa.this, ActArquivo.class));
+
+                Etapa etapa = new EtapaDAO().buscarEtapa(ActEtapa.this,NOME_ETAPA);
+
+                Intent intent = new Intent(ActEtapa.this, ActArquivo.class);
+                intent.putExtra("ARCO_ID", ARCO_ID);
+                intent.putExtra("ETAPA_ARCO_ID", etapa.getID());
+                startActivity(intent);
+                //TENHO NOME DA ETAPA PEGO O ID NO BANCO SQLITE
 
             }
         });

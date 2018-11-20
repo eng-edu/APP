@@ -17,13 +17,12 @@ android {
         }
     }
 
-    allprojects {
-        repositories {
-            google()
-            jcenter()
-            maven { url "https://jitpack.io" }
+    repositories {
+        maven {
+            url  "http://dl.bintray.com/lukaville/maven"
         }
     }
+
 }
 
 dependencies {
@@ -35,6 +34,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
     implementation 'com.android.support:design:28.0.0'
+    implementation 'com.nbsp:library:1.8'
+
 
 
 }
