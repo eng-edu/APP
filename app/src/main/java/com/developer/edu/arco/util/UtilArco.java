@@ -1,5 +1,6 @@
 package com.developer.edu.arco.util;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Base64;
@@ -7,11 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.developer.edu.arco.model.Arquivo;
 import com.developer.edu.arco.view.ActArquivo;
 
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+
+import static com.developer.edu.arco.view.ActArquivo.getArquivo;
 
 
 public class UtilArco {
@@ -44,29 +48,25 @@ public class UtilArco {
     }
 
 
-    public static String toPathFileBase64(String path) throws Exception {
+    public static String toPathFileBase64() throws Exception {
 
 
         final String[] resultr = {""};
-        File file = new File(path);
+        File file = new File(getArquivo().getCAMINHO());
         int length = (int) file.length();
         BufferedInputStream reader = new BufferedInputStream(new FileInputStream(file));
         final byte[] bytes = new byte[length];
         reader.read(bytes, 0, length);
         reader.close();
 
-        //abre uma thre
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
 
-                String base64 = Base64.encodeToString(bytes, Base64.DEFAULT);
-                resultr[0] = base64.toString();
-                Log.i("DEVEDU", resultr[0]);
+        String base64 = Base64.encodeToString(bytes, Base64.DEFAULT);
+        resultr[0] = base64.toString();
 
-            }
-        }).start();
+        getArquivo().setBASE64(resultr[0]);
+        //aqui já faz a requisição e manda pro servirdor
 
+        Log.i("DEVEDU", getArquivo().getBASE64());
 
         return resultr[0];
 

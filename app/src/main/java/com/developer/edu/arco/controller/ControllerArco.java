@@ -165,7 +165,6 @@ public class ControllerArco {
         Call<String> stringCall = ConfigRetrofit.getService().buscarTodosDiscentes(result);
         stringCall.enqueue(new Callback<String>() {
 
-
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 

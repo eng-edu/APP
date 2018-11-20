@@ -109,4 +109,13 @@ public interface RetrofitService {
     Call<String> buscarEtapasArco(@Header("token") String TOKIENAPI,
                                   @Path("ARCO_ID") String ARCO_ID);
 
+    //--------------------------------------------------------------------------
+
+    ///:NOME/:CAMINHO/:ETAPA_ID/:ETAPA_ARCO_ID/:BASE64
+
+    @POST("arquivo/{JSON}")
+    Call<String> novoArquivoEtapa(@Header("token") String TOKIENAPI,
+                          @Path("JSON") String json);
+
+
 }
