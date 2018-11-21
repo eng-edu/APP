@@ -123,13 +123,13 @@ public interface RetrofitService {
     @POST("/documento/{JSON}")
     Call<String> novoArquivoEtapa(@Header("token") String TOKIENAPI,
                                   @Part("JSON") String json);
+
     @Multipart
-    @POST("/arquivo/upload/:ETAPA_ID/:ETAPA_ARCO_ID")
+    @POST("/api/upload/{ARCO_ID}/{ETAPA_ARCO_ID}")
     Call<ResponseBody> upload(@Header("token") String TOKIENAPI,
                               @Part MultipartBody.Part file,
-                              @Part("file") RequestBody name);
-//                              @Path("ARCO_ID") String ARCO_ID,
-//                              @Path("ETAPA_ARCO_ID") String ETAPA_ARCO_ID);
-
+                              @Part("file") RequestBody name,
+                              @Path("ARCO_ID") String ARCO_ID,
+                              @Path("ETAPA_ARCO_ID") String ETAPA_ARCO_ID);
 
 }

@@ -65,7 +65,7 @@ public class ControllerArquivo {
 
 
         // finally, execute the request
-        Call<ResponseBody> call = ConfigRetrofit.getService().upload(result, fileToUpload, filename);
+        Call<ResponseBody> call = ConfigRetrofit.getService().upload(result, fileToUpload, filename, ARCO_ID, ETAPA_ARCO_ID);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call,
