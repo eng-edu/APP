@@ -2,24 +2,16 @@ package com.developer.edu.arco.view;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
-import android.content.ContentUris;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.DocumentsContract;
-import android.provider.MediaStore;
-import android.provider.OpenableColumns;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AndroidRuntimeException;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -27,15 +19,15 @@ import android.widget.TextView;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArquivo;
-import com.developer.edu.arco.controller.ControllerEtapa;
 import com.developer.edu.arco.model.Arquivo;
-import com.developer.edu.arco.util.UtilArco;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
 import java.io.File;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -48,7 +40,6 @@ public class ActArquivo extends AppCompatActivity {
     Button upload;
     TextView selecioando;
     public static Arquivo arquivo;
-
 
 
     @Override
@@ -70,7 +61,7 @@ public class ActArquivo extends AppCompatActivity {
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
 
-        FloatingActionButton novoarquivo = (FloatingActionButton) findViewById(R.id.btn_novo_arquivo);
+        final FloatingActionButton novoarquivo = (FloatingActionButton) findViewById(R.id.btn_novo_arquivo);
 
         novoarquivo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,10 +79,20 @@ public class ActArquivo extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arquivo!= null){
-                   ControllerArquivo controllerArquivo = new ControllerArquivo();
+                if (arquivo != null) {
+                  ControllerArquivo controllerArquivo =  new ControllerArquivo();
+
                     try {
-                        controllerArquivo.novoArquivo(ActArquivo.this, arquivo);
+
+                        JSONObject OBJarquivo = new JSONObject();
+
+                        OBJarquivo.put("NOME", arquivo.getNOME());
+                        OBJarquivo.put("ETAPA_ID", arquivo.getETAPA_ID());
+                        OBJarquivo.put("ETAPA_ARCO_ID", arquivo.getARCO_ID());
+                        OBJarquivo.put("BASE64", arquivo.getBASE64());
+
+
+                        controllerArquivo.novoArquivo(ActArquivo.this, OBJarquivo.toString());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -111,28 +112,18 @@ public class ActArquivo extends AppCompatActivity {
             Log.i("DEVEDU", filePath);
 
 
-            File file = new File(filePath);
-
-            //falta o id DA ETAPA E DO ARCO
-
-            arquivo = null;
-
-            arquivo = new Arquivo();
-            arquivo.setARCO_ID(getIntent().getStringExtra("ARCO_ID"));
-            arquivo.setETAPA_ID(getIntent().getStringExtra("ETAPA_ARCO_ID"));
-            arquivo.setNOME(file.getName());
-            arquivo.setCAMINHO(file.getPath());
+            ControllerArquivo controllerArquivo = new ControllerArquivo();
             try {
-                arquivo.setBASE64(UtilArco.toPathFileBase64(filePath));
+
+                controllerArquivo.up(ActArquivo.this, filePath, getIntent().getStringExtra("ARCO_ID"), getIntent().getStringExtra("ETAPA_ARCO_ID"));
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
 
-            selecioando.setText(arquivo.toString());
-
         }
     }
+
 
 }
 

@@ -45,8 +45,7 @@ public class UtilArco {
     }
 
 
-    public static String toPathFileBase64(String path) throws Exception {
-
+    public static String toPathFileBase64(Context context, String path) throws Exception {
 
         final String[] resultr = {""};
         File file = new File(path);
@@ -56,15 +55,14 @@ public class UtilArco {
         reader.read(bytes, 0, length);
         reader.close();
 
-
         String base64 = Base64.encodeToString(bytes, Base64.DEFAULT);
         resultr[0] = base64.toString();
-
 
         Log.i("DEVEDU", resultr[0]);
 
         return resultr[0];
 
     }
+
 
 }

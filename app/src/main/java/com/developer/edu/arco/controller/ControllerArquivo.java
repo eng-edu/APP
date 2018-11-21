@@ -1,60 +1,43 @@
 package com.developer.edu.arco.controller;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.TextView;
+import android.util.Log;
 import android.widget.Toast;
-
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.model.Arquivo;
-import com.developer.edu.arco.model.Discente;
-import com.developer.edu.arco.model.Docente;
 import com.developer.edu.arco.util.UtilArco;
-import com.developer.edu.arco.view.ActNovoArco;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
+import java.io.File;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ControllerArquivo {
 
-    public void novoArquivo(final Context context, Arquivo arquivo) throws Exception {
-
-
-        final ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle("Aguarde...");
-        dialog.setCancelable(false);
-        dialog.show();
-
-        JSONObject OBJarquivo = new JSONObject();
-        OBJarquivo.put("NOME", arquivo.getNOME());
-        OBJarquivo.put("ETAPA_ID", arquivo.getETAPA_ID());
-        OBJarquivo.put("ETAPA_ARCO_ID", arquivo.getARCO_ID());
-        OBJarquivo.put("BASE64", arquivo.getBASE64());
+    public void novoArquivo(final Context context, final String json) throws Exception {
 
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
 
-        Call<String> stringCall = ConfigRetrofit.getService().novoArquivoEtapa(result, OBJarquivo.toString());
+        Call<String> stringCall = ConfigRetrofit.getService().novoArquivoEtapa(result, json);
+
         stringCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     Toast.makeText(context, "Upload feito com sucesso!", Toast.LENGTH_LONG).show();
                 }
-
-                dialog.dismiss();
 
                 //atualiza a lista de arquivos
             }
@@ -62,11 +45,41 @@ public class ControllerArquivo {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
-                dialog.dismiss();
+
             }
         });
 
 
     }
+
+    public void up(final Context context, String filePath, String ARCO_ID, String ETAPA_ARCO_ID) throws Exception {
+
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+
+        File file = new File(filePath);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
+        MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+        RequestBody filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
+
+
+        // finally, execute the request
+        Call<ResponseBody> call = ConfigRetrofit.getService().upload(result, fileToUpload, filename);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call,
+                                   Response<ResponseBody> response) {
+                Log.v("Upload", "success");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("Upload error:", t.getMessage());
+            }
+        });
+
+    }
+
 
 }
