@@ -54,6 +54,11 @@ public class ControllerArquivo {
 
     public void up(final Context context, String filePath, String ARCO_ID, String ETAPA_ARCO_ID) throws Exception {
 
+        final ProgressDialog dialog = new ProgressDialog(context);
+        dialog.setTitle("Aguarde...");
+        dialog.setCancelable(false);
+        dialog.show();
+
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
@@ -71,11 +76,14 @@ public class ControllerArquivo {
             public void onResponse(Call<ResponseBody> call,
                                    Response<ResponseBody> response) {
                 Log.v("Upload", "success");
+                Toast.makeText(context, "success", Toast.LENGTH_LONG).show();
+                dialog.dismiss();
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.e("Upload error:", t.getMessage());
+                dialog.dismiss();
             }
         });
 
