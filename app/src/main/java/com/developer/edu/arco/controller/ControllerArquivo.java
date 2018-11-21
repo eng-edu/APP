@@ -59,7 +59,6 @@ public class ControllerArquivo {
         dialog.setCancelable(false);
         dialog.show();
 
-
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
 
