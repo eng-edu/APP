@@ -125,7 +125,7 @@ public interface RetrofitService {
                                   @Part("JSON") String json);
 
     @Multipart
-    @POST("/api/upload/{ARCO_ID}/{ETAPA_ARCO_ID}")
+    @POST("/upp/upload/{ARCO_ID}/{ETAPA_ARCO_ID}")
     Call<ResponseBody> upload(@Header("token") String TOKIENAPI,
                               @Part MultipartBody.Part file,
                               @Part("file") RequestBody name,
