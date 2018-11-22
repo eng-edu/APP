@@ -3,8 +3,7 @@
     package="com.developer.edu.arco">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -26,7 +25,8 @@
         <activity android:name=".view.ActArco" />
         <activity android:name=".view.ActEtapa" />
         <activity android:name=".view.ActArquivo" />
-        <activity android:name=".view.ActInfo"></activity>
+        <activity android:name=".view.ActInfo" />
+        <activity android:name=".view.ActViewPDF"></activity>
     </application>
 
 </manifest>

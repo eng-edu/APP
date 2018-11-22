@@ -2,8 +2,11 @@ package com.developer.edu.arco.controller;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -13,6 +16,7 @@ import com.developer.edu.arco.dao.ArquivoDAO;
 import com.developer.edu.arco.model.Arquivo;
 import com.developer.edu.arco.util.UtilArco;
 import com.developer.edu.arco.view.ActArquivo;
+import com.developer.edu.arco.view.ActViewPDF;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -109,7 +113,10 @@ public class ControllerArquivo {
 
                 if(response.isSuccessful()){
 
+
                     ArquivoDAO arquivoDAO = new ArquivoDAO();
+
+                    arquivoDAO.deletAll(context);
 
                     try {
                         JSONArray array = new JSONArray(response.body());
@@ -137,7 +144,7 @@ public class ControllerArquivo {
 
                     //atulizando a listview
                     adapter.clear();
-                    adapter.addAll(  arquivoDAO.buscarTodos(context));
+                    adapter.addAll(arquivoDAO.buscarTodos(context));
                     listView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
 
@@ -151,6 +158,22 @@ public class ControllerArquivo {
             }
         });
 
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Arquivo arquivo = adapter.getItem(position);
+
+                String arq = arquivo.getCAMINHO().replace("./uploads/", "");
+
+                context.startActivity(new Intent(context, ActViewPDF.class).putExtra("PDF","https://docs.google.com/gview?embedded=true&url=http://191.252.193.192:8052/PDF/"+arq ));
+
+            }
+        });
+
+
     }
+
+
 
 }
