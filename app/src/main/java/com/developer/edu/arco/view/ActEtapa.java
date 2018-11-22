@@ -125,6 +125,8 @@ public class ActEtapa extends AppCompatActivity {
                 Intent intent = new Intent(ActEtapa.this, ActArquivo.class);
                 intent.putExtra("ARCO_ID", ARCO_ID);
                 intent.putExtra("ETAPA_ID", etapa.getID());
+                intent.putExtra("ID_CRIADOR",getIntent().getStringExtra("ID_CRIADOR"));
+                intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
                 //TENHO NOME DA ETAPA PEGO O ID NO BANCO SQLITE
 

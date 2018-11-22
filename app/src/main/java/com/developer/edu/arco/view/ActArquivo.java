@@ -3,8 +3,10 @@ package com.developer.edu.arco.view;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
@@ -23,6 +25,7 @@ import android.widget.TextView;
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArquivo;
 import com.developer.edu.arco.model.Arquivo;
+import com.developer.edu.arco.util.UtilArco;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
@@ -52,7 +55,7 @@ public class ActArquivo extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.lista_arquivos);
         adapter = new ArrayAdapter<Arquivo>(ActArquivo.this, R.layout.support_simple_spinner_dropdown_item);
 
-        controllerArquivo.buscarArquivos(ActArquivo.this, getIntent().getStringExtra("ARCO_ID"), listView, adapter);
+        controllerArquivo.buscarArquivos(ActArquivo.this, getIntent().getStringExtra("ETAPA_ID"), listView, adapter);
 
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -60,25 +63,26 @@ public class ActArquivo extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
             new AlertDialog.Builder(ActArquivo.this)
-                    .setTitle("ARQUIVO")
+                    .setTitle("APAGNDO ARQUIVO")
                     .setMessage("TEM CERTEZA?")
-                    .setPositiveButton("ABRIR ARQUIVO", new DialogInterface.OnClickListener() {
+                    .setCancelable(false)
+                    .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Arquivo arquivo = adapter.getItem(position);
-                            String arq = arquivo.getCAMINHO().replace("./uploads/", "");
-                            startActivity(new Intent(ActArquivo.this, ActViewPDF.class).putExtra("PDF", "https://docs.google.com/gview?embedded=true&url=http://191.252.193.192:8052/PDF/" + arq));
+
+                            final String ID_CRIADOR = getIntent().getStringExtra("ID_CRIADOR");
+                            SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+                            final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
+
+                            if (UtilArco.verificarPermissao(ActArquivo.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
+                                controllerArquivo.apagarArquivo(ActArquivo.this, getIntent().getStringExtra("ETAPA_ID"), listView, adapter, position);
 
                         }
                     })
 
-                    .setNegativeButton("APAGAR ARQUIVO", new DialogInterface.OnClickListener() {
+                    .setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
-                            controllerArquivo.apagarArquivo(ActArquivo.this, getIntent().getStringExtra("ARCO_ID"), listView, adapter, position);
-
-
 
                         }
                     }).show();

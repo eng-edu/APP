@@ -160,10 +160,22 @@ public class ControllerArquivo {
         });
 
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Arquivo arquivo = adapter.getItem(position);
+
+                String arq = arquivo.getCAMINHO().replace("./uploads/", "");
+
+                context.startActivity(new Intent(context, ActViewPDF.class).putExtra("PDF", "https://docs.google.com/gview?embedded=true&url=http://191.252.193.192:8052/PDF/" + arq));
+
+            }
+        });
+
 
     }
 
-    public void apagarArquivo(final Context context, final String ETAPA_ID, final ListView listView, final ArrayAdapter<Arquivo> adapter, int position) {
+    public void apagarArquivo(final Context context, final String ETAPA_ID, final ListView listView, final ArrayAdapter<Arquivo> adapter, final int position) {
 
 
        String ID = adapter.getItem(position).getID();
@@ -176,11 +188,9 @@ public class ControllerArquivo {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                if (response.isSuccessful()) {
-
+                if(response.isSuccessful())
+                    adapter.remove(adapter.getItem(position));
                     buscarArquivos(context, ETAPA_ID, listView, adapter);
-
-                }
 
             }
 
