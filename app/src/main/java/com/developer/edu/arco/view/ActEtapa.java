@@ -115,8 +115,6 @@ public class ActEtapa extends AppCompatActivity {
 
 
 
-
-
         ImageView folder = (ImageView)findViewById(R.id.iv_etapa_arquivos);
         folder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +124,7 @@ public class ActEtapa extends AppCompatActivity {
 
                 Intent intent = new Intent(ActEtapa.this, ActArquivo.class);
                 intent.putExtra("ARCO_ID", ARCO_ID);
-                intent.putExtra("ETAPA_ARCO_ID", etapa.getID());
+                intent.putExtra("ETAPA_ID", etapa.getID());
                 startActivity(intent);
                 //TENHO NOME DA ETAPA PEGO O ID NO BANCO SQLITE
 

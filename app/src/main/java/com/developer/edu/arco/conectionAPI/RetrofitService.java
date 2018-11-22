@@ -125,11 +125,20 @@ public interface RetrofitService {
                                   @Part("JSON") String json);
 
     @Multipart
-    @POST("/upp/upload/{ARCO_ID}/{ETAPA_ARCO_ID}")
+    @POST("/upp/upload/{ETAPA_ID}/{ARCO_ID}")
     Call<ResponseBody> upload(@Header("token") String TOKIENAPI,
                               @Part MultipartBody.Part file,
                               @Part("file") RequestBody name,
-                              @Path("ARCO_ID") String ARCO_ID,
-                              @Path("ETAPA_ARCO_ID") String ETAPA_ARCO_ID);
+                              @Path("ETAPA_ID") String ETAPA_ID,
+                              @Path("ARCO_ID") String ARCO_ID);
+
+
+
+    @GET("/documento/buscarArquivos/{ETAPA_ID}")
+    Call<String> buscarArquivosEtapa(@Header("token") String TOKIENAPI,
+                                        @Path("ETAPA_ID") String ETAPA_ID);
+
+
+
 
 }

@@ -37,21 +37,20 @@ public class ActArquivo extends AppCompatActivity {
     public static List<Arquivo> arquivos = new ArrayList<>();
     ListView listView;
     ArrayAdapter<Arquivo> adapter;
-    Button upload;
-    TextView selecioando;
     public static Arquivo arquivo;
-
+    ControllerArquivo controllerArquivo = new ControllerArquivo();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_arquivos);
 
-        upload = (Button) findViewById(R.id.upload);
-        selecioando = (TextView) findViewById(R.id.selecionado);
 
         listView = (ListView) findViewById(R.id.lista_arquivos);
         adapter = new ArrayAdapter<Arquivo>(ActArquivo.this, R.layout.support_simple_spinner_dropdown_item);
+
+        controllerArquivo.buscarArquivos(ActArquivo.this ,getIntent().getStringExtra("ARCO_ID"), listView, adapter);
+
 
         if (ActivityCompat.checkSelfPermission(ActArquivo.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -76,32 +75,7 @@ public class ActArquivo extends AppCompatActivity {
         });
 
 
-        upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (arquivo != null) {
-                  ControllerArquivo controllerArquivo =  new ControllerArquivo();
-
-                    try {
-
-                        JSONObject OBJarquivo = new JSONObject();
-
-                        OBJarquivo.put("NOME", arquivo.getNOME());
-                        OBJarquivo.put("ETAPA_ID", arquivo.getETAPA_ID());
-                        OBJarquivo.put("ETAPA_ARCO_ID", arquivo.getARCO_ID());
-                        OBJarquivo.put("BASE64", arquivo.getBASE64());
-
-
-                        controllerArquivo.novoArquivo(ActArquivo.this, OBJarquivo.toString());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -112,10 +86,9 @@ public class ActArquivo extends AppCompatActivity {
             Log.i("DEVEDU", filePath);
 
 
-            ControllerArquivo controllerArquivo = new ControllerArquivo();
             try {
 
-                controllerArquivo.up(ActArquivo.this, filePath, getIntent().getStringExtra("ARCO_ID"), getIntent().getStringExtra("ETAPA_ARCO_ID"));
+                controllerArquivo.up(ActArquivo.this, filePath, getIntent().getStringExtra("ETAPA_ID"), getIntent().getStringExtra("ARCO_ID"), listView, adapter);
             } catch (Exception e) {
                 e.printStackTrace();
             }

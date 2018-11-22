@@ -6,7 +6,7 @@ public class Arquivo {
     String ARCO_ID;
     String NOME;
     String CAMINHO;
-    String BASE64;
+
 
     public String getID() {
         return ID;
@@ -48,13 +48,6 @@ public class Arquivo {
         this.CAMINHO = CAMINHO;
     }
 
-    public String getBASE64() {
-        return BASE64;
-    }
-
-    public void setBASE64(String BASE64) {
-        this.BASE64 = BASE64;
-    }
 
     @Override
     public String toString() {
