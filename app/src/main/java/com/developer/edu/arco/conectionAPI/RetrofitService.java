@@ -138,6 +138,10 @@ public interface RetrofitService {
     Call<String> buscarArquivosEtapa(@Header("token") String TOKIENAPI,
                                         @Path("ETAPA_ID") String ETAPA_ID);
 
+    @DELETE("/documento/apagarArquivosEtapa/{ID}")
+    Call<String> apagarArquivosEtapa(@Header("token") String TOKIENAPI,
+                                     @Path("ID") String ID);
+
 
 
 

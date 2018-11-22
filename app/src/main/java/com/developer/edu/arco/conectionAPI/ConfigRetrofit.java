@@ -20,7 +20,7 @@ public class ConfigRetrofit {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .baseUrl("http://191.252.193.192:8052")
+                .baseUrl("http://192.168.10.110:8052")
                 .client(okHttpClient)
                 .build();
 

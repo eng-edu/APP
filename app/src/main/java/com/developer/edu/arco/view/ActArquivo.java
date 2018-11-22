@@ -1,7 +1,9 @@
 package com.developer.edu.arco.view;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -12,6 +14,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -49,7 +52,42 @@ public class ActArquivo extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.lista_arquivos);
         adapter = new ArrayAdapter<Arquivo>(ActArquivo.this, R.layout.support_simple_spinner_dropdown_item);
 
-        controllerArquivo.buscarArquivos(ActArquivo.this ,getIntent().getStringExtra("ARCO_ID"), listView, adapter);
+        controllerArquivo.buscarArquivos(ActArquivo.this, getIntent().getStringExtra("ARCO_ID"), listView, adapter);
+
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+            new AlertDialog.Builder(ActArquivo.this)
+                    .setTitle("ARQUIVO")
+                    .setMessage("TEM CERTEZA?")
+                    .setPositiveButton("ABRIR ARQUIVO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Arquivo arquivo = adapter.getItem(position);
+                            String arq = arquivo.getCAMINHO().replace("./uploads/", "");
+                            startActivity(new Intent(ActArquivo.this, ActViewPDF.class).putExtra("PDF", "https://docs.google.com/gview?embedded=true&url=http://191.252.193.192:8052/PDF/" + arq));
+
+                        }
+                    })
+
+                    .setNegativeButton("APAGAR ARQUIVO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            controllerArquivo.apagarArquivo(ActArquivo.this, getIntent().getStringExtra("ARCO_ID"), listView, adapter, position);
+
+
+
+                        }
+                    }).show();
+
+
+
+                return false;
+            }
+        });
 
 
         if (ActivityCompat.checkSelfPermission(ActArquivo.this,

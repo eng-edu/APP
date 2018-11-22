@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.dao.ArquivoDAO;
@@ -111,7 +112,7 @@ public class ControllerArquivo {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
 
                     ArquivoDAO arquivoDAO = new ArquivoDAO();
@@ -133,11 +134,11 @@ public class ControllerArquivo {
                                     object.getString("ARCO_ID"),
                                     object.getString("NOME"),
                                     object.getString("CAMINHO")
-                                    );
+                            );
 
                         }
 
-                        } catch (JSONException e) {
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
@@ -159,21 +160,38 @@ public class ControllerArquivo {
         });
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+    }
+
+    public void apagarArquivo(final Context context, final String ETAPA_ID, final ListView listView, final ArrayAdapter<Arquivo> adapter, int position) {
+
+
+       String ID = adapter.getItem(position).getID();
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
+
+        Call<String> stringCall = ConfigRetrofit.getService().apagarArquivosEtapa(result, ID);
+        stringCall.enqueue(new Callback<String>() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Arquivo arquivo = adapter.getItem(position);
+            public void onResponse(Call<String> call, Response<String> response) {
 
-                String arq = arquivo.getCAMINHO().replace("./uploads/", "");
+                if (response.isSuccessful()) {
 
-                context.startActivity(new Intent(context, ActViewPDF.class).putExtra("PDF","https://docs.google.com/gview?embedded=true&url=http://191.252.193.192:8052/PDF/"+arq ));
+                    buscarArquivos(context, ETAPA_ID, listView, adapter);
 
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
 
     }
-
 
 
 }
