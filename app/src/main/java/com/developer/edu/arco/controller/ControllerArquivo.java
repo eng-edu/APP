@@ -166,9 +166,7 @@ public class ControllerArquivo {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Arquivo arquivo = adapter.getItem(position);
-
                 String arq = arquivo.getCAMINHO().replace("./uploads/", "");
-
                 context.startActivity(new Intent(context, ActViewPDF.class).putExtra("PDF", "https://docs.google.com/gview?embedded=true&url="+URL_BASE+"/PDF/" + arq));
 
             }

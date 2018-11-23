@@ -16,6 +16,8 @@ import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.model.Discente;
 import com.developer.edu.arco.model.Docente;
+import com.developer.edu.arco.view.adapter.Adapterdiscente;
+import com.developer.edu.arco.view.adapter.Adapterdiscente2;
 
 import org.json.JSONException;
 
@@ -40,7 +42,7 @@ public class ActNovoArco extends AppCompatActivity {
         FloatingActionButton novoDiscente = (FloatingActionButton) findViewById(R.id.float_novoarco_novoDiscente);
         Button criar = (Button) findViewById(R.id.btn_novoarco_criar);
         Button cancelar = (Button) findViewById(R.id.btn_novoarco_cancelar);
-        final ArrayAdapter<Discente> arrayAdapter = new ArrayAdapter<Discente>(ActNovoArco.this, R.layout.support_simple_spinner_dropdown_item);
+        final ArrayAdapter<Discente> arrayAdapter = new Adapterdiscente2(ActNovoArco.this, new ArrayList<Discente>());
 
         arrayAdapter.clear();
         arrayAdapter.addAll(getDiscentes());
