@@ -33,6 +33,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.developer.edu.arco.conectionAPI.ConfigRetrofit.URL_BASE;
+
 public class ControllerArquivo {
 
     public void novoArquivo(final Context context, final String json) throws Exception {
@@ -68,7 +70,7 @@ public class ControllerArquivo {
 
         final ProgressDialog dialog = new ProgressDialog(context);
         dialog.setTitle("Aguarde...");
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         dialog.show();
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
@@ -167,7 +169,7 @@ public class ControllerArquivo {
 
                 String arq = arquivo.getCAMINHO().replace("./uploads/", "");
 
-                context.startActivity(new Intent(context, ActViewPDF.class).putExtra("PDF", "https://docs.google.com/gview?embedded=true&url=http://191.252.193.192:8052/PDF/" + arq));
+                context.startActivity(new Intent(context, ActViewPDF.class).putExtra("PDF", "https://docs.google.com/gview?embedded=true&url="+URL_BASE+"/PDF/" + arq));
 
             }
         });

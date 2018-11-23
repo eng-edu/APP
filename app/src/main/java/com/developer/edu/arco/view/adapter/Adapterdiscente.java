@@ -9,13 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.model.Discente;
 import com.developer.edu.arco.view.ActNovoArco;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import static com.developer.edu.arco.conectionAPI.ConfigRetrofit.URL_BASE;
 
 public class Adapterdiscente extends ArrayAdapter<Discente> {
 
@@ -37,8 +41,23 @@ public class Adapterdiscente extends ArrayAdapter<Discente> {
 
         final Discente discente = discentes.get(position);
 
-        TextView nome = view.findViewById(R.id.adapter_discente_nome);
-        nome.setText(discente.toString());
+        ImageView foto = (ImageView) view.findViewById(R.id.image_perfil_adapter);
+
+        //./uploads/16_discente.jpg
+        //http://192.168.10.110:8052/IMG/16_discente.jpg
+
+        String mfoto = discente.getFOTO().replace("./uploads/", "");
+
+        Picasso.get().load(URL_BASE+"/IMG/"+mfoto).into(foto);
+
+        TextView textView1 = view.findViewById(R.id.texte1);
+        TextView textView2 = view.findViewById(R.id.texte2);
+        TextView textView3 = view.findViewById(R.id.texte3);
+
+        textView2.setText(discente.getINSTITUICAO());
+        textView1.setText(discente.getNOME());
+        textView3.setText(discente.getEMAIL());
+
         final CheckBox checkBox = view.findViewById(R.id.adapter_discente_checkBox);
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

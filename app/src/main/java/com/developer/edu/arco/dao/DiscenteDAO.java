@@ -14,7 +14,7 @@ import java.util.List;
 public class DiscenteDAO {
 
 
-    public boolean inserir(Context context, String id, String nome, String formacao, String email, String senha) {
+    public boolean inserir(Context context, String id, String nome, String formacao, String email, String senha, String foto) {
 
         SQLiteDatabase bd = ConectarBanco.getConnection(context).getWritableDatabase();
 
@@ -24,7 +24,7 @@ public class DiscenteDAO {
         contentValues.put("INSTITUICAO", formacao);
         contentValues.put("EMAIL", email);
         contentValues.put("SENHA", senha);
-
+        contentValues.put("FOTO", foto);
 
         boolean result = bd.insertWithOnConflict("DISCENTE", null, contentValues, SQLiteDatabase.CONFLICT_REPLACE) > 0;
         bd.close();
@@ -36,7 +36,7 @@ public class DiscenteDAO {
         SQLiteDatabase bd = ConectarBanco.getConnection(context).getWritableDatabase();
 
         List<Discente> discentes = new ArrayList<>();
-        String colunas[] = new String[]{"ID", "NOME", "INSTITUICAO", "EMAIL", "SENHA"};
+        String colunas[] = new String[]{"ID", "NOME", "INSTITUICAO", "EMAIL", "SENHA","FOTO"};
         Cursor cursor = bd.query("DISCENTE", colunas, null, null, null, null, null);
 
         if (cursor.getCount() > 0) {
@@ -49,6 +49,7 @@ public class DiscenteDAO {
                 discente.setINSTITUICAO(cursor.getString(2));
                 discente.setEMAIL(cursor.getString(3));
                 discente.setSENHA(cursor.getString(4));
+                discente.setFOTO(cursor.getString(5));
 
                 discentes.add(discente);
 

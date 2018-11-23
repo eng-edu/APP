@@ -6,6 +6,14 @@ public  class Docente {
     String FORMACAO;
     String EMAIL;
     String SENHA;
+    String FOTO;
+    public String getFOTO() {
+        return FOTO;
+    }
+
+    public void setFOTO(String FOTO) {
+        this.FOTO = FOTO;
+    }
 
 
     public String getID() {

@@ -13,7 +13,7 @@ import java.util.List;
 public class DocenteDAO {
 
 
-    public boolean inserir(Context context, String id, String nome, String formacao, String email, String senha) {
+    public boolean inserir(Context context, String id, String nome, String formacao, String email, String senha, String foto) {
 
         SQLiteDatabase bd = ConectarBanco.getConnection(context).getWritableDatabase();
 
@@ -23,6 +23,7 @@ public class DocenteDAO {
         contentValues.put("FORMACAO", formacao);
         contentValues.put("EMAIL", email);
         contentValues.put("SENHA", senha);
+        contentValues.put("FOTO", foto);
 
         boolean result = bd.insertWithOnConflict("DOCENTE", null, contentValues, SQLiteDatabase.CONFLICT_REPLACE) > 0;
         bd.close();
@@ -34,7 +35,7 @@ public class DocenteDAO {
         SQLiteDatabase bd = ConectarBanco.getConnection(context).getWritableDatabase();
 
         List<Docente> docentes = new ArrayList<>();
-        String colunas[] = new String[]{"ID", "NOME", "FORMACAO", "EMAIL", "SENHA"};
+        String colunas[] = new String[]{"ID", "NOME", "FORMACAO", "EMAIL", "SENHA","FOTO"};
         Cursor cursor = bd.query("DOCENTE", colunas, null, null, null, null, null);
 
         if (cursor.getCount() > 0) {
@@ -47,7 +48,7 @@ public class DocenteDAO {
                 docente.setFORMACAO(cursor.getString(2));
                 docente.setEMAIL(cursor.getString(3));
                 docente.setSENHA(cursor.getString(4));
-
+                docente.setFOTO(cursor.getString(5));
                 docentes.add(docente);
 
             } while (cursor.moveToNext());
@@ -56,8 +57,6 @@ public class DocenteDAO {
         return docentes;
 
     }
-
-
 
 
     public void deletAll(Context context) {

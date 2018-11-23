@@ -100,9 +100,9 @@ public class ActCadastro extends AppCompatActivity {
     }
 
     public void pegarImg(View view) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(intent, IMAGEM_INTERNA);
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(Intent.createChooser(intent, "Selecione uma imagem"), IMAGEM_INTERNA);
     }
 
     @Override

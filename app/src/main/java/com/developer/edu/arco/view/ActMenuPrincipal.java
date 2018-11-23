@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
@@ -87,9 +88,11 @@ public class ActMenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(ActMenuPrincipal.this, ActArco.class);
-                intent.putExtra("ACESSO_RESTRITO", "S");
-                controllerArco.buscarArcosCompartilhados(ActMenuPrincipal.this, inflater, intent);
+                Toast.makeText(v.getContext(), "RECURSO EM DESENVOLVIMENTO!", Toast.LENGTH_LONG).show();
+
+//                Intent intent = new Intent(ActMenuPrincipal.this, ActArco.class);
+//                intent.putExtra("ACESSO_RESTRITO", "S");
+//                controllerArco.buscarArcosCompartilhados(ActMenuPrincipal.this, inflater, intent);
             }
         });
 

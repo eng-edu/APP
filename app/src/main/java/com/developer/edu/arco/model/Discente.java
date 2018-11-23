@@ -9,6 +9,15 @@ public  class Discente {
     String SENHA;
     boolean CHEKED;
 
+    String FOTO;
+    public String getFOTO() {
+        return FOTO;
+    }
+
+    public void setFOTO(String FOTO) {
+        this.FOTO = FOTO;
+    }
+
     public boolean isCHEKED() {
         return CHEKED;
     }

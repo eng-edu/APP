@@ -89,7 +89,8 @@ public class ControllerArco {
                                     object.getString("NOME"),
                                     object.getString("FORMACAO"),
                                     object.getString("EMAIL"),
-                                    object.getString("SENHA"));
+                                    object.getString("SENHA"),
+                                    object.getString("FOTO"));
 
                         }
 
@@ -188,7 +189,9 @@ public class ControllerArco {
                                         object.getString("NOME"),
                                         object.getString("INSTITUICAO"),
                                         object.getString("EMAIL"),
-                                        object.getString("SENHA"));
+                                        object.getString("SENHA"),
+                                        object.getString("FOTO")
+                                );
 
                         }
 
@@ -677,7 +680,6 @@ public class ControllerArco {
                         alert[0].show();
 
 
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
@@ -852,7 +854,6 @@ public class ControllerArco {
                         });
                         alert[0] = builder.create();
                         alert[0].show();
-
 
 
                     } catch (JSONException e) {
