@@ -29,20 +29,25 @@ public interface RetrofitService {
 
     //user-----------------------------------------------------------------------
 
+    @Multipart
     @POST("discente/{NOME}/{INSTITUICAO}/{EMAIL}/{SENHA}")
     Call<String> cadastarDiscente(@Header("token") String TOKIENAPI,
                                   @Path("NOME") String NOME,
                                   @Path("INSTITUICAO") String INSTITUICAO,
                                   @Path("EMAIL") String EMAIL,
-                                  @Path("SENHA") String SENHA);
+                                  @Path("SENHA") String SENHA,
+                                  @Part MultipartBody.Part file,
+                                  @Part("file") RequestBody name);
 
-
+    @Multipart
     @POST("docente/{NOME}/{FORMACAO}/{EMAIL}/{SENHA}")
     Call<String> cadastarDocente(@Header("token") String TOKIENAPI,
                                  @Path("NOME") String NOME,
                                  @Path("FORMACAO") String FORMACAO,
                                  @Path("EMAIL") String EMAIL,
-                                 @Path("SENHA") String SENHA);
+                                 @Path("SENHA") String SENHA,
+                                 @Part MultipartBody.Part file,
+                                 @Part("file") RequestBody name);
 
     @GET("docente/list")
     Call<String> buscarTodosDocentes(@Header("token") String TOKIENAPI);
@@ -133,16 +138,13 @@ public interface RetrofitService {
                               @Path("ARCO_ID") String ARCO_ID);
 
 
-
     @GET("/documento/buscarArquivos/{ETAPA_ID}")
     Call<String> buscarArquivosEtapa(@Header("token") String TOKIENAPI,
-                                        @Path("ETAPA_ID") String ETAPA_ID);
+                                     @Path("ETAPA_ID") String ETAPA_ID);
 
     @DELETE("/documento/apagarArquivosEtapa/{ID}")
     Call<String> apagarArquivosEtapa(@Header("token") String TOKIENAPI,
                                      @Path("ID") String ID);
-
-
 
 
 }

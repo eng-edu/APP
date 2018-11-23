@@ -32,16 +32,7 @@ public class ActCadastro extends AppCompatActivity {
     public static final int IMAGEM_INTERNA = 12;
 
     ImageView fotoPerfil;
-    static String fotoBase64 = "";
-
-
-    public static String getFotoBase64() {
-        return fotoBase64;
-    }
-
-    public static void setFotoBase64(String fotoBase64) {
-        ActCadastro.fotoBase64 = fotoBase64;
-    }
+    String pathfoto = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +40,7 @@ public class ActCadastro extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
 
-        if (ActivityCompat.checkSelfPermission(ActCadastro.this,
+         if (ActivityCompat.checkSelfPermission(ActCadastro.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             //e caso ainda não tenha dado, ele solicita...
@@ -90,14 +81,14 @@ public class ActCadastro extends AppCompatActivity {
                         email.getText().toString(),
                         senha.getText().toString(),
                         discente.isChecked(),
-                        docente.isChecked());
+                        docente.isChecked(),
+                        pathfoto);
 
-                Log.i("DEVEDU", fotoBase64);
             }
         });
 
 
-        fotoPerfil = (ImageView) findViewById(R.id.perfil);
+        fotoPerfil = (ImageView) findViewById(R.id.image_perfil);
         fotoPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,23 +121,15 @@ public class ActCadastro extends AppCompatActivity {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            ImageView imageView = (ImageView) findViewById(R.id.perfil);
+            ImageView imageView = (ImageView) findViewById(R.id.image_perfil);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            pathfoto = picturePath;
 
-         //   setFotoBase64(getEncoded64ImageStringFromBitmap(BitmapFactory.decodeFile(picturePath)));
+
 
         }
 
-
     }
 
-
-    public String getEncoded64ImageStringFromBitmap(Bitmap bitmap) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteFormat = stream.toByteArray();
-        String imgString = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
-        return imgString;
-    }
 
 }

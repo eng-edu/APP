@@ -10,7 +10,11 @@ import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.view.ActCadastro;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,7 +23,7 @@ public class ControllerCadastro {
 
     Call<String> stringCall;
 
-    public void cadastrar(final Context context, String nome, String form_inst, final String email, final String senha, final boolean discente, final boolean docente) {
+    public void cadastrar(final Context context, String nome, String form_inst, final String email, final String senha, final boolean discente, final boolean docente, String pathfoto) {
 
         String result = "S3MS3NH4";
 
@@ -32,14 +36,22 @@ public class ControllerCadastro {
                 && nome.length() > 0
                 && form_inst.length() > 0
                 && email.length() > 0
-                && senha.length() > 0) {
+                && senha.length() > 0
+                && pathfoto.length() > 0) {
+
+
+            File file = new File(pathfoto);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
+            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+            RequestBody filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
+
 
             if (docente) {
-                stringCall = ConfigRetrofit.getService().cadastarDocente(result, nome, form_inst, email, senha);
+                stringCall = ConfigRetrofit.getService().cadastarDocente(result, nome, form_inst, email, senha, fileToUpload, filename);
             }
 
             if (discente) {
-                stringCall = ConfigRetrofit.getService().cadastarDiscente(result, nome, form_inst, email, senha);
+                stringCall = ConfigRetrofit.getService().cadastarDiscente(result, nome, form_inst, email, senha, fileToUpload, filename);
             }
 
             stringCall.enqueue(new Callback<String>() {
