@@ -35,6 +35,7 @@ import com.developer.edu.arco.model.*;
 import com.developer.edu.arco.view.ActMenuPrincipal;
 import com.developer.edu.arco.view.ActNovoArco;
 import com.developer.edu.arco.view.adapter.Adapterdiscente;
+import com.developer.edu.arco.view.adapter.Adapterdocente;
 import com.developer.edu.arco.view.adapter.Adaptersolicitacao;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class ControllerArco {
         final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
-        final ArrayAdapter<Docente> arrayAdapter = new ArrayAdapter<Docente>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
+        final ArrayAdapter<Docente> arrayAdapter = new Adapterdocente(context, new ArrayList<Docente>());
 
         final ProgressDialog dialog = new ProgressDialog(view.getContext());
         dialog.setTitle("Aguarde...");
@@ -105,13 +106,13 @@ public class ControllerArco {
                         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                         builder.setTitle("SELECIONAR DOCENTE");
                         builder.setView(view);
-                        alert[0] = builder.create();
-                        alert[0].show();
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         });
+                        alert[0] = builder.create();
+                        alert[0].show();
 
 
                     } catch (JSONException e) {

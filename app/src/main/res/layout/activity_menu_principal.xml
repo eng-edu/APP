@@ -6,54 +6,106 @@
     android:layout_height="match_parent"
     tools:context=".view.ActMenuPrincipal">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/back" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/image_perfil_menu"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="left"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="-130dp"
+            android:layout_marginBottom="5dp"
+            android:src="@color/transparent"
+            app:civ_border_color="@android:color/background_light"
+            app:civ_border_width="2dp" />
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="32dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
 
-            <Button
+            <android.support.design.widget.FloatingActionButton
                 android:id="@+id/btn_principal_novoarco_solicitacoes"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#2962ff"
-                android:text="@string/btn_principal_novo_arco"
-                android:textColor="@color/ic_launcher_background"
-                android:textSize="12sp" />
+                android:layout_gravity="right"
+                android:layout_margin="2dp"
+                android:src="@android:drawable/ic_menu_add"
+                app:fabSize="mini" />
 
-            <Button
+            <android.support.design.widget.FloatingActionButton
                 android:id="@+id/btn_principal_meusarcos"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#1e88e5"
-                android:text="@string/btn_principal_meusarcos"
-                android:textColor="@color/ic_launcher_background"
-                android:textSize="12sp" />
+                android:layout_gravity="right"
+                android:layout_margin="2dp"
+                android:src="@android:drawable/btn_star"
+                app:fabSize="mini" />
 
-            <Button
+            <android.support.design.widget.FloatingActionButton
                 android:id="@+id/btn_principal_arcoscompartilhados"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#64b5f6"
-                android:text="@string/btn_principal_arcoscompartilhados"
-                android:textColor="@color/ic_launcher_background"
-                android:textSize="12sp" />
 
+                android:layout_gravity="right"
+                android:layout_marginEnd="10dp"
+                android:src="@android:drawable/ic_menu_share"
+                app:fabSize="mini" />
 
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="-20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="TEXT1"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="TEXT2"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="TEXT3"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </ScrollView>

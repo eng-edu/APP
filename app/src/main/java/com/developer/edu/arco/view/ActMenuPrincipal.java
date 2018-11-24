@@ -3,6 +3,7 @@ package com.developer.edu.arco.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,15 +32,15 @@ public class ActMenuPrincipal extends AppCompatActivity {
         final ControllerArco controllerArco = new ControllerArco();
         final LayoutInflater inflater = getLayoutInflater();
 
-        Button novo_solic = (Button) findViewById(R.id.btn_principal_novoarco_solicitacoes);
-        Button meus_arcos = (Button) findViewById(R.id.btn_principal_meusarcos);
-        Button arcos_compartilhados = (Button) findViewById(R.id.btn_principal_arcoscompartilhados);
+        FloatingActionButton novo_solic = (FloatingActionButton) findViewById(R.id.btn_principal_novoarco_solicitacoes);
+        FloatingActionButton meus_arcos = (FloatingActionButton) findViewById(R.id.btn_principal_meusarcos);
+        FloatingActionButton arcos_compartilhados = (FloatingActionButton) findViewById(R.id.btn_principal_arcoscompartilhados);
 
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
 
         if (result.equals("docente")) {
-            novo_solic.setText("Solicitações de orientação");
+           // novo_solic.setText("Solicitações de orientação");
         }
 
         //pensa na logica de como chamr o novo arco... //pegar por shraedpreferences...
