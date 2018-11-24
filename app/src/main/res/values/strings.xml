@@ -31,6 +31,7 @@
     <string name="INSTITUICAO">INSTITUICAO</string>
     <string name="EMAIL">EMAIL</string>
     <string name="SENHA">SENHA</string>
+    <string name="FOTO">FOTO</string>
     <string name="ed_hint_alertDialog_pesquisar">DIGITE UM NOME</string>
     <string name="btn_alertdilog_pesquisar">PESQUISAR</string>
     <string name="adapter_nome_discente" />

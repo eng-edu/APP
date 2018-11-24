@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developer.edu.arco.R;
@@ -39,8 +40,35 @@ public class ActMenuPrincipal extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
 
+
+////        //DADOS LOGIN
+////        final String EMAIL = sharedPreferences.getString(String.valueOf(R.string.EMAIL), "");
+////        final String NOME = sharedPreferences.getString(String.valueOf(R.string.NOME), "");
+////        final String INST = sharedPreferences.getString(String.valueOf(R.string.INSTITUICAO), "");
+////        final String FORM = sharedPreferences.getString(String.valueOf(R.string.FORMACAO), "");
+////        final String FOTO = sharedPreferences.getString(String.valueOf(R.string.FOTO), "");
+//
+//
+//
+//        TextView textView1 = (TextView) findViewById(R.id.text1);
+//        TextView textView2 = (TextView) findViewById(R.id.text2);
+//        TextView textView3 = (TextView) findViewById(R.id.text3);
+//
+//
+//        textView1.setText(NOME);
+//        textView2.setText(INST);
+//        textView3.setText(EMAIL);
+
+
         if (result.equals("docente")) {
-           // novo_solic.setText("Solicitações de orientação");
+
+//            textView3.setText(FORM);
+
+            //mudar o icoone
+            // novo_solic.setText("Solicitações de orientação");
+
+
+
         }
 
         //pensa na logica de como chamr o novo arco... //pegar por shraedpreferences...

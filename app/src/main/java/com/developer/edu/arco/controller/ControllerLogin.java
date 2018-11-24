@@ -72,6 +72,7 @@ public class ControllerLogin {
                                 editor.putString(String.valueOf(R.string.FORMACAO), object.getString("FORMACAO"));
                                 editor.putString(String.valueOf(R.string.EMAIL), object.getString("EMAIL"));
                                 editor.putString(String.valueOf(R.string.SENHA), object.getString("TOKENAPI"));
+                                editor.putString(String.valueOf(R.string.FOTO), object.getString("FOTO"));
                                 editor.apply();
 
                             } else if (discente) {
@@ -83,7 +84,8 @@ public class ControllerLogin {
                                 editor.putString(String.valueOf(R.string.INSTITUICAO), object.getString("INSTITUICAO"));
                                 editor.putString(String.valueOf(R.string.EMAIL), object.getString("EMAIL"));
                                 editor.putString(String.valueOf(R.string.SENHA), object.getString("TOKENAPI"));
-                                editor.apply();
+                                editor.putString(String.valueOf(R.string.FOTO), object.getString("FOTO"));
+                               editor.apply();
                             }
 
                         } catch (JSONException e) {
