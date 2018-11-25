@@ -14,29 +14,83 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="199dp"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/back" />
+            app:srcCompat="@drawable/back3" />
+
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-170dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/boder"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/image_perfil_menu"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="left"
+                android:src="@color/transparent"
+                app:civ_border_color="@android:color/background_light"
+                app:civ_border_width="2dp" />
 
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/image_perfil_menu"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="-130dp"
-            android:layout_marginBottom="5dp"
-            android:src="@color/transparent"
-            app:civ_border_color="@android:color/background_light"
-            app:civ_border_width="2dp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:text="TEddXT1ssssss"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginRight="10dp"
+                    android:text="TEXT2"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginRight="10dp"
+                    android:text="TEXT3"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="right"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal">
 
 
@@ -62,48 +116,34 @@
                 android:id="@+id/btn_principal_arcoscompartilhados"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_gravity="right"
-                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginEnd="16dp"
                 android:src="@android:drawable/ic_menu_share"
                 app:fabSize="mini" />
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="-20dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text1"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="TEXT1"
-                android:textAllCaps="true"
-                android:textSize="18sp"
+                android:text="NOTIFICAÇÕES: "
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/text2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
                 android:layout_margin="10dp"
-                android:text="TEXT2"
-                android:textAllCaps="true"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/text3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="TEXT3"
-                android:textAllCaps="true"
-                android:textStyle="bold" />
-
+                app:srcCompat="@color/colorPrimaryDark" />
         </LinearLayout>
 
 

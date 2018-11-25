@@ -13,12 +13,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.controller.ControllerLogin;
+import com.squareup.picasso.Picasso;
+
+import static com.developer.edu.arco.conectionAPI.ConfigRetrofit.URL_BASE;
 
 public class ActMenuPrincipal extends AppCompatActivity {
 
@@ -33,6 +37,7 @@ public class ActMenuPrincipal extends AppCompatActivity {
         final ControllerArco controllerArco = new ControllerArco();
         final LayoutInflater inflater = getLayoutInflater();
 
+        ImageView foto = (ImageView) findViewById(R.id.image_perfil_menu) ;
         FloatingActionButton novo_solic = (FloatingActionButton) findViewById(R.id.btn_principal_novoarco_solicitacoes);
         FloatingActionButton meus_arcos = (FloatingActionButton) findViewById(R.id.btn_principal_meusarcos);
         FloatingActionButton arcos_compartilhados = (FloatingActionButton) findViewById(R.id.btn_principal_arcoscompartilhados);
@@ -41,28 +46,32 @@ public class ActMenuPrincipal extends AppCompatActivity {
         final String result = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
 
 
-////        //DADOS LOGIN
-////        final String EMAIL = sharedPreferences.getString(String.valueOf(R.string.EMAIL), "");
-////        final String NOME = sharedPreferences.getString(String.valueOf(R.string.NOME), "");
-////        final String INST = sharedPreferences.getString(String.valueOf(R.string.INSTITUICAO), "");
-////        final String FORM = sharedPreferences.getString(String.valueOf(R.string.FORMACAO), "");
-////        final String FOTO = sharedPreferences.getString(String.valueOf(R.string.FOTO), "");
-//
-//
-//
-//        TextView textView1 = (TextView) findViewById(R.id.text1);
-//        TextView textView2 = (TextView) findViewById(R.id.text2);
-//        TextView textView3 = (TextView) findViewById(R.id.text3);
-//
-//
-//        textView1.setText(NOME);
-//        textView2.setText(INST);
-//        textView3.setText(EMAIL);
+        //DADOS LOGIN
+        final String EMAIL = sharedPreferences.getString(String.valueOf(R.string.EMAIL), "");
+        final String NOME = sharedPreferences.getString(String.valueOf(R.string.NOME), "");
+        final String INST = sharedPreferences.getString(String.valueOf(R.string.INSTITUICAO), "");
+        final String FORM = sharedPreferences.getString(String.valueOf(R.string.FORMACAO), "");
+        final String FOTO = sharedPreferences.getString(String.valueOf(R.string.FOTO), "");
+
+        String mfoto = FOTO.replace("./uploads/", "");
+
+        Picasso.get().load(URL_BASE+"/IMG/"+mfoto).into(foto);
+
+
+
+        TextView textView1 = (TextView) findViewById(R.id.text1);
+        TextView textView2 = (TextView) findViewById(R.id.text2);
+        TextView textView3 = (TextView) findViewById(R.id.text3);
+
+
+        textView1.setText(NOME);
+        textView2.setText(INST);
+        textView3.setText(EMAIL);
 
 
         if (result.equals("docente")) {
 
-//            textView3.setText(FORM);
+            textView3.setText(FORM);
 
             //mudar o icoone
             // novo_solic.setText("Solicitações de orientação");
