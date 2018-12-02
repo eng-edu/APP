@@ -18,7 +18,7 @@
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/back" />
+            app:srcCompat="@drawable/education" />
 
         <LinearLayout
             android:padding="10dp"

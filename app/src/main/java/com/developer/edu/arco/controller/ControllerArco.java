@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,19 +23,22 @@ import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.dao.ArcoDAO;
 import com.developer.edu.arco.dao.DiscenteDAO;
 import com.developer.edu.arco.dao.DocenteDAO;
+import com.developer.edu.arco.dao.EtapaDAO;
+import com.developer.edu.arco.dao.SolicitacaoDAO;
+import com.developer.edu.arco.model.Arco;
+import com.developer.edu.arco.model.Discente;
+import com.developer.edu.arco.model.Docente;
+import com.developer.edu.arco.model.Solicitacao;
+import com.developer.edu.arco.view.ActMenuPrincipal;
+import com.developer.edu.arco.view.ActNovoArco;
+import com.developer.edu.arco.view.adapter.Adapterarco;
+import com.developer.edu.arco.view.adapter.Adapterdiscente;
+import com.developer.edu.arco.view.adapter.Adapterdocente;
+import com.developer.edu.arco.view.adapter.Adaptersolicitacao;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.developer.edu.arco.dao.EtapaDAO;
-import com.developer.edu.arco.dao.SolicitacaoDAO;
-import com.developer.edu.arco.model.*;
-import com.developer.edu.arco.view.ActMenuPrincipal;
-import com.developer.edu.arco.view.ActNovoArco;
-import com.developer.edu.arco.view.adapter.Adapterdiscente;
-import com.developer.edu.arco.view.adapter.Adapterdocente;
-import com.developer.edu.arco.view.adapter.Adaptersolicitacao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -318,7 +320,7 @@ public class ControllerArco {
         final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
-        final ArrayAdapter<Arco> arrayAdapter = new ArrayAdapter<Arco>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
+        final ArrayAdapter<Arco> arrayAdapter = new Adapterarco(context, new ArrayList<Arco>());
 
         final ProgressDialog dialog = new ProgressDialog(view.getContext());
         dialog.setTitle("Aguarde...");
@@ -621,7 +623,7 @@ public class ControllerArco {
         final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
-        final ArrayAdapter<Arco> arrayAdapter = new ArrayAdapter<Arco>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
+        final ArrayAdapter<Arco> arrayAdapter = new Adapterarco(context, new ArrayList<Arco>());
 
         final ProgressDialog dialog = new ProgressDialog(context);
         dialog.setTitle("Aguarde...");
@@ -796,7 +798,7 @@ public class ControllerArco {
         final View view = inflater.inflate(R.layout.list_dados, null);
 
         final ListView listView = (ListView) view.findViewById(R.id.list_alert_list_docentes_discentes);
-        final ArrayAdapter<Arco> arrayAdapter = new ArrayAdapter<Arco>(view.getContext(), R.layout.support_simple_spinner_dropdown_item);
+        final ArrayAdapter<Arco> arrayAdapter = new Adapterarco(context, new ArrayList<Arco>());
 
         final ProgressDialog dialog = new ProgressDialog(view.getContext());
         dialog.setTitle("Aguarde...");

@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.developer.edu.arco.model.Arquivo;
-import com.developer.edu.arco.model.Etapa;
 
 import java.util.ArrayList;
 import java.util.List;

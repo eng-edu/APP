@@ -1,32 +1,13 @@
 package com.developer.edu.arco.controller;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.design.widget.FloatingActionButton;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
-import com.developer.edu.arco.dao.DocenteDAO;
-import com.developer.edu.arco.model.Docente;
-import com.developer.edu.arco.view.ActArco;
-import com.developer.edu.arco.view.ActEtapa;
-import com.developer.edu.arco.view.ActNovoArco;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;

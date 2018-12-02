@@ -6,82 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".view.ActArco">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:textAlignment="textEnd"
+            app:srcCompat="@drawable/person" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="-190dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="135dp"
+            android:background="@drawable/shape6"
+            android:fadeScrollbars="false"
+            android:fallbackLineSpacing="true"
+            android:text="Compartilhar Arco"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_dark"
+            android:textColorLink="@android:color/background_dark"
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
         <LinearLayout
-
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="32dp"
+            android:layout_gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
-
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginBottom="50dp"
-                android:text="Arco compartilhado"
-                android:textColor="@color/colorPrimary" />
+            >
 
             <Button
                 android:id="@+id/btn_e1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#2196f3"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/shape1"
                 android:text="OBSERVAÇÃO DA REALIDADE"
                 android:textColor="@color/ic_launcher_background"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/btn_e2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#1e88e5"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/shape3"
                 android:text="PONTOS CHAVES"
                 android:textColor="@color/ic_launcher_background"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/btn_e3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#1976d2"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/shape2"
                 android:text="TEORIZAÇÃO"
                 android:textColor="@color/ic_launcher_background"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/btn_e4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#1565c0"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/shape4"
                 android:text="HIPÓTESES DE SOLUÇÃO"
                 android:textColor="@color/ic_launcher_background"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/btn_e5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#0d47a1"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/shape5"
                 android:text="APLICAÇÃO A REALIDADE"
                 android:textColor="@color/ic_launcher_background"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
 
         </LinearLayout>
 
-    </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
 </ScrollView>

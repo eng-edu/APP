@@ -1,7 +1,6 @@
 package com.developer.edu.arco.conectionAPI;
 
 
-import java.net.URI;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -11,7 +10,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ConfigRetrofit {
 
-   public static String URL_BASE = "http://191.252.193.192:8052";
+   public static String URL_BASE = "http://192.168.10.110:8052";
 
     public static RetrofitService getService() {
 

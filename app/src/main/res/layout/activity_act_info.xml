@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ActInfo">
 
-    <TextView
-        android:id="@+id/info"
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfb1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:fontFamily="sans-serif"
-        android:lineSpacingExtra="8sp"
-        android:padding="10dp"
-        android:textAlignment="viewStart"
-        android:typeface="serif" />
-</ScrollView>
+        android:layout_height="match_parent">
+
+    </com.github.barteksc.pdfviewer.PDFView>
+
+</LinearLayout>

@@ -4,8 +4,8 @@ import android.content.Context;
 
 public class ConectarBanco {
 
-    private static final String DATABASE_NAME = "arco.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final String DATABASE_NAME = "arco4.db";
+    private static final int DATABASE_VERSION = 4;
 
     static CriarBanco banco;
 

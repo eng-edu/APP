@@ -3,9 +3,9 @@ package com.developer.edu.arco.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +15,6 @@ import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerEtapa;
 import com.developer.edu.arco.dao.EtapaDAO;
 import com.developer.edu.arco.model.Etapa;
-import com.developer.edu.arco.util.UtilArco;
 
 public class ActEtapa extends AppCompatActivity {
 
@@ -78,12 +77,12 @@ public class ActEtapa extends AppCompatActivity {
 
                     int prox = Integer.parseInt(modelEtapa.getID()) + 1;
 
-                    if (UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
+            //        if (UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
                         controllerEtapa.aprovarEtapa(ActEtapa.this, modelEtapa.getID(), String.valueOf(prox), ARCO_ID);
 
                 } else if (result.equals("discente")) {
 
-                    if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
+              //      if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
                         controllerEtapa.submeterEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString());
 
                 }
@@ -97,12 +96,12 @@ public class ActEtapa extends AppCompatActivity {
 
                 if (result.equals("docente")) {
 
-                    if (UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
+              //      if (UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
                         controllerEtapa.reprovarEtapa(ActEtapa.this, modelEtapa.getID());
 
                 } else if (result.equals("discente")) {
 
-                    if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
+               //     if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
                         controllerEtapa.salvarEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString());
 
 

@@ -2,38 +2,29 @@ package com.developer.edu.arco.view;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArquivo;
 import com.developer.edu.arco.model.Arquivo;
 import com.developer.edu.arco.util.UtilArco;
+import com.developer.edu.arco.view.adapter.Adapterarquivo;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -53,7 +44,7 @@ public class ActArquivo extends AppCompatActivity {
 
 
         listView = (ListView) findViewById(R.id.lista_arquivos);
-        adapter = new ArrayAdapter<Arquivo>(ActArquivo.this, R.layout.support_simple_spinner_dropdown_item);
+        adapter = new Adapterarquivo(ActArquivo.this, arquivos);
 
         controllerArquivo.buscarArquivos(ActArquivo.this, getIntent().getStringExtra("ETAPA_ID"), listView, adapter);
 

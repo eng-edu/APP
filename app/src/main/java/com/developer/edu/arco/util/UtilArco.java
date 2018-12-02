@@ -1,15 +1,9 @@
 package com.developer.edu.arco.util;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Base64;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
-
-import com.developer.edu.arco.model.Arquivo;
-import com.developer.edu.arco.view.ActArquivo;
 
 import java.io.BufferedInputStream;
 import java.io.File;

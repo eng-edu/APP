@@ -4,7 +4,6 @@
 
     <item
         android:id="@+id/info_login"
-        android:title="info"
-        android:icon="@mipmap/ic_info"
-        app:showAsAction="ifRoom" />
+        android:title="Dicas"
+        app:showAsAction="always" />
 </menu>

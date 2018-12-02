@@ -2,14 +2,10 @@ package com.developer.edu.arco.controller;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.util.Base64;
 import android.widget.Toast;
 
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
-import com.developer.edu.arco.view.ActCadastro;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import okhttp3.MediaType;

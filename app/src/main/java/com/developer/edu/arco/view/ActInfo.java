@@ -2,11 +2,11 @@ package com.developer.edu.arco.view;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
 import com.developer.edu.arco.R;
+import com.github.barteksc.pdfviewer.PDFView;
 
 public class ActInfo extends AppCompatActivity {
 
@@ -19,19 +19,21 @@ public class ActInfo extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
 
-        TextView info = (TextView) findViewById(R.id.info);
+        PDFView b1 = (PDFView) findViewById(R.id.pdfb1);
+
 
 
         if (getIntent().getStringExtra("login_info") != null && getIntent().getStringExtra("login_info").equalsIgnoreCase("S")) {
-            info.setText(R.string.texto_inicial  );
+            b1.fromAsset("a.pdf").load();
         } else {
             if (result.equals("docente")) {
 
-                info.setText(R.string.texto_docente_menu);
+                b1.fromAsset("b.pdf").load();
 
             } else if (result.equals("discente")) {
 
-                info.setText(R.string.texto_discente_menu);
+                b1.fromAsset("c.pdf").load();
+
             }
         }
 

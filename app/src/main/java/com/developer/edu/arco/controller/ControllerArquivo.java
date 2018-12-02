@@ -15,8 +15,6 @@ import com.developer.edu.arco.R;
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.dao.ArquivoDAO;
 import com.developer.edu.arco.model.Arquivo;
-import com.developer.edu.arco.util.UtilArco;
-import com.developer.edu.arco.view.ActArquivo;
 import com.developer.edu.arco.view.ActViewPDF;
 
 import org.json.JSONArray;

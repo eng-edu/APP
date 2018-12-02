@@ -15,10 +15,6 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="32dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/btn_salvar_reprovar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,11 +23,19 @@
             tools:ignore="MissingConstraints">
 
 
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:textAlignment="textEnd"
+                app:srcCompat="@drawable/back_etapa" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
+                android:layout_margin="10dp"
                 android:text="RESUMO"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -47,13 +51,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
+                    android:layout_margin="20dp"
                     android:fontFamily="sans-serif"
                     android:lineSpacingExtra="8sp"
                     android:singleLine="false"
-                    android:textAlignment="textStart"
                     android:typeface="sans" />
             </ScrollView>
-
 
 
             <ImageView
@@ -61,9 +64,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginTop="10dp"
-                android:src="@mipmap/ic_folder"
-                 />
+                android:layout_margin="20dp"
+                android:src="@mipmap/ic_folder" />
 
         </LinearLayout>
 

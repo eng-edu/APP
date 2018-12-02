@@ -2,9 +2,9 @@ package com.developer.edu.arco.view;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,7 +16,6 @@ import com.developer.edu.arco.R;
 import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.model.Discente;
 import com.developer.edu.arco.model.Docente;
-import com.developer.edu.arco.view.adapter.Adapterdiscente;
 import com.developer.edu.arco.view.adapter.Adapterdiscente2;
 
 import org.json.JSONException;
