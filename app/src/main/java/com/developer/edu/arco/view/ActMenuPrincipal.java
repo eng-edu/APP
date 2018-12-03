@@ -125,11 +125,11 @@ public class ActMenuPrincipal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(v.getContext(), "RECURSO EM DESENVOLVIMENTO!", Toast.LENGTH_LONG).show();
+        //        Toast.makeText(v.getContext(), "RECURSO EM DESENVOLVIMENTO!", Toast.LENGTH_LONG).show();
 
-//                Intent intent = new Intent(ActMenuPrincipal.this, ActArco.class);
-//                intent.putExtra("ACESSO_RESTRITO", "S");
-//                controllerArco.buscarArcosCompartilhados(ActMenuPrincipal.this, inflater, intent);
+                Intent intent = new Intent(ActMenuPrincipal.this, ActArco.class);
+                intent.putExtra("ACESSO_RESTRITO", "S");
+                controllerArco.buscarArcosCompartilhados(ActMenuPrincipal.this, inflater, intent);
             }
         });
 

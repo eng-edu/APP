@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:background="@drawable/shape3"
+                android:background="@drawable/shape2"
                 android:text="PONTOS CHAVES"
                 android:textColor="@color/ic_launcher_background"
                 android:textSize="10sp" />
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:background="@drawable/shape2"
+                android:background="@drawable/shape3"
                 android:text="TEORIZAÇÃO"
                 android:textColor="@color/ic_launcher_background"
                 android:textSize="10sp" />

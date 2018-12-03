@@ -53,6 +53,12 @@ public class ActEtapa extends AppCompatActivity {
         Button btn_submeter_aprovar = (Button) findViewById(R.id.btn_submeter_aprovar);
 
 
+        if(ACESSO_RESTRITO.equals("S")){
+            btn_salvar_reprovar.setVisibility(View.INVISIBLE);
+                btn_submeter_aprovar.setVisibility(View.INVISIBLE);
+        }
+
+
         if (result.equals("docente")) {
 
             btn_salvar_reprovar.setText("REPROVAR");

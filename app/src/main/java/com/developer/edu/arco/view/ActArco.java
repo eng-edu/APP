@@ -97,6 +97,7 @@ public class ActArco extends AppCompatActivity {
         e1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(ActArco.this, ActEtapa.class);
                 intent.putExtra("ARCO_ID", ARCO_ID);
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
@@ -111,8 +112,8 @@ public class ActArco extends AppCompatActivity {
         e2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActArco.this, ActEtapa.class);
 
+                Intent intent = new Intent(ActArco.this, ActEtapa.class);
                 intent.putExtra("ARCO_ID", ARCO_ID);
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "PONTOS CHAVES");
@@ -125,8 +126,8 @@ public class ActArco extends AppCompatActivity {
         e3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActArco.this, ActEtapa.class);
 
+                Intent intent = new Intent(ActArco.this, ActEtapa.class);
                 intent.putExtra("ARCO_ID", ARCO_ID);
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "TEORIZAÇÃO");
@@ -139,8 +140,8 @@ public class ActArco extends AppCompatActivity {
         e4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActArco.this, ActEtapa.class);
 
+                Intent intent = new Intent(ActArco.this, ActEtapa.class);
                 intent.putExtra("ARCO_ID", ARCO_ID);
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "HIPÓTESES DE SOLUÇÃO");
@@ -153,8 +154,8 @@ public class ActArco extends AppCompatActivity {
         e5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActArco.this, ActEtapa.class);
 
+                Intent intent = new Intent(ActArco.this, ActEtapa.class);
                 intent.putExtra("ARCO_ID", ARCO_ID);
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "APLICAÇÃO A REALIDADE");
@@ -173,8 +174,19 @@ public class ActArco extends AppCompatActivity {
 
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_arco, menu);
+        MenuItem item = menu.findItem(R.id.lixo);
 
-        return true;
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
+        Intent intent = getIntent();
+        String ARCO_ID = intent.getStringExtra("ARCO_ID");
+        String ID_CRIADOR = intent.getStringExtra("ID_CRIADOR");
+
+        if (!UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO"))) {
+            item.setVisible(false);
+        }
+
+            return true;
     }
 
 
