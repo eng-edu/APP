@@ -4,104 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ActLogin">
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+    tools:context=".view.ActLogin"
+    android:background="@drawable/gradiente">
 
         <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
+            tools:ignore="MissingConstraints"
+           >
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_width="2500dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                app:srcCompat="@mipmap/ic_logo2" />
+                app:srcCompat="@drawable/logo" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="50dp"
-                android:fontFamily="cursive"
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@android:color/background_light"
                 android:text="Arco didático da problematização"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textSize="24sp"
+                android:textSize="10sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/groupLogin"
-                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
                 <RadioButton
                     android:id="@+id/radio_discente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="@string/radio_discente" />
+                    android:text="@string/radio_discente"
+                    android:textColor="@color/ic_launcher_background" />
 
                 <RadioButton
                     android:id="@+id/radio_docente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/radio_docente" />
+                    android:text="@string/radio_docente"
+                    android:textColor="@color/ic_launcher_background" />
             </RadioGroup>
 
             <EditText
                 android:id="@+id/editText_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_email"
                 android:inputType="textEmailAddress"
-                android:textSize="12sp" />
+                android:maxWidth="100dp"
+                android:textColor="@color/ic_launcher_background"
+                android:textColorHint="@color/empty_directory_hint"
+                android:textSize="18sp" />
 
             <EditText
+
                 android:id="@+id/editText_login_senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_senha"
                 android:inputType="textPassword"
-                android:textSize="12sp" />
+                android:maxWidth="100dp"
+                android:textColor="@color/ic_launcher_background"
+                android:textColorHint="@color/empty_directory_hint"
+                android:textSize="18sp" />
 
 
             <Button
                 android:id="@+id/button_login_entrar"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:layout_gravity="center"
+                android:maxWidth="100dp"
                 android:text="@string/btn_entar"
-                android:textColor="@android:color/background_light"
+                android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textView_login_cadastrese"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/background_light"
                 android:text="@string/tw_cadastrese"
                 android:textAlignment="center"
                 android:textSize="14sp" />
 
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
 </ScrollView>

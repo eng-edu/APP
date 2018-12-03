@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ActCadastro">
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+    tools:context=".view.ActCadastro"
+    android:background="@drawable/gradiente">
 
         <LinearLayout
 
@@ -28,6 +24,7 @@
 
             <TextView
                 android:id="@+id/textView2"
+                android:textColor="@android:color/background_light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -36,12 +33,15 @@
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/image_perfil"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/ic_add"
-                app:civ_border_color="#FF000000"
+                app:civ_border_color="@android:color/background_light"
                 app:civ_border_width="2dp" />
 
 
@@ -56,13 +56,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="@string/radio_discente" />
+                    android:text="@string/radio_discente"
+                    android:textColor="@color/ic_launcher_background" />
 
                 <RadioButton
                     android:id="@+id/radio_cadastro_docente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/radio_docente" />
+                    android:text="@string/radio_docente"
+                    android:textColor="@color/ic_launcher_background" />
             </RadioGroup>
 
             <EditText
@@ -73,7 +75,9 @@
                 android:ems="10"
                 android:hint="@string/ed_hint_nome"
                 android:inputType="textPersonName"
-                android:textSize="12sp" />
+                android:textColor="@color/ic_launcher_background"
+                android:textColorHint="@color/empty_directory_hint"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/editText_cadastro_formacao_instituicao"
@@ -83,7 +87,9 @@
                 android:ems="10"
                 android:hint="@string/ed_hint_instituicao"
                 android:inputType="textPersonName"
-                android:textSize="12sp" />
+                android:textColor="@color/ic_launcher_background"
+                android:textColorHint="@color/empty_directory_hint"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/editText_cadastro_email"
@@ -93,7 +99,9 @@
                 android:ems="10"
                 android:hint="@string/ed_hint_email"
                 android:inputType="textEmailAddress"
-                android:textSize="12sp" />
+                android:textColor="@color/ic_launcher_background"
+                android:textColorHint="@color/empty_directory_hint"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/editText_cadastro_senha"
@@ -103,19 +111,19 @@
                 android:ems="10"
                 android:hint="@string/ed_hint_senha"
                 android:inputType="textPassword"
-                android:textSize="12sp" />
+                android:textColor="@color/ic_launcher_background"
+                android:textColorHint="@color/empty_directory_hint"
+                android:textSize="18sp" />
 
 
             <Button
                 android:id="@+id/button_cadastro_cadastrar"
-                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
                 android:text="@string/btn_cadastrar"
-                android:textColor="@color/ic_launcher_background"
+                android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
 
-
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
 </ScrollView>
