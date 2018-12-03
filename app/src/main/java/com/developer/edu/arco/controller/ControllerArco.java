@@ -973,13 +973,14 @@ public class ControllerArco {
                         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                         builder.setTitle("SOLICITAÇÕES");
                         builder.setView(view);
-                        alert[0] = builder.create();
-                        alert[0].show();
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         });
+                        alert[0] = builder.create();
+                        alert[0].show();
+
 
 
                     } catch (JSONException e) {

@@ -104,7 +104,7 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("NOME_ETAPA", "OBSERVAÇÃO DA REALIDADE");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
-                finish();
+
 
             }
         });
@@ -119,7 +119,7 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("NOME_ETAPA", "PONTOS CHAVES");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -133,7 +133,7 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("NOME_ETAPA", "TEORIZAÇÃO");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -147,7 +147,7 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("NOME_ETAPA", "HIPÓTESES DE SOLUÇÃO");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -161,7 +161,7 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("NOME_ETAPA", "APLICAÇÃO A REALIDADE");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
                 startActivity(intent);
-                finish();
+
             }
         });
 
