@@ -67,13 +67,14 @@ public class ActArco extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
 
-        s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        if (!UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO"))) {
+            s.setVisibility(View.INVISIBLE);
+        }
+
+            s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO"))) {
                     controllerArco.alterarCompartilhado(ActArco.this, ARCO_ID, isChecked, s);
-                }
-
             }
         });
 
@@ -172,6 +173,7 @@ public class ActArco extends AppCompatActivity {
 
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_arco, menu);
+
         return true;
     }
 

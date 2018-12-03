@@ -1,6 +1,7 @@
 package com.developer.edu.arco.view;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -37,6 +38,7 @@ public class ActArquivo extends AppCompatActivity {
     public static Arquivo arquivo;
     ControllerArquivo controllerArquivo = new ControllerArquivo();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +48,11 @@ public class ActArquivo extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.lista_arquivos);
         adapter = new Adapterarquivo(ActArquivo.this, arquivos);
 
-        controllerArquivo.buscarArquivos(ActArquivo.this, getIntent().getStringExtra("ETAPA_ID"), listView, adapter);
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
+        final String tipo_login = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
 
+
+        controllerArquivo.buscarArquivos(ActArquivo.this, getIntent().getStringExtra("ETAPA_ID"), listView, adapter);
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -94,6 +99,10 @@ public class ActArquivo extends AppCompatActivity {
         }
 
         final FloatingActionButton novoarquivo = (FloatingActionButton) findViewById(R.id.btn_novo_arquivo);
+
+        if(tipo_login.equals("docente")){
+            novoarquivo.hide();
+        }
 
         novoarquivo.setOnClickListener(new View.OnClickListener() {
             @Override
