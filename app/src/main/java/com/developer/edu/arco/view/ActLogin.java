@@ -76,9 +76,7 @@ public class ActLogin extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.info_login) {
-
             startActivity(new Intent(ActLogin.this, ActInfo.class).putExtra("login_info", "S"));
-
         }
 
         return super.onOptionsItemSelected(item);

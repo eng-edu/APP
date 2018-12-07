@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ActLogin"
-    android:background="@drawable/gradiente">
+    tools:context=".view.ActLogin">
 
         <LinearLayout
 
@@ -21,24 +20,11 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_marginTop="10dp"
-                android:layout_width="2500dp"
-                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/logo" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="-10dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="@android:color/background_light"
-                android:text="Arco didático da problematização"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:typeface="sans" />
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/nova_logo" />
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/groupLogin"
@@ -54,14 +40,14 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="@string/radio_discente"
-                    android:textColor="@color/ic_launcher_background" />
+                    android:textColor="@color/colorPrimary" />
 
                 <RadioButton
                     android:id="@+id/radio_docente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_docente"
-                    android:textColor="@color/ic_launcher_background" />
+                    android:textColor="@color/colorPrimary" />
             </RadioGroup>
 
             <EditText
@@ -69,13 +55,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_email"
                 android:inputType="textEmailAddress"
                 android:maxWidth="100dp"
-                android:textColor="@color/ic_launcher_background"
+                android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/empty_directory_hint"
                 android:textSize="18sp" />
 
@@ -85,13 +74,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/ed_hint_senha"
                 android:inputType="textPassword"
                 android:maxWidth="100dp"
-                android:textColor="@color/ic_launcher_background"
+                android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/empty_directory_hint"
                 android:textSize="18sp" />
 
@@ -111,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textColor="@android:color/background_light"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="@string/tw_cadastrese"
                 android:textAlignment="center"
                 android:textSize="14sp" />

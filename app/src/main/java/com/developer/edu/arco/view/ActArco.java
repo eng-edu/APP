@@ -49,6 +49,8 @@ public class ActArco extends AppCompatActivity {
         final String ARCO_ID = getIntent().getStringExtra("ARCO_ID");
         String NOME = getIntent().getStringExtra("NOME");
         String COMPARTILHADO = getIntent().getStringExtra("COMPARTILHADO");
+        final String ID_CRIADOR = getIntent().getStringExtra("ID_CRIADOR");
+
 
         ActionBar bar = getSupportActionBar();
         bar.setTitle(NOME);
@@ -63,7 +65,6 @@ public class ActArco extends AppCompatActivity {
             s.setText("Não compartilhado");
         }
 
-        final String ID_CRIADOR = getIntent().getStringExtra("ID_CRIADOR");
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
 
@@ -103,7 +104,11 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "OBSERVAÇÃO DA REALIDADE");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
+                intent.putExtra("COMPARTILHADO", getIntent().getStringExtra("COMPARTILHADO"));
+                intent.putExtra("NOME", getIntent().getStringExtra("NOME"));
+                intent.putExtra("ID_CRIADOR", getIntent().getStringExtra("ID_CRIADOR"));
                 startActivity(intent);
+                finish();
 
 
             }
@@ -118,7 +123,11 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "PONTOS CHAVES");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
+                intent.putExtra("COMPARTILHADO", getIntent().getStringExtra("COMPARTILHADO"));
+                intent.putExtra("NOME", getIntent().getStringExtra("NOME"));
+                intent.putExtra("ID_CRIADOR", getIntent().getStringExtra("ID_CRIADOR"));
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -132,7 +141,11 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "TEORIZAÇÃO");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
+                intent.putExtra("COMPARTILHADO", getIntent().getStringExtra("COMPARTILHADO"));
+                intent.putExtra("NOME", getIntent().getStringExtra("NOME"));
+                intent.putExtra("ID_CRIADOR", getIntent().getStringExtra("ID_CRIADOR"));
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -146,7 +159,11 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "HIPÓTESES DE SOLUÇÃO");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
+                intent.putExtra("COMPARTILHADO", getIntent().getStringExtra("COMPARTILHADO"));
+                intent.putExtra("NOME", getIntent().getStringExtra("NOME"));
+                intent.putExtra("ID_CRIADOR", getIntent().getStringExtra("ID_CRIADOR"));
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -160,7 +177,11 @@ public class ActArco extends AppCompatActivity {
                 intent.putExtra("ID_CRIADOR", ID_CRIADOR);
                 intent.putExtra("NOME_ETAPA", "APLICAÇÃO A REALIDADE");
                 intent.putExtra("ACESSO_RESTRITO", getIntent().getStringExtra("ACESSO_RESTRITO"));
+                intent.putExtra("COMPARTILHADO", getIntent().getStringExtra("COMPARTILHADO"));
+                intent.putExtra("NOME", getIntent().getStringExtra("NOME"));
+                intent.putExtra("ID_CRIADOR", getIntent().getStringExtra("ID_CRIADOR"));
                 startActivity(intent);
+                finish();
 
             }
         });

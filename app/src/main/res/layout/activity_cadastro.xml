@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ActCadastro"
-    android:background="@drawable/gradiente">
+    tools:context=".view.ActCadastro">
 
         <LinearLayout
 
@@ -24,12 +23,12 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:textColor="@android:color/background_light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Foto de perfil"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary" />
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/image_perfil"
@@ -57,14 +56,14 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="@string/radio_discente"
-                    android:textColor="@color/ic_launcher_background" />
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <RadioButton
                     android:id="@+id/radio_cadastro_docente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/radio_docente"
-                    android:textColor="@color/ic_launcher_background" />
+                    android:textColor="@color/colorPrimaryDark" />
             </RadioGroup>
 
             <EditText
@@ -75,7 +74,7 @@
                 android:ems="10"
                 android:hint="@string/ed_hint_nome"
                 android:inputType="textPersonName"
-                android:textColor="@color/ic_launcher_background"
+                android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/empty_directory_hint"
                 android:textSize="18sp" />
 
@@ -87,7 +86,7 @@
                 android:ems="10"
                 android:hint="@string/ed_hint_instituicao"
                 android:inputType="textPersonName"
-                android:textColor="@color/ic_launcher_background"
+                android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/empty_directory_hint"
                 android:textSize="18sp" />
 
@@ -99,7 +98,7 @@
                 android:ems="10"
                 android:hint="@string/ed_hint_email"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/ic_launcher_background"
+                android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/empty_directory_hint"
                 android:textSize="18sp" />
 
@@ -111,7 +110,7 @@
                 android:ems="10"
                 android:hint="@string/ed_hint_senha"
                 android:inputType="textPassword"
-                android:textColor="@color/ic_launcher_background"
+                android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/empty_directory_hint"
                 android:textSize="18sp" />
 

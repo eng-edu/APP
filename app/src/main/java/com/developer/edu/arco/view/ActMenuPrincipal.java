@@ -69,17 +69,8 @@ public class ActMenuPrincipal extends AppCompatActivity {
 
 
         if (result.equals("docente")) {
-
             textView3.setText(FORM);
-
-            //mudar o icoone
-            // novo_solic.setText("Solicitações de orientação");
-
-
-
         }
-
-        //pensa na logica de como chamr o novo arco... //pegar por shraedpreferences...
 
         novo_solic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,9 +115,6 @@ public class ActMenuPrincipal extends AppCompatActivity {
         arcos_compartilhados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-        //        Toast.makeText(v.getContext(), "RECURSO EM DESENVOLVIMENTO!", Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent(ActMenuPrincipal.this, ActArco.class);
                 intent.putExtra("ACESSO_RESTRITO", "S");
                 controllerArco.buscarArcosCompartilhados(ActMenuPrincipal.this, inflater, intent);
@@ -138,7 +126,6 @@ public class ActMenuPrincipal extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_main, menu);
         return true;
@@ -152,11 +139,8 @@ public class ActMenuPrincipal extends AppCompatActivity {
             new ControllerLogin().logout(this);
         }
 
-
         if (item.getItemId() == R.id.info) {
-
             startActivity(new Intent(ActMenuPrincipal.this, ActInfo.class));
-
         }
 
         return super.onOptionsItemSelected(item);

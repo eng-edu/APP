@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,10 @@ public class ActNovoArco extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_arco);
 
+
+        ActionBar bar = getSupportActionBar();
+        bar.setTitle("NOVO ARCO");
+
         final EditText titulo = (EditText) findViewById(R.id.ed_novoarco_titulo);
         final EditText nomegrpo = (EditText) findViewById(R.id.ed_novoarco_grupo);
         final EditText orientador = (EditText) findViewById(R.id.ed_novoarco_orientador);
@@ -49,7 +54,7 @@ public class ActNovoArco extends AppCompatActivity {
         arrayAdapter.notifyDataSetChanged();
 
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
-        final String result = sharedPreferences.getString(String.valueOf(R.string.ID), "");
+        final String id_logado = sharedPreferences.getString(String.valueOf(R.string.ID), "");
 
 
         final ControllerArco controllerArco = new ControllerArco();
@@ -66,7 +71,7 @@ public class ActNovoArco extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 discentes.clear();
-                controllerArco.selecionarDiscente(ActNovoArco.this, result, inflater, listaDiscentes, arrayAdapter);
+                controllerArco.selecionarDiscente(ActNovoArco.this, id_logado, inflater, listaDiscentes, arrayAdapter);
             }
         });
 
@@ -75,8 +80,7 @@ public class ActNovoArco extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-
-                    controllerArco.criarArco(ActNovoArco.this, titulo.getText().toString(), nomegrpo.getText().toString(), result, getDocente(), getDiscentes());
+                    controllerArco.criarArco(ActNovoArco.this, titulo.getText().toString(), nomegrpo.getText().toString(), id_logado, getDocente(), getDiscentes());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -90,10 +94,8 @@ public class ActNovoArco extends AppCompatActivity {
                 docente = null;
                 discentes.clear();
                 finish();
-
             }
         });
-
     }
 
 

@@ -34,9 +34,10 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
+                                      <entry key="cropped" value="true" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\User\Desktop\iconfinder_pdfs_774684.png" />
-                                      <entry key="outputName" value="ic_pdf" />
+                                      <entry key="imageAsset" value="C:\Users\User\Downloads\ADP 1280x766.png" />
+                                      <entry key="outputName" value="ic_nova_logo" />
                                     </map>
                                   </option>
                                 </PersistentState>

@@ -21,7 +21,7 @@ public class ControllerCadastro {
 
     public void cadastrar(final Context context, String nome, String form_inst, final String email, final String senha, final boolean discente, final boolean docente, String pathfoto) {
 
-        String result = "S3MS3NH4";
+        String chaveAPI = "S3MS3NH4";
 
         final ProgressDialog dialog = new ProgressDialog(context);
         dialog.setTitle("Aguarde...");
@@ -43,11 +43,11 @@ public class ControllerCadastro {
 
 
             if (docente) {
-                stringCall = ConfigRetrofit.getService().cadastarDocente(result, nome, form_inst, email, senha, fileToUpload, filename);
+                stringCall = ConfigRetrofit.getService().cadastarDocente(chaveAPI, nome, form_inst, email, senha, fileToUpload, filename);
             }
 
             if (discente) {
-                stringCall = ConfigRetrofit.getService().cadastarDiscente(result, nome, form_inst, email, senha, fileToUpload, filename);
+                stringCall = ConfigRetrofit.getService().cadastarDiscente(chaveAPI, nome, form_inst, email, senha, fileToUpload, filename);
             }
 
             stringCall.enqueue(new Callback<String>() {
@@ -58,20 +58,20 @@ public class ControllerCadastro {
                         new ControllerLogin().logar(context, email, senha, discente, docente);
                         dialog.dismiss();
                     } else if (response.code() == 405) {
-                        Toast.makeText(context, response.body(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, t.getMessage(),Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
             });
 
         } else {
-            Toast.makeText(context, "Preencha todos os campos!", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         }
 

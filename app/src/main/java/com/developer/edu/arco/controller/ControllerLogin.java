@@ -93,7 +93,7 @@ public class ControllerLogin {
                         }
 
                         dialog.dismiss();
-                        Toast.makeText(context, "ActLogin realizado com sucesso!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "ActLogin realizado com sucesso!", Toast.LENGTH_SHORT).show();
 
                         Intent mudarParaMain = new Intent(context, ActMenuPrincipal.class);
                         context.startActivity(mudarParaMain);
@@ -102,27 +102,27 @@ public class ControllerLogin {
 
                     } else if (response.code() == 203) {
                         dialog.dismiss();
-                        Toast.makeText(context, response.body(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
                     dialog.dismiss();
-                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
 
         } else {
-            Toast.makeText(context, "Preencha todos os campos!", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
         }
 
 
     }
 
     public void logout(Context context) {
-        Toast.makeText(context, "Saindo...", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Saindo...", Toast.LENGTH_SHORT).show();
         SharedPreferences.Editor editor = context.getSharedPreferences(String.valueOf(R.string.preference_config), MODE_PRIVATE).edit();
         editor.clear();
         editor.apply();

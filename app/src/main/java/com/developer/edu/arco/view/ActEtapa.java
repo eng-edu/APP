@@ -37,7 +37,8 @@ public class ActEtapa extends AppCompatActivity {
         final String NOME_ETAPA = intent.getStringExtra("NOME_ETAPA");
         final String ID_CRIADOR = intent.getStringExtra("ID_CRIADOR");
         final String ACESSO_RESTRITO = intent.getStringExtra("ACESSO_RESTRITO");
-
+        final String COMPARTILHADO = intent.getStringExtra("COMPARTILHADO");
+        final String NOME = getIntent().getStringExtra("NOME");
 
         ActionBar bar = getSupportActionBar();
         bar.setTitle(NOME_ETAPA);
@@ -84,12 +85,12 @@ public class ActEtapa extends AppCompatActivity {
                     int prox = Integer.parseInt(modelEtapa.getID()) + 1;
 
             //        if (UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
-                        controllerEtapa.aprovarEtapa(ActEtapa.this, modelEtapa.getID(), String.valueOf(prox), ARCO_ID);
+                        controllerEtapa.aprovarEtapa(ActEtapa.this, modelEtapa.getID(), String.valueOf(prox), ARCO_ID, NOME, COMPARTILHADO, ID_CRIADOR);
 
                 } else if (result.equals("discente")) {
 
               //      if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
-                        controllerEtapa.submeterEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString());
+                        controllerEtapa.submeterEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString(), ARCO_ID, NOME, COMPARTILHADO, ID_CRIADOR);
 
                 }
 
@@ -103,12 +104,12 @@ public class ActEtapa extends AppCompatActivity {
                 if (result.equals("docente")) {
 
               //      if (UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
-                        controllerEtapa.reprovarEtapa(ActEtapa.this, modelEtapa.getID());
+                        controllerEtapa.reprovarEtapa(ActEtapa.this, modelEtapa.getID(), ARCO_ID, NOME, COMPARTILHADO, ID_CRIADOR);
 
                 } else if (result.equals("discente")) {
 
                //     if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
-                        controllerEtapa.salvarEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString());
+                        controllerEtapa.salvarEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString(), ARCO_ID, NOME, COMPARTILHADO, ID_CRIADOR);
 
 
                 }
