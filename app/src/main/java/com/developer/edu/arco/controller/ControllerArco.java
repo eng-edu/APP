@@ -508,7 +508,6 @@ public class ControllerArco {
     public void definirIconeEcliclavel(JSONObject object, Context context, Button ed, String tipo_login, String restrito) throws JSONException {
         Drawable ic = null;
 
-        int opc = 100;
 
         if (restrito.equalsIgnoreCase("S")) {
 
@@ -521,19 +520,19 @@ public class ControllerArco {
                 } else if (object.getString("STATUS").equals("2")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("3")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("4")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("5")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 }
 
                 ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
@@ -549,19 +548,19 @@ public class ControllerArco {
                 } else if (object.getString("STATUS").equals("2")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("3")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("4")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("5")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 }
 
                 ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
@@ -581,19 +580,19 @@ public class ControllerArco {
                 } else if (object.getString("STATUS").equals("2")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("3")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
                     ed.setEnabled(true);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("4")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
                     ed.setEnabled(true);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("5")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 }
 
                 ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
@@ -615,11 +614,11 @@ public class ControllerArco {
                 } else if (object.getString("STATUS").equals("4")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 } else if (object.getString("STATUS").equals("5")) {
                     ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
                     ed.setEnabled(false);
-                    ed.getBackground().setAlpha(opc);
+
                 }
 
                 ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());

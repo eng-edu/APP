@@ -100,7 +100,7 @@ public class ActArquivo extends AppCompatActivity {
 
         final FloatingActionButton novoarquivo = (FloatingActionButton) findViewById(R.id.btn_novo_arquivo);
 
-        if(tipo_login.equals("docente")){
+        if(tipo_login.equals("docente") || getIntent().getStringExtra("ACESSO_RESTRITO").equals("S")){
             novoarquivo.hide();
         }
 
