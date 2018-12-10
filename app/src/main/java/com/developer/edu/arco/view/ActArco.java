@@ -15,7 +15,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.developer.edu.arco.R;
+import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.controller.ControllerArco;
+import com.developer.edu.arco.util.SocketStatic;
 import com.developer.edu.arco.util.UtilArco;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
@@ -29,8 +31,12 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
 
 public class ActArco extends AppCompatActivity {
 
@@ -40,11 +46,19 @@ public class ActArco extends AppCompatActivity {
     Button e3;
     Button e4;
     Button e5;
+    public Socket socket = IO.socket(ConfigRetrofit.URL_BASE);
+
+    public ActArco() throws URISyntaxException {
+        socket.connect();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arco);
+
+        SocketStatic.setSocket(socket);
+
 
         final String ARCO_ID = getIntent().getStringExtra("ARCO_ID");
         String NOME = getIntent().getStringExtra("NOME");
@@ -229,7 +243,7 @@ public class ActArco extends AppCompatActivity {
             }
 
         } else if (item.getItemId() == R.id.msg) {
-
+            startActivity(new Intent(getApplicationContext(), ActMsg.class).putExtra("ARCO_ID", ARCO_ID));
         }
         return super.onOptionsItemSelected(item);
     }
