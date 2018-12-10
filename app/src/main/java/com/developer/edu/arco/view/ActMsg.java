@@ -3,6 +3,7 @@ package com.developer.edu.arco.view;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,10 @@ import com.developer.edu.arco.controller.ControllerMsg;
 import com.developer.edu.arco.model.Mensagem;
 import com.developer.edu.arco.util.SocketStatic;
 import com.developer.edu.arco.view.adapter.AdapterMsg;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
@@ -39,12 +44,13 @@ public class ActMsg extends AppCompatActivity {
     public ListView listMSG;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_msg);
+
+        ActionBar bar = getSupportActionBar();
+        bar.setTitle("MENSAGEM");
 
         socket = SocketStatic.getSocket();
 
@@ -53,6 +59,9 @@ public class ActMsg extends AppCompatActivity {
         sendMSG = (Button) findViewById(R.id.send_msg);
         msg = (EditText) findViewById(R.id.msg);
         listMSG = (ListView) findViewById(R.id.mensagens);
+
+        listMSG.setAdapter(arrayAdapter);
+        listMSG.setDivider(null);
 
         final String ARCO_ID = getIntent().getStringExtra("ARCO_ID");
 
@@ -67,7 +76,34 @@ public class ActMsg extends AppCompatActivity {
                     public void run() {
                         String s = args[0].toString();
 
-                        Toast.makeText(getApplicationContext(), "chegou!",  Toast.LENGTH_SHORT).show();
+
+                        try {
+                            JSONArray array = new JSONArray(s);
+
+                            int sizeArray = array.length();
+
+                            arrayAdapter.clear();
+
+                            for (int i = 0; i < sizeArray; i++) {
+
+                                JSONObject object = array.getJSONObject(i);
+
+                                Mensagem mensagem = new Mensagem();
+                                mensagem.setARCO_ID(object.getString("ARCO_ID"));
+                                mensagem.setID(object.getString("ID"));
+                                mensagem.setDATA(object.getString("DATA"));
+                                mensagem.setID_AUTOR(object.getString("ID_AUTOR"));
+                                mensagem.setNOME_AUTOR(object.getString("NOME_AUTOR"));
+                                mensagem.setTEXTO(object.getString("TEXTO"));
+
+                                arrayAdapter.add(mensagem);
+                                arrayAdapter.notifyDataSetChanged();
+                                listMSG.smoothScrollToPosition(arrayAdapter.getCount() - 1);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                     }
                 });
