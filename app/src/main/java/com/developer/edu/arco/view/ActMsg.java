@@ -67,6 +67,8 @@ public class ActMsg extends AppCompatActivity {
                     public void run() {
                         String s = args[0].toString();
 
+                        Toast.makeText(getApplicationContext(), "chegou!",  Toast.LENGTH_SHORT).show();
+
                     }
                 });
             }
