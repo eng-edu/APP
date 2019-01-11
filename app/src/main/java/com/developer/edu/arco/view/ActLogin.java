@@ -33,7 +33,6 @@ public class ActLogin extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");
 
-
         //verifica se o usuario já está logado
         if (result.length() > 0) {
             Intent mudarParaMain = new Intent(getApplicationContext(), ActMenuPrincipal.class);
@@ -43,8 +42,8 @@ public class ActLogin extends AppCompatActivity {
 
         final EditText email = (EditText) findViewById(R.id.editText_login_email);
         final EditText senha = (EditText) findViewById(R.id.editText_login_senha);
-        Button entar = (Button) findViewById(R.id.button_login_entrar);
-        TextView cadastrese = (TextView) findViewById(R.id.textView_login_cadastrese);
+        final Button entar = (Button) findViewById(R.id.button_login_entrar);
+        final TextView cadastrese = (TextView) findViewById(R.id.textView_login_cadastrese);
         final RadioButton discente = (RadioButton) findViewById(R.id.radio_discente);
         final RadioButton docente = (RadioButton) findViewById(R.id.radio_docente);
 
@@ -65,7 +64,6 @@ public class ActLogin extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_login, menu);
         return true;
@@ -78,7 +76,6 @@ public class ActLogin extends AppCompatActivity {
         if (item.getItemId() == R.id.info_login) {
             startActivity(new Intent(ActLogin.this, ActInfo.class).putExtra("login_info", "S"));
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

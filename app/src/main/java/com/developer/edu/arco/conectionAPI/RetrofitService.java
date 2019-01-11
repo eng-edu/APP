@@ -16,7 +16,6 @@ import retrofit2.http.Path;
 public interface RetrofitService {
 
     //login--------------------------------------------------------------------
-
     @GET("/loginDocente/{EMAIL}/{SENHA}")
     Call<String> logarDocente(@Path("EMAIL") String EMAIL,
                               @Path("SENHA") String SENHA);
@@ -25,11 +24,10 @@ public interface RetrofitService {
     Call<String> logarDiscente(@Path("EMAIL") String EMAIL,
                                @Path("SENHA") String SENHA);
 
-
     //user-----------------------------------------------------------------------
 
     @Multipart
-    @POST("discente/{NOME}/{INSTITUICAO}/{EMAIL}/{SENHA}")
+    @POST("discente/inserir/{NOME}/{INSTITUICAO}/{EMAIL}/{SENHA}")
     Call<String> cadastarDiscente(@Header("token") String TOKIENAPI,
                                   @Path("NOME") String NOME,
                                   @Path("INSTITUICAO") String INSTITUICAO,
@@ -39,7 +37,7 @@ public interface RetrofitService {
                                   @Part("file") RequestBody name);
 
     @Multipart
-    @POST("docente/{NOME}/{FORMACAO}/{EMAIL}/{SENHA}")
+    @POST("docente/inserir/{NOME}/{FORMACAO}/{EMAIL}/{SENHA}")
     Call<String> cadastarDocente(@Header("token") String TOKIENAPI,
                                  @Path("NOME") String NOME,
                                  @Path("FORMACAO") String FORMACAO,
@@ -48,10 +46,10 @@ public interface RetrofitService {
                                  @Part MultipartBody.Part file,
                                  @Part("file") RequestBody name);
 
-    @GET("docente/list")
+    @GET("docente/listar")
     Call<String> buscarTodosDocentes(@Header("token") String TOKIENAPI);
 
-    @GET("discente/list")
+    @GET("discente/listar")
     Call<String> buscarTodosDiscentes(@Header("token") String TOKIENAPI);
 
 

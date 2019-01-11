@@ -29,7 +29,7 @@ public class ControllerLogin {
     public void logar(final Context context, String email, String senha, final boolean discente, final boolean docente) {
 
 
-
+        //verifica se os dados estão preenchidos
         if (email.length() > 0 && senha.length() > 0) {
 
             if (docente) {
@@ -85,7 +85,7 @@ public class ControllerLogin {
                                 editor.putString(String.valueOf(R.string.EMAIL), object.getString("EMAIL"));
                                 editor.putString(String.valueOf(R.string.SENHA), object.getString("TOKENAPI"));
                                 editor.putString(String.valueOf(R.string.FOTO), object.getString("FOTO"));
-                               editor.apply();
+                                editor.apply();
                             }
 
                         } catch (JSONException e) {

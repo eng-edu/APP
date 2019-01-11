@@ -35,7 +35,6 @@ public class ControllerCadastro {
                 && senha.length() > 0
                 && pathfoto.length() > 0) {
 
-
             File file = new File(pathfoto);
             RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
             MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
@@ -65,7 +64,7 @@ public class ControllerCadastro {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    Toast.makeText(context, t.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
             });

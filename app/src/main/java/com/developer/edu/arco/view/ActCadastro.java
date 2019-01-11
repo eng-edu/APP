@@ -32,8 +32,8 @@ public class ActCadastro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-
-         if (ActivityCompat.checkSelfPermission(ActCadastro.this,
+        //verifica se tem permissão para acessar os armazenamento
+        if (ActivityCompat.checkSelfPermission(ActCadastro.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             //e caso ainda não tenha dado, ele solicita...
@@ -41,6 +41,7 @@ public class ActCadastro extends AppCompatActivity {
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
 
+        //dar nome a action bar
         ActionBar bar = getSupportActionBar();
         bar.setTitle("CADASTRO");
 
@@ -93,15 +94,14 @@ public class ActCadastro extends AppCompatActivity {
     }
 
     public void pegarImg(View view) {
-        Intent intent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(Intent.createChooser(intent, "Selecione uma imagem"), IMAGEM_INTERNA);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-
+        //define a path da foto
         if (requestCode == IMAGEM_INTERNA && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -117,7 +117,6 @@ public class ActCadastro extends AppCompatActivity {
             ImageView imageView = (ImageView) findViewById(R.id.image_perfil);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
             pathfoto = picturePath;
-
 
 
         }
