@@ -6,107 +6,114 @@
     android:layout_height="match_parent"
     tools:context=".view.ActLogin">
 
-        <LinearLayout
+    <LinearLayout
 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:fontFamily="casual"
+            android:text="ARCO DIDÁTICO DA PROBLEMATIZAÇÃO"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+
+        <EditText
+            android:id="@+id/editText_login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints"
-           >
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/ed_hint_email"
+            android:inputType="textEmailAddress"
+            android:maxWidth="100dp"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/empty_directory_hint"
+            android:textSize="18sp" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                app:srcCompat="@drawable/nova_logo" />
+        <EditText
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/groupLogin"
-                android:layout_margin="10dp"
+            android:id="@+id/editText_login_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/ed_hint_senha"
+            android:inputType="textPassword"
+            android:maxWidth="100dp"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/empty_directory_hint"
+            android:textSize="18sp" />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/groupLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_discente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:checked="true"
+                android:text="@string/radio_discente"
+                android:textColor="@color/colorPrimary" />
 
-                <RadioButton
-                    android:id="@+id/radio_discente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/radio_discente"
-                    android:textColor="@color/colorPrimary" />
-
-                <RadioButton
-                    android:id="@+id/radio_docente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/radio_docente"
-                    android:textColor="@color/colorPrimary" />
-            </RadioGroup>
-
-            <EditText
-                android:id="@+id/editText_login_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/ed_hint_email"
-                android:inputType="textEmailAddress"
-                android:maxWidth="100dp"
-                android:textColor="@color/colorPrimary"
-                android:textColorHint="@color/empty_directory_hint"
-                android:textSize="18sp" />
-
-            <EditText
-
-                android:id="@+id/editText_login_senha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/ed_hint_senha"
-                android:inputType="textPassword"
-                android:maxWidth="100dp"
-                android:textColor="@color/colorPrimary"
-                android:textColorHint="@color/empty_directory_hint"
-                android:textSize="18sp" />
-
-
-            <Button
-                android:id="@+id/button_login_entrar"
+            <RadioButton
+                android:id="@+id/radio_docente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:maxWidth="100dp"
-                android:text="@string/btn_entar"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
+                android:text="@string/radio_docente"
+                android:textColor="@color/colorPrimary" />
+        </RadioGroup>
 
-            <TextView
-                android:id="@+id/textView_login_cadastrese"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="@string/tw_cadastrese"
-                android:textAlignment="center"
-                android:textSize="14sp" />
+        <Button
+            android:id="@+id/button_login_entrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:maxWidth="100dp"
+            android:text="@string/btn_entar"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/textView_login_cadastrese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/tw_cadastrese"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 </ScrollView>

@@ -6,123 +6,138 @@
     android:layout_height="match_parent"
     tools:context=".view.ActCadastro">
 
-        <LinearLayout
+    <LinearLayout
 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Defina uma foto de perfil"
+            android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Foto de perfil"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimary" />
-
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/image_perfil"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:adjustViewBounds="false"
-                android:cropToPadding="false"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/ic_add"
-                app:civ_border_color="@android:color/background_light"
-                app:civ_border_width="2dp" />
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/image_perfil"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_add"
+            app:civ_border_color="@color/compatibility_focus_color"
+            app:civ_border_width="2dp" />
 
 
-            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/groupCadastro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+        <EditText
+            android:id="@+id/editText_cadastro_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/ed_hint_nome"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/empty_directory_hint"
+            android:textSize="18sp" />
 
-                <RadioButton
-                    android:id="@+id/radio_cadastro_discente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/radio_discente"
-                    android:textColor="@color/colorPrimaryDark" />
+        <EditText
+            android:id="@+id/editText_cadastro_formacao_instituicao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/ed_hint_instituicao"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/empty_directory_hint"
+            android:textSize="18sp" />
 
-                <RadioButton
-                    android:id="@+id/radio_cadastro_docente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/radio_docente"
-                    android:textColor="@color/colorPrimaryDark" />
-            </RadioGroup>
+        <EditText
+            android:id="@+id/editText_cadastro_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/ed_hint_email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/empty_directory_hint"
+            android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/editText_cadastro_nome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/ed_hint_nome"
-                android:inputType="textPersonName"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/empty_directory_hint"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/editText_cadastro_formacao_instituicao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/ed_hint_instituicao"
-                android:inputType="textPersonName"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/empty_directory_hint"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/editText_cadastro_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/ed_hint_email"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/empty_directory_hint"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/editText_cadastro_senha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="@string/ed_hint_senha"
-                android:inputType="textPassword"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/empty_directory_hint"
-                android:textSize="18sp" />
+        <EditText
+            android:id="@+id/editText_cadastro_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/ed_hint_senha"
+            android:inputType="textPassword"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/empty_directory_hint"
+            android:textSize="18sp" />
 
 
-            <Button
-                android:id="@+id/button_cadastro_cadastrar"
-                android:layout_gravity="center"
+        <RadioGroup
+            android:id="@+id/groupCadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <RadioButton
+
+                android:id="@+id/radio_cadastro_discente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_cadastrar"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
+                android:checked="true"
+                android:text="@string/radio_discente"
+                android:textColor="@color/colorPrimaryDark" />
 
-        </LinearLayout>
+            <RadioButton
+                android:id="@+id/radio_cadastro_docente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_docente"
+                android:textColor="@color/colorPrimaryDark" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_cadastro_cadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/btn_cadastrar"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 </ScrollView>
