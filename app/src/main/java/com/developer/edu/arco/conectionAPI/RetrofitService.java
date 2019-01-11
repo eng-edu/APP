@@ -53,6 +53,14 @@ public interface RetrofitService {
     Call<String> buscarTodosDiscentes(@Header("token") String TOKIENAPI);
 
 
+    @GET("/docente/buscarSolicitacoes")
+    Call<String> buscarSolicitacoes(@Header("token") String TOKIENAPI);
+
+    @PUT("/docente/aceitarSolicitacao/{ID}/{ARCO_ID}")
+    Call<String> aceitarSolicao(@Header("token") String TOKIENAPI,
+                                @Path("ID") String id,
+                                @Path("ARCO_ID") String arco_id);
+
     //ARCO ------------------------------------------------------------------------------------------------
 
     @POST("arco/novoArco/{JSON}")
@@ -81,13 +89,6 @@ public interface RetrofitService {
     Call<String> buscarMeusArcosDocente(@Header("token") String TOKIENAPI,
                                         @Path("DOCENTE_ID") String DOCENTE_ID);
 
-    @GET("/arco/buscarSolicitacoes")
-    Call<String> buscarSolicitacoes(@Header("token") String TOKIENAPI);
-
-    @PUT("/arco/aceitarSolicitacao/{ID}/{ARCO_ID}")
-    Call<String> aceitarSolicao(@Header("token") String TOKIENAPI,
-                                @Path("ID") String id,
-                                @Path("ARCO_ID") String arco_id);
 
 //ETAPA ---------------------------------------------------------------
 
