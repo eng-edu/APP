@@ -1,5 +1,6 @@
 package com.developer.edu.arco.controller;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -7,8 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -500,67 +499,65 @@ public class ControllerArco {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     public void definirIconeEcliclavel(JSONObject object, Context context, Button ed, String tipo_login, String restrito) throws JSONException {
-        Drawable ic = null;
+
+        int verde = context.getResources().getColor(R.color.verde);
+        int azul = context.getResources().getColor(R.color.azul);
+        int amarelo = context.getResources().getColor(R.color.amarelo);
+        int vermelho = context.getResources().getColor(R.color.vermelho);
+        int cinza = context.getResources().getColor(R.color.cinza);
 
 
         if (restrito.equalsIgnoreCase("S")) {
 
-
             if (tipo_login.equalsIgnoreCase("discente")) {
                 //verifico o status e chamo o icone e se o botão é clicavel
                 if (object.getString("STATUS").equals("1")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
+                    ed.setBackgroundColor(verde);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("2")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
+                    ed.setBackgroundColor(amarelo);
                     ed.setEnabled(false);
 
                 } else if (object.getString("STATUS").equals("3")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
+                    ed.setBackgroundColor(vermelho);
                     ed.setEnabled(false);
 
                 } else if (object.getString("STATUS").equals("4")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
+                    ed.setBackgroundColor(azul);
                     ed.setEnabled(false);
 
                 } else if (object.getString("STATUS").equals("5")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
+                    ed.setBackgroundColor(cinza);
                     ed.setEnabled(false);
 
                 }
 
-                ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
-
-                ed.setCompoundDrawables(null, null, ic, null);
 
             } else if (tipo_login.equalsIgnoreCase("docente")) {
 
                 //verifico o status e chamo o icone e se o botão é clicavel
                 if (object.getString("STATUS").equals("1")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
+                    ed.setBackgroundColor(verde);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("2")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
+                    ed.setBackgroundColor(amarelo);
                     ed.setEnabled(false);
 
                 } else if (object.getString("STATUS").equals("3")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
+                    ed.setBackgroundColor(vermelho);
                     ed.setEnabled(false);
 
                 } else if (object.getString("STATUS").equals("4")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
+                    ed.setBackgroundColor(azul);
                     ed.setEnabled(false);
 
                 } else if (object.getString("STATUS").equals("5")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
+                    ed.setBackgroundColor(cinza);
                     ed.setEnabled(false);
 
                 }
-
-                ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
-
-                ed.setCompoundDrawables(null, null, ic, null);
 
 
             }
@@ -570,55 +567,48 @@ public class ControllerArco {
             if (tipo_login.equalsIgnoreCase("discente")) {
                 //verifico o status e chamo o icone e se o botão é clicavel
                 if (object.getString("STATUS").equals("1")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
+                    ed.setBackgroundColor(verde);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("2")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
+                    ed.setBackgroundColor(amarelo);
                     ed.setEnabled(false);
 
                 } else if (object.getString("STATUS").equals("3")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
+                    ed.setBackgroundColor(vermelho);
                     ed.setEnabled(true);
 
                 } else if (object.getString("STATUS").equals("4")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
+                    ed.setBackgroundColor(azul);
                     ed.setEnabled(true);
 
                 } else if (object.getString("STATUS").equals("5")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
+                    ed.setBackgroundColor(cinza);
                     ed.setEnabled(false);
 
                 }
 
-                ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
-
-                ed.setCompoundDrawables(null, null, ic, null);
 
             } else if (tipo_login.equalsIgnoreCase("docente")) {
 
                 //verifico o status e chamo o icone e se o botão é clicavel
                 if (object.getString("STATUS").equals("1")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado);
+                    ed.setBackgroundColor(verde);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("2")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aguardando);
+                    ed.setBackgroundColor(amarelo);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("3")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_reprovado);
+                    ed.setBackgroundColor(vermelho);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("4")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_aprovado_edicao);
+                    ed.setBackgroundColor(azul);
                     ed.setEnabled(false);
 
                 } else if (object.getString("STATUS").equals("5")) {
-                    ic = context.getResources().getDrawable(R.mipmap.ic_bloqueado);
+                    ed.setBackgroundColor(cinza);
                     ed.setEnabled(false);
 
                 }
-
-                ic.setBounds(0, 0, ic.getMinimumWidth(), ic.getMinimumHeight());
-
-                ed.setCompoundDrawables(null, null, ic, null);
 
 
             }
