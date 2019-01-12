@@ -408,11 +408,7 @@ public class ControllerArco {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Arco arco = arrayAdapter.getItem(position);
-
-                arco.toString();
-
                 //abrir a activity que tem as etapas dos arcos
-
                 intent.putExtra("ARCO_ID", arco.getID());
                 intent.putExtra("NOME", arco.getNOME());
                 intent.putExtra("STATUS", arco.getSTATUS());
@@ -420,6 +416,7 @@ public class ControllerArco {
                 intent.putExtra("ID_CRIADOR", arco.getID_CRIADOR());
                 context.startActivity(intent);
                 alert[0].dismiss();
+
             }
         });
 
@@ -434,9 +431,7 @@ public class ControllerArco {
         dialog.setCancelable(false);
         dialog.show();
 
-
         final EtapaDAO etapaDAO = new EtapaDAO();
-
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.TOKENAPI), "");

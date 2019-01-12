@@ -5,11 +5,6 @@
     android:layout_height="fill_parent"
     tools:context=".view.ActNovoArco">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-
         <LinearLayout
 
             android:id="@+id/linearLayout"
@@ -28,7 +23,7 @@
 
             <EditText
                 android:id="@+id/ed_novoarco_titulo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:hint="@string/ed_hint_tituloarco"
@@ -38,7 +33,7 @@
 
             <EditText
                 android:id="@+id/ed_novoarco_grupo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:hint="@string/ed_hint_nomegrupo"
@@ -48,11 +43,9 @@
             <EditText
                 android:editable="false"
                 android:id="@+id/ed_novoarco_orientador"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:hint="@string/ed_hint_orientador"
-                android:minWidth="300dp"
                 android:textSize="12sp" />
 
             <TextView
@@ -74,61 +67,31 @@
 
             </ListView>
 
+            <android.support.design.widget.FloatingActionButton
+                android:layout_marginTop="-50dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/float_novoarco_novoDiscente"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_novoarco_cancelar"
+                android:text="@string/btn_cancelar"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <Button
+                android:id="@+id/btn_novoarco_criar"
+                android:text="@string/btn_criar"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
         </LinearLayout>
 
-
-        <Button
-            android:id="@+id/btn_novoarco_cancelar"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="8dp"
-            android:background="#64b5f6"
-            android:gravity="center"
-            android:maxWidth="60dp"
-            android:text="@string/btn_cancelar"
-            android:textAlignment="center"
-            android:textColor="@color/ic_launcher_background"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btn_novoarco_criar"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="#0d47a1"
-            android:gravity="center"
-            android:text="@string/btn_criar"
-            android:textAlignment="center"
-            android:textColor="@color/ic_launcher_background"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/float_novoarco_novoDiscente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:src="@android:drawable/ic_menu_add"
-            app:fabSize="mini"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout" />
-
-    </android.support.constraint.ConstraintLayout>
 </ScrollView>

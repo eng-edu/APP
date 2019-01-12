@@ -35,7 +35,6 @@ public class ActNovoArco extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_arco);
 
-
         ActionBar bar = getSupportActionBar();
         bar.setTitle("NOVO ARCO");
 
@@ -43,9 +42,9 @@ public class ActNovoArco extends AppCompatActivity {
         final EditText nomegrpo = (EditText) findViewById(R.id.ed_novoarco_grupo);
         final EditText orientador = (EditText) findViewById(R.id.ed_novoarco_orientador);
         final ListView listaDiscentes = (ListView) findViewById(R.id.list_novoarco_discentes);
-        FloatingActionButton novoDiscente = (FloatingActionButton) findViewById(R.id.float_novoarco_novoDiscente);
-        Button criar = (Button) findViewById(R.id.btn_novoarco_criar);
-        Button cancelar = (Button) findViewById(R.id.btn_novoarco_cancelar);
+        final FloatingActionButton novoDiscente = (FloatingActionButton) findViewById(R.id.float_novoarco_novoDiscente);
+        final Button criar = (Button) findViewById(R.id.btn_novoarco_criar);
+        final Button cancelar = (Button) findViewById(R.id.btn_novoarco_cancelar);
         final ArrayAdapter<Discente> arrayAdapter = new Adapterdiscente2(ActNovoArco.this, new ArrayList<Discente>());
 
         arrayAdapter.clear();
@@ -55,14 +54,12 @@ public class ActNovoArco extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String id_logado = sharedPreferences.getString(String.valueOf(R.string.ID), "");
-
-
         final ControllerArco controllerArco = new ControllerArco();
         final LayoutInflater inflater = getLayoutInflater();
+
         orientador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 controllerArco.selecionarDocente(ActNovoArco.this, inflater, orientador);
             }
         });
@@ -78,7 +75,6 @@ public class ActNovoArco extends AppCompatActivity {
         criar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 try {
                     controllerArco.criarArco(ActNovoArco.this, titulo.getText().toString(), nomegrpo.getText().toString(), id_logado, getDocente(), getDiscentes());
                 } catch (JSONException e) {
@@ -102,7 +98,6 @@ public class ActNovoArco extends AppCompatActivity {
     public static List<Discente> getDiscentes() {
         return discentes;
     }
-
 
     public static int verificarSize(Context context) {
         return discentes.size();

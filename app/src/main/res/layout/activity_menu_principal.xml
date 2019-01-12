@@ -86,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/colorPrimaryDark" />
 
             <Button
                 android:id="@+id/btn_principal_meusarcos"
@@ -94,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="@string/btn_principal_meusarcos" />
+                android:text="@string/btn_principal_meusarcos"
+                android:textColor="@color/colorPrimaryDark" />
 
             <Button
                 android:id="@+id/btn_principal_arcoscompartilhados"
@@ -102,7 +104,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="@string/btn_principal_arcoscompartilhados" />
+                android:text="@string/btn_principal_arcoscompartilhados"
+                android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
 
