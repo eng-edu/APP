@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,10 +37,10 @@ public class ActMenuPrincipal extends AppCompatActivity {
         final ControllerArco controllerArco = new ControllerArco();
         final LayoutInflater inflater = getLayoutInflater();
 
-        ImageView foto = (ImageView) findViewById(R.id.image_perfil_menu) ;
-        FloatingActionButton novo_solic = (FloatingActionButton) findViewById(R.id.btn_principal_novoarco_solicitacoes);
-        FloatingActionButton meus_arcos = (FloatingActionButton) findViewById(R.id.btn_principal_meusarcos);
-        FloatingActionButton arcos_compartilhados = (FloatingActionButton) findViewById(R.id.btn_principal_arcoscompartilhados);
+        ImageView foto = (ImageView) findViewById(R.id.image_perfil_menu);
+        Button novo_solic = (Button) findViewById(R.id.btn_principal_novoarco_solicitacoes);
+        Button meus_arcos = (Button) findViewById(R.id.btn_principal_meusarcos);
+        Button arcos_compartilhados = (Button) findViewById(R.id.btn_principal_arcoscompartilhados);
 
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
@@ -54,24 +55,22 @@ public class ActMenuPrincipal extends AppCompatActivity {
 
         String mfoto = FOTO.replace("./uploads/", "");
 
-        Picasso.get().load(URL_BASE+"/IMG/"+mfoto).into(foto);
-
-
+        Picasso.get().load(URL_BASE + "/IMG/" + mfoto).into(foto);
 
         TextView textView1 = (TextView) findViewById(R.id.text1);
         TextView textView2 = (TextView) findViewById(R.id.text2);
         TextView textView3 = (TextView) findViewById(R.id.text3);
 
-
         textView1.setText(NOME);
         textView2.setText(INST);
         textView3.setText(EMAIL);
 
-
         if (result.equals("docente")) {
+            novo_solic.setText(R.string.btn_principal_solicitacoes);
             textView3.setText(FORM);
+        } else {
+            novo_solic.setText(R.string.btn_principal_novo_arco);
         }
-
         novo_solic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +106,6 @@ public class ActMenuPrincipal extends AppCompatActivity {
                     }
 
                 }
-
 
             }
         });

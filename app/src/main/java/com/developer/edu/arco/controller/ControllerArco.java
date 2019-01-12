@@ -371,9 +371,9 @@ public class ControllerArco {
 
 
                         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                        builder.setTitle("SELECIONAR O ARCO");
+                        builder.setTitle("Meus arcos");
                         builder.setView(view);
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton("sair", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -687,9 +687,9 @@ public class ControllerArco {
 
 
                         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                        builder.setTitle("SELECIONAR O ARCO");
+                        builder.setTitle("Arcos compartilhados");
                         builder.setView(view);
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton("sair", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                             }
@@ -863,9 +863,9 @@ public class ControllerArco {
 
 
                         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                        builder.setTitle("SELECIONAR O ARCO");
+                        builder.setTitle("Meus arcos");
                         builder.setView(view);
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton("sair", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                             }
@@ -979,7 +979,6 @@ public class ControllerArco {
                         });
                         alert[0] = builder.create();
                         alert[0].show();
-
 
 
                     } catch (JSONException e) {

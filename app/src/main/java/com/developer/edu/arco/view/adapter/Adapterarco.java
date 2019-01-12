@@ -7,20 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.model.Arco;
-import com.developer.edu.arco.model.Discente;
-import com.developer.edu.arco.view.ActNovoArco;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import static com.developer.edu.arco.conectionAPI.ConfigRetrofit.URL_BASE;
 
 public class Adapterarco extends ArrayAdapter<Arco> {
 
@@ -28,7 +20,7 @@ public class Adapterarco extends ArrayAdapter<Arco> {
     private List<Arco> arcos;
 
     public Adapterarco(Context context, List<Arco> arcos) {
-        super(context, R.layout.adaoter_arco, arcos);
+        super(context, R.layout.adapter_arco, arcos);
         this.context = context;
         this.arcos = arcos;
 
@@ -38,8 +30,7 @@ public class Adapterarco extends ArrayAdapter<Arco> {
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View view = inflater.inflate(R.layout.adaoter_arco, parent, false);
-
+        final View view = inflater.inflate(R.layout.adapter_arco, parent, false);
         final Arco arco = arcos.get(position);
 
         TextView textView1 = view.findViewById(R.id.texte1);
