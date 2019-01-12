@@ -58,6 +58,6 @@ public  class Docente {
 
     @Override
     public String toString() {
-        return "Nome: "+this.NOME +"/ Formação: " + this.FORMACAO;
+        return this.NOME +"  " + this.EMAIL;
     }
 }

@@ -68,29 +68,32 @@
             </ListView>
 
             <android.support.design.widget.FloatingActionButton
+                android:id="@+id/float_novoarco_novoDiscente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
                 android:layout_marginTop="-50dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:id="@+id/float_novoarco_novoDiscente"
-                android:layout_gravity="right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btn_novoarco_cancelar"
-                android:text="@string/btn_cancelar"
-                android:textAlignment="center"
-                android:textSize="12sp"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:src="@mipmap/ic_group" />
 
             <Button
                 android:id="@+id/btn_novoarco_criar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/btn_criar"
                 android:textAlignment="center"
-                android:textSize="12sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_novoarco_cancelar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:text="@string/btn_cancelar"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp" />
 
         </LinearLayout>
 

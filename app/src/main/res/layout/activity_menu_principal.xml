@@ -44,7 +44,7 @@
                     android:layout_marginRight="10dp"
                     android:text="TEddXT1ssssss"
                     android:textAllCaps="true"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -56,7 +56,7 @@
                     android:layout_marginRight="10dp"
                     android:text="TEXT2"
                     android:textAllCaps="false"
-                    android:textColor="@android:color/background_dark" />
+                    android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:id="@+id/text3"
@@ -66,7 +66,7 @@
                     android:layout_marginRight="10dp"
                     android:text="TEXT3"
                     android:textAllCaps="false"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/colorAccent"
                     android:textStyle="italic" />
 
             </LinearLayout>
