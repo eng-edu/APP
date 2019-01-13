@@ -18,9 +18,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developer.edu.arco.R;
+import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.controller.ControllerLogin;
+import com.developer.edu.arco.util.SocketStatic;
 import com.squareup.picasso.Picasso;
+
+import java.net.URISyntaxException;
+
+import io.socket.client.IO;
 
 import static com.developer.edu.arco.conectionAPI.ConfigRetrofit.URL_BASE;
 
@@ -30,6 +36,13 @@ public class ActMenuPrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        try {
+            SocketStatic.setSocket(IO.socket(ConfigRetrofit.URL_BASE));
+            SocketStatic.getSocket().disconnect();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
 
         ActionBar bar = getSupportActionBar();
         bar.setTitle("MENU PRINCIPAL");

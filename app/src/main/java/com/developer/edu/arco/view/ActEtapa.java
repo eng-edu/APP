@@ -39,6 +39,7 @@ public class ActEtapa extends AppCompatActivity {
         final String ACESSO_RESTRITO = intent.getStringExtra("ACESSO_RESTRITO");
         final String COMPARTILHADO = intent.getStringExtra("COMPARTILHADO");
         final String NOME = getIntent().getStringExtra("NOME");
+        final String STATUS = getIntent().getStringExtra("STATUS");
 
         ActionBar bar = getSupportActionBar();
         bar.setTitle(NOME_ETAPA);
@@ -56,7 +57,7 @@ public class ActEtapa extends AppCompatActivity {
 
         if(ACESSO_RESTRITO.equals("S")){
             btn_salvar_reprovar.setVisibility(View.INVISIBLE);
-                btn_submeter_aprovar.setVisibility(View.INVISIBLE);
+            btn_submeter_aprovar.setVisibility(View.INVISIBLE);
         }
 
 

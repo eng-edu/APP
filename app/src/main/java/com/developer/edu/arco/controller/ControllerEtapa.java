@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.developer.edu.arco.R;
 import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
+import com.developer.edu.arco.util.SocketStatic;
 import com.developer.edu.arco.view.ActArco;
 
 import retrofit2.Call;
@@ -35,19 +36,8 @@ public class ControllerEtapa {
 
                 if (response.code() == 200) {
 
-
-                    Toast.makeText(context, "Submetido com sucesso!", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(context, ActArco.class);
-
-                    intent.putExtra("ARCO_ID", arco_id);
-                    intent.putExtra("NOME", nome);
-                    intent.putExtra("COMPARTILHADO", compartilhado);
-                    intent.putExtra("ID_CRIADOR", id_criador);
-                    intent.putExtra("ACESSO_RESTRITO", "N");
-
-                    context.startActivity(intent);
-                    ((Activity) context).finish();
                     dialog.dismiss();
+                    SocketStatic.getSocket().emit("ATUALIZOU_ARCO", arco_id);
 
 
                 } else if (response.code() == 405) {
@@ -84,18 +74,8 @@ public class ControllerEtapa {
 
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(context, "Aprovado com sucesso!", Toast.LENGTH_LONG).show();
-
-                    Intent intent = new Intent(context, ActArco.class);
-                    intent.putExtra("ARCO_ID", arco_id);
-                    intent.putExtra("NOME", nome);
-                    intent.putExtra("COMPARTILHADO", compartilhado);
-                    intent.putExtra("ID_CRIADOR", id_criador);
-                    intent.putExtra("ACESSO_RESTRITO", "N");
-                    context.startActivity(intent);
-                    ((Activity) context).finish();
                     dialog.dismiss();
-                    dialog.dismiss();
+                    SocketStatic.getSocket().emit("ATUALIZOU_ARCO", arco_id);
 
 
                 } else if (response.code() == 405) {
@@ -129,16 +109,8 @@ public class ControllerEtapa {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(context, "Reprovado com sucesso!", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(context, ActArco.class);
-                    intent.putExtra("ARCO_ID", arco_id);
-                    intent.putExtra("NOME", nome);
-                    intent.putExtra("COMPARTILHADO", compartilhado);
-                    intent.putExtra("ID_CRIADOR", id_criador);
-                    intent.putExtra("ACESSO_RESTRITO", "N");
-                    context.startActivity(intent);
-                    ((Activity) context).finish();
                     dialog.dismiss();
+                    SocketStatic.getSocket().emit("ATUALIZOU_ARCO", arco_id);
 
                 } else if (response.code() == 405) {
 
@@ -175,16 +147,10 @@ public class ControllerEtapa {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(context, "Salvo com sucesso!", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(context, ActArco.class);
-                    intent.putExtra("ARCO_ID", arco_id);
-                    intent.putExtra("NOME", nome);
-                    intent.putExtra("COMPARTILHADO", compartilhado);
-                    intent.putExtra("ID_CRIADOR", id_criador);
-                    intent.putExtra("ACESSO_RESTRITO", "N");
-                    context.startActivity(intent);
-                    ((Activity) context).finish();
+
                     dialog.dismiss();
+                    SocketStatic.getSocket().emit("ATUALIZOU_ARCO", arco_id);
+
 
                 } else if (response.code() == 405) {
 

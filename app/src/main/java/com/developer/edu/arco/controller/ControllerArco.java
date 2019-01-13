@@ -426,10 +426,7 @@ public class ControllerArco {
     public void bucarEtapasArco(final Context context, final String arco_id, final Button e1, final Button e2, final Button e3, final Button e4, final Button e5, final ImageView i1, final ImageView i2, final ImageView i3, final ImageView i4, final ImageView i5, final String restrito) {
 
 
-        final ProgressDialog dialog = new ProgressDialog(context);
-        dialog.setTitle("Aguarde...");
-        dialog.setCancelable(false);
-        dialog.show();
+
 
         final EtapaDAO etapaDAO = new EtapaDAO();
 
@@ -476,15 +473,10 @@ public class ControllerArco {
                             } else if (object.getString("NOME").equals("APLICAÇÃO A REALIDADE")) {
                                 definirIconeEcliclavel(object, context, e5, i5, tipo_login, restrito);
                             }
-
                         }
-
-                        dialog.dismiss();
 
                     } catch (Exception e) {
                         Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-
-                        dialog.dismiss();
                     }
 
                 }
@@ -494,7 +486,6 @@ public class ControllerArco {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
             }
         });
 
@@ -503,6 +494,7 @@ public class ControllerArco {
     @SuppressLint("ResourceAsColor")
     public void definirIconeEcliclavel(JSONObject object, Context context, Button ed, ImageView im, String tipo_login, String restrito) throws JSONException {
 
+        int primary = context.getResources().getColor(R.color.colorPrimaryDark);
         int verde = context.getResources().getColor(R.color.verde);
         int azul = context.getResources().getColor(R.color.azul);
         int amarelo = context.getResources().getColor(R.color.amarelo);
@@ -517,6 +509,7 @@ public class ControllerArco {
                 //verifico o status e chamo o icone e se o botão é clicavel
                 if (object.getString("STATUS").equals("1")) {
                     im.setBackgroundColor(verde);
+                    ed.setTextColor(primary);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("2")) {
                     im.setBackgroundColor(amarelo);
@@ -546,6 +539,7 @@ public class ControllerArco {
                 //verifico o status e chamo o icone e se o botão é clicavel
                 if (object.getString("STATUS").equals("1")) {
                     im.setBackgroundColor(verde);
+                    ed.setTextColor(primary);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("2")) {
                     im.setBackgroundColor(amarelo);
@@ -577,6 +571,7 @@ public class ControllerArco {
                 //verifico o status e chamo o icone e se o botão é clicavel
                 if (object.getString("STATUS").equals("1")) {
                     im.setBackgroundColor(verde);
+                    ed.setTextColor(primary);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("2")) {
                     im.setBackgroundColor(amarelo);
@@ -585,10 +580,12 @@ public class ControllerArco {
 
                 } else if (object.getString("STATUS").equals("3")) {
                     im.setBackgroundColor(vermelho);
+                    ed.setTextColor(primary);
                     ed.setEnabled(true);
 
                 } else if (object.getString("STATUS").equals("4")) {
                     im.setBackgroundColor(azul);
+                    ed.setTextColor(primary);
                     ed.setEnabled(true);
 
                 } else if (object.getString("STATUS").equals("5")) {
@@ -604,12 +601,15 @@ public class ControllerArco {
                 //verifico o status e chamo o icone e se o botão é clicavel
                 if (object.getString("STATUS").equals("1")) {
                     im.setBackgroundColor(verde);
+                    ed.setTextColor(primary);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("2")) {
                     im.setBackgroundColor(amarelo);
+                    ed.setTextColor(primary);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("3")) {
                     im.setBackgroundColor(vermelho);
+                    ed.setTextColor(primary);
                     ed.setEnabled(true);
                 } else if (object.getString("STATUS").equals("4")) {
                     im.setBackgroundColor(azul);

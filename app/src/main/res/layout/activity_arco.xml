@@ -20,6 +20,14 @@
             android:layout_marginTop="20dp"
             app:srcCompat="@mipmap/ic_launcher_round" />
 
+        <TextView
+            android:id="@+id/status_arco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:textStyle="italic" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="15dp"
@@ -62,6 +70,7 @@
 
         <Switch
             android:id="@+id/switch1"
+            android:layout_marginTop="5dp"
             android:layout_width="141dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -82,7 +91,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginRight="5dp"
             android:text="OBSERVAÇÃO DA REALIDADE"
-            android:textColor="@color/ic_launcher_background"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="10sp" />
 
         <Button
@@ -92,7 +101,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="PONTOS CHAVES"
-            android:textColor="@color/ic_launcher_background"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="10sp" />
 
         <Button
@@ -102,7 +111,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="TEORIZAÇÃO"
-            android:textColor="@color/ic_launcher_background"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="10sp" />
 
         <Button
@@ -112,7 +121,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="HIPÓTESES DE SOLUÇÃO"
-            android:textColor="@color/ic_launcher_background"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="10sp" />
 
         <Button
@@ -122,7 +131,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="APLICAÇÃO A REALIDADE"
-            android:textColor="@color/ic_launcher_background"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="10sp" />
 
     </LinearLayout>
