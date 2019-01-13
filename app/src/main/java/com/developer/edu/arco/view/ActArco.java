@@ -17,7 +17,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.developer.edu.arco.R;
-import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.util.SocketStatic;
 import com.developer.edu.arco.util.UtilArco;
@@ -26,9 +25,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URISyntaxException;
-
-import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
@@ -67,7 +63,7 @@ public class ActArco extends AppCompatActivity {
         final String ID_CRIADOR = getIntent().getStringExtra("ID_CRIADOR");
         final String STATUS = getIntent().getStringExtra("STATUS");
 
-         status = (TextView) findViewById(R.id.status_arco);
+        status = (TextView) findViewById(R.id.status_arco);
         status.setText(STATUS);
 
         ActionBar bar = getSupportActionBar();
@@ -217,8 +213,13 @@ public class ActArco extends AppCompatActivity {
         Intent intent = getIntent();
         String ARCO_ID = intent.getStringExtra("ARCO_ID");
         String ID_CRIADOR = intent.getStringExtra("ID_CRIADOR");
+        final String tipo_login = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
 
         if (!UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO"))) {
+            item.setVisible(false);
+        }
+
+        if (tipo_login.equals("docente")) {
             item.setVisible(false);
         }
 
@@ -235,11 +236,11 @@ public class ActArco extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
 
-        if (item.getItemId() == R.id.sinc) {
-            controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5, i1, i2, i3, i4, i5, getIntent().getStringExtra("ACESSO_RESTRITO"));
+//        if (item.getItemId() == R.id.sinc) {
+//            controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5, i1, i2, i3, i4, i5, getIntent().getStringExtra("ACESSO_RESTRITO"));
+//        } else
 
-
-        } else if (item.getItemId() == R.id.lixo) {
+        if (item.getItemId() == R.id.lixo) {
 
             if (UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO"))) {
                 controllerArco.excluirArco(ActArco.this, ARCO_ID);

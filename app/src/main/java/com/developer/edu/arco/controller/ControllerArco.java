@@ -426,8 +426,6 @@ public class ControllerArco {
     public void bucarEtapasArco(final Context context, final String arco_id, final Button e1, final Button e2, final Button e3, final Button e4, final Button e5, final ImageView i1, final ImageView i2, final ImageView i3, final ImageView i4, final ImageView i5, final String restrito) {
 
 
-
-
         final EtapaDAO etapaDAO = new EtapaDAO();
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
