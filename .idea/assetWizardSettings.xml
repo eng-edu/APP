@@ -13,6 +13,20 @@
                       <PersistentState>
                         <option name="children">
                           <map>
+                            <entry key="actionbar">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\User\Downloads\103796-48.png" />
+                                      <entry key="outputName" value="ic_view" />
+                                      <entry key="theme" value="HOLO_DARK" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
                             <entry key="launcher">
                               <value>
                                 <PersistentState>
@@ -105,8 +119,8 @@
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="cropped" value="true" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\User\Downloads\3643781-48.png" />
-                                      <entry key="outputName" value="ic_aprovado" />
+                                      <entry key="imageAsset" value="C:\Users\User\Downloads\103796-48.png" />
+                                      <entry key="outputName" value="ic_view" />
                                     </map>
                                   </option>
                                 </PersistentState>

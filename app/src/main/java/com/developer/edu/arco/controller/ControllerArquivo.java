@@ -84,12 +84,8 @@ public class ControllerArquivo {
         Call<ResponseBody> call = ConfigRetrofit.getService().upload(result, fileToUpload, filename, ETAPA_ID, ARCO_ID);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call,
-                                   Response<ResponseBody> response) {
-                Log.v("Upload", "success");
-                Toast.makeText(context, "success", Toast.LENGTH_LONG).show();
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 dialog.dismiss();
-
                 buscarArquivos(context, ETAPA_ID, listView, adapter);
             }
 
@@ -163,10 +159,7 @@ public class ControllerArquivo {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Arquivo arquivo = adapter.getItem(position);
-                String arq = arquivo.getCAMINHO().replace("./uploads/", "");
-                context.startActivity(new Intent(context, ActViewPDF.class).putExtra("PDF", "https://docs.google.com/gview?embedded=true&url="+URL_BASE+"/PDF/" + arq));
-
+               // Toast.makeText(context, "Clique no icone para vizualizar o arquivo", Toast.LENGTH_LONG).show();
             }
         });
 

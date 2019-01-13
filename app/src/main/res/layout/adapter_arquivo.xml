@@ -6,18 +6,18 @@
     android:layout_margin="2dp">
 
     <ImageView
-        android:id="@+id/image_perfil_adapter"
+        android:id="@+id/imgae_doc_adapter"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:layout_marginBottom="5dp"
-        android:src="@mipmap/ic_pdf" />
+        android:src="@mipmap/ic_doc"/>
 
 
     <LinearLayout
         android:layout_margin="20dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 

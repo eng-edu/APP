@@ -37,7 +37,7 @@ public class ActArquivo extends AppCompatActivity {
     ArrayAdapter<Arquivo> adapter;
     public static Arquivo arquivo;
     ControllerArquivo controllerArquivo = new ControllerArquivo();
-
+    AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +58,8 @@ public class ActArquivo extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-            new AlertDialog.Builder(ActArquivo.this)
-                    .setTitle("APAGNDO ARQUIVO")
+           alertDialog =  new AlertDialog.Builder(ActArquivo.this)
+                    .setTitle("APAGANDO ARQUIVO")
                     .setMessage("TEM CERTEZA?")
                     .setCancelable(false)
                     .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
