@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--<item-->
-        <!--android:id="@+id/sinc"-->
-        <!--android:icon="@mipmap/ic_sinc"-->
-        <!--android:title="sincronizar etapas"-->
-        <!--app:showAsAction="ifRoom" />-->
+    <item
+        android:id="@+id/sinc"
+        android:icon="@mipmap/ic_sinc"
+        android:title="sincronizar etapas"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/lixo"
         android:icon="@mipmap/ic_lixo"

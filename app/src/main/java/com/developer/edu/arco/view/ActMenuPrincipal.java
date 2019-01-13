@@ -38,7 +38,7 @@ public class ActMenuPrincipal extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal);
         try {
             SocketStatic.setSocket(IO.socket(ConfigRetrofit.URL_BASE));
-            SocketStatic.getSocket().disconnect();
+            SocketStatic.getSocket().connect();
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

@@ -30,6 +30,7 @@ import com.developer.edu.arco.model.Arco;
 import com.developer.edu.arco.model.Discente;
 import com.developer.edu.arco.model.Docente;
 import com.developer.edu.arco.model.Solicitacao;
+import com.developer.edu.arco.util.SocketStatic;
 import com.developer.edu.arco.view.ActMenuPrincipal;
 import com.developer.edu.arco.view.ActNovoArco;
 import com.developer.edu.arco.view.adapter.Adapterarco;
@@ -998,7 +999,7 @@ public class ControllerArco {
 
     }
 
-    public void aceitarSolicitacao(Context context, String id, String arco_id, final Button aceitar) {
+    public void aceitarSolicitacao(Context context, String id, final String arco_id, final Button aceitar) {
 
 
         //deleta a solicitacao pelo id
@@ -1018,6 +1019,9 @@ public class ControllerArco {
                 if (response.isSuccessful()) {
                     aceitar.setText(" --- ");
                     aceitar.setEnabled(true);
+
+                    SocketStatic.getSocket().emit("ATUALIZOU_ARCO", arco_id);
+
                 } else {
                     aceitar.setText("Aceitar");
                     aceitar.setClickable(true);

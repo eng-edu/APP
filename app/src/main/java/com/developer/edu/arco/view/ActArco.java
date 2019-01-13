@@ -236,9 +236,9 @@ public class ActArco extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
 
-//        if (item.getItemId() == R.id.sinc) {
-//            controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5, i1, i2, i3, i4, i5, getIntent().getStringExtra("ACESSO_RESTRITO"));
-//        } else
+        if (item.getItemId() == R.id.sinc) {
+            SocketStatic.getSocket().emit("ATUALIZOU_ARCO", ARCO_ID);
+        } else
 
         if (item.getItemId() == R.id.lixo) {
 
