@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 
 import com.developer.edu.arco.R;
@@ -19,21 +20,8 @@ import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
 import com.developer.edu.arco.controller.ControllerArco;
 import com.developer.edu.arco.util.SocketStatic;
 import com.developer.edu.arco.util.UtilArco;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
@@ -46,6 +34,14 @@ public class ActArco extends AppCompatActivity {
     Button e3;
     Button e4;
     Button e5;
+
+    ImageView i1;
+    ImageView i2;
+    ImageView i3;
+    ImageView i4;
+    ImageView i5;
+
+
     public Socket socket = IO.socket(ConfigRetrofit.URL_BASE);
 
     public ActArco() throws URISyntaxException {
@@ -106,7 +102,14 @@ public class ActArco extends AppCompatActivity {
         e4.setEnabled(false);
         e5.setEnabled(false);
 
-        controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5, getIntent().getStringExtra("ACESSO_RESTRITO"));
+
+        i1 = (ImageView) findViewById(R.id.i1);
+        i2 = (ImageView) findViewById(R.id.i2);
+        i3 = (ImageView) findViewById(R.id.i3);
+        i4 = (ImageView) findViewById(R.id.i4);
+        i5 = (ImageView) findViewById(R.id.i5);
+
+        controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5, i1,i2,i3,i4,i5, getIntent().getStringExtra("ACESSO_RESTRITO"));
 
 
         e1.setOnClickListener(new View.OnClickListener() {
@@ -235,7 +238,7 @@ public class ActArco extends AppCompatActivity {
         final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
 
         if (item.getItemId() == R.id.sinc) {
-            controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5, getIntent().getStringExtra("ACESSO_RESTRITO"));
+            controllerArco.bucarEtapasArco(ActArco.this, ARCO_ID, e1, e2, e3, e4, e5, i1, i2, i3, i4, i5, getIntent().getStringExtra("ACESSO_RESTRITO"));
         } else if (item.getItemId() == R.id.lixo) {
 
             if (UtilArco.verificarPermissao(ActArco.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO"))) {
