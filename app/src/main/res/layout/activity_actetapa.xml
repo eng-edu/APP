@@ -5,11 +5,6 @@
     android:layout_height="fill_parent"
     tools:context=".view.ActEtapa">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-
         <LinearLayout
 
             android:id="@+id/linearLayout"
@@ -23,7 +18,7 @@
             tools:ignore="MissingConstraints">
 
 
-            <ImageView
+            ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -33,25 +28,24 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="RESUMO"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="BREVE RESUMO"
+                android:textSize="14sp"
+                android:textStyle="italic" />
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <EditText
                     android:id="@+id/text_etapa_resumo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:ems="10"
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:fontFamily="sans-serif"
                     android:lineSpacingExtra="8sp"
                     android:singleLine="false"
@@ -59,56 +53,34 @@
             </ScrollView>
 
 
-            <ImageView
+            <Button
                 android:id="@+id/iv_etapa_arquivos"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="20dp"
-                android:src="@mipmap/ic_folder" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="ARQUIVOS"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10sp"></Button>
+
+            <Button
+                android:id="@+id/btn_salvar_reprovar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10sp"></Button>
+
+            <Button
+                android:id="@+id/btn_submeter_aprovar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10sp"></Button>
+
 
         </LinearLayout>
-
-
-        <Button
-            android:id="@+id/btn_salvar_reprovar"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="8dp"
-            android:background="#64b5f6"
-            android:gravity="center"
-            android:maxWidth="60dp"
-            android:textAlignment="center"
-            android:textColor="@color/ic_launcher_background"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btn_submeter_aprovar"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="#0d47a1"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="@color/ic_launcher_background"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
-
-    </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -23,14 +23,11 @@ public class ActEtapa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actetapa);
 
-
         final ControllerEtapa controllerEtapa = new ControllerEtapa();
-
 
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String result = sharedPreferences.getString(String.valueOf(R.string.tipo_login), "");
         final String ID = sharedPreferences.getString(String.valueOf(R.string.ID), "");
-
 
         Intent intent = getIntent();
         final String ARCO_ID = intent.getStringExtra("ARCO_ID");
@@ -92,7 +89,6 @@ public class ActEtapa extends AppCompatActivity {
 
               //      if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
                         controllerEtapa.submeterEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString(), ARCO_ID, NOME, COMPARTILHADO, ID_CRIADOR);
-
                 }
 
             }
@@ -103,7 +99,6 @@ public class ActEtapa extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (result.equals("docente")) {
-
               //      if (UtilArco.verificarAcessoRestrito(ActEtapa.this, ACESSO_RESTRITO))
                         controllerEtapa.reprovarEtapa(ActEtapa.this, modelEtapa.getID(), ARCO_ID, NOME, COMPARTILHADO, ID_CRIADOR);
 
@@ -111,8 +106,6 @@ public class ActEtapa extends AppCompatActivity {
 
                //     if (UtilArco.verificarPermissao(ActEtapa.this, ID_CRIADOR, ID, getIntent().getStringExtra("ACESSO_RESTRITO")))
                         controllerEtapa.salvarEtapa(ActEtapa.this, modelEtapa.getID(), resumo.getText().toString(), ARCO_ID, NOME, COMPARTILHADO, ID_CRIADOR);
-
-
                 }
 
 
@@ -120,9 +113,7 @@ public class ActEtapa extends AppCompatActivity {
         });
 
 
-
-
-        ImageView folder = (ImageView)findViewById(R.id.iv_etapa_arquivos);
+        Button folder = (Button) findViewById(R.id.iv_etapa_arquivos);
         folder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

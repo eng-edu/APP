@@ -38,7 +38,7 @@ public class ControllerEtapa {
 
                     dialog.dismiss();
                     SocketStatic.getSocket().emit("ATUALIZOU_ARCO", arco_id);
-
+                    ((Activity) context).finish();
 
                 } else if (response.code() == 405) {
                     Toast.makeText(context, response.body(), Toast.LENGTH_LONG).show();
@@ -76,6 +76,7 @@ public class ControllerEtapa {
 
                     dialog.dismiss();
                     SocketStatic.getSocket().emit("ATUALIZOU_ARCO", arco_id);
+                    ((Activity) context).finish();
 
 
                 } else if (response.code() == 405) {
@@ -111,6 +112,7 @@ public class ControllerEtapa {
 
                     dialog.dismiss();
                     SocketStatic.getSocket().emit("ATUALIZOU_ARCO", arco_id);
+                    ((Activity) context).finish();
 
                 } else if (response.code() == 405) {
 
@@ -150,7 +152,7 @@ public class ControllerEtapa {
 
                     dialog.dismiss();
                     SocketStatic.getSocket().emit("ATUALIZOU_ARCO", arco_id);
-
+                    ((Activity) context).finish();
 
                 } else if (response.code() == 405) {
 
