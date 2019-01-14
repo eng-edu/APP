@@ -2,20 +2,15 @@ package com.developer.edu.arco.view;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.developer.edu.arco.R;
-import com.developer.edu.arco.conectionAPI.ConfigRetrofit;
-import com.developer.edu.arco.controller.ControllerArquivo;
 import com.developer.edu.arco.controller.ControllerMsg;
 import com.developer.edu.arco.model.Mensagem;
 import com.developer.edu.arco.util.SocketStatic;
@@ -25,13 +20,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URISyntaxException;
-import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
@@ -96,6 +88,15 @@ public class ActMsg extends AppCompatActivity {
                             arrayAdapter.addAll(mensagems);
                             arrayAdapter.notifyDataSetChanged();
                             listMSG.setAdapter(arrayAdapter);
+
+                            listMSG.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    listMSG.setSelection(listMSG.getCount() - 1);
+                                }
+                            });
+
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
