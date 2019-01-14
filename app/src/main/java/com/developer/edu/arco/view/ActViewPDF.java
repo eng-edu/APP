@@ -3,6 +3,7 @@ package com.developer.edu.arco.view;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,6 +19,9 @@ public class ActViewPDF extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_view_pdf);
+
+        ActionBar bar = getSupportActionBar();
+        bar.setTitle("VIZUALIZAR ARQUIVO");
 
         init(getIntent().getStringExtra("PDF"));
         listener();

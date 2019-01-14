@@ -31,22 +31,19 @@ import io.socket.emitter.Emitter;
 
 public class ActMsg extends AppCompatActivity {
 
-
     public Socket socket;
     public ArrayAdapter arrayAdapter;
     public Button sendMSG;
     public EditText msg;
     public ListView listMSG;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_msg);
 
-        socket = SocketStatic.getSocket();
+        socket = SocketStatic.getSocket().connect();
+
 
         arrayAdapter = new AdapterMsg(getApplicationContext(), new ArrayList<Mensagem>());
 
@@ -66,8 +63,7 @@ public class ActMsg extends AppCompatActivity {
                     @Override
                     public void run() {
                         String s = args[0].toString();
-
-                        Toast.makeText(getApplicationContext(), "chegou!",  Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), s,  Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -77,20 +73,15 @@ public class ActMsg extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.preference_config), Context.MODE_PRIVATE);
         final String ID_AUTOR = sharedPreferences.getString(String.valueOf(R.string.ID), "");
-        final String NOME_AUTOR = sharedPreferences.getString(String.valueOf(R.string.NOME), "");
-
+        final String EMAIL_AUTOR = sharedPreferences.getString(String.valueOf(R.string.EMAIL), "");
         sendMSG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String MSG = msg.getText().toString();
-
                 long date = System.currentTimeMillis();
                 SimpleDateFormat sdf = new SimpleDateFormat("d/M/yyyy");
                 String DATA = sdf.format(date);
-
-                ControllerMsg.sendmsg(ActMsg.this,MSG, ID_AUTOR, NOME_AUTOR, DATA, ARCO_ID, msg, socket);
-
+                ControllerMsg.sendmsg(ActMsg.this,MSG, ID_AUTOR,EMAIL_AUTOR, DATA, ARCO_ID, msg, socket);
             }
         });
 

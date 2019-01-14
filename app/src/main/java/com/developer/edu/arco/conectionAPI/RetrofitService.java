@@ -146,11 +146,11 @@ public interface RetrofitService {
 
 //String texto, String ID_AUTOR, String NOME_AUTOR, String DATA, final String ARCO_ID
 
-    @POST("/mensagem/{TEXTO}/{ID_AUTOR}/{NOME_AUTOR}/{DATA}/{ARCO_ID}")
+    @POST("/mensagem/sendMSG/{TEXTO}/{ID_AUTOR}/{EMAIL_AUTOR}/{DATA}/{ARCO_ID}")
     Call<String> send(@Header("token") String TOKIENAPI,
                       @Path("TEXTO") String TEXTO,
                       @Path("ID_AUTOR") String ID_AUTOR,
-                      @Path("NOME_AUTOR") String NOME_AUTOR,
+                      @Path("EMAIL_AUTOR") String EMAIL_AUTOR,
                       @Path("DATA") String DATA,
                       @Path("ARCO_ID") String ARCO_ID);
 
