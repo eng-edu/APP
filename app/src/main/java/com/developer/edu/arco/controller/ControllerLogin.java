@@ -93,7 +93,6 @@ public class ControllerLogin {
                         }
 
                         dialog.dismiss();
-                        Toast.makeText(context, "Login realizado com sucesso!", Toast.LENGTH_SHORT).show();
 
                         Intent mudarParaMain = new Intent(context, ActMenuPrincipal.class);
                         context.startActivity(mudarParaMain);

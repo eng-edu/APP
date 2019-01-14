@@ -44,6 +44,33 @@
             app:civ_border_width="2dp" />
 
 
+        <RadioGroup
+            android:id="@+id/groupCadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <RadioButton
+
+                android:id="@+id/radio_cadastro_discente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/radio_discente"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <RadioButton
+                android:id="@+id/radio_cadastro_docente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_docente"
+                android:textColor="@color/colorPrimaryDark" />
+        </RadioGroup>
+
         <EditText
             android:id="@+id/editText_cadastro_nome"
             android:layout_width="match_parent"
@@ -100,33 +127,6 @@
             android:textColorHint="@color/empty_directory_hint"
             android:textSize="18sp" />
 
-
-        <RadioGroup
-            android:id="@+id/groupCadastro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
-            android:orientation="vertical">
-
-            <RadioButton
-
-                android:id="@+id/radio_cadastro_discente"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/radio_discente"
-                android:textColor="@color/colorPrimaryDark" />
-
-            <RadioButton
-                android:id="@+id/radio_cadastro_docente"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/radio_docente"
-                android:textColor="@color/colorPrimaryDark" />
-        </RadioGroup>
 
         <Button
             android:id="@+id/button_cadastro_cadastrar"

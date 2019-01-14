@@ -80,7 +80,7 @@ public class ActMenuPrincipal extends AppCompatActivity {
 
         if (result.equals("docente")) {
             novo_solic.setText(R.string.btn_principal_solicitacoes);
-            textView3.setText(FORM);
+            textView2.setText(FORM);
         } else {
             novo_solic.setText(R.string.btn_principal_novo_arco);
         }

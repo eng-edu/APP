@@ -1,5 +1,6 @@
 package com.developer.edu.arco.controller;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.widget.Toast;
@@ -56,6 +57,8 @@ public class ControllerCadastro {
                         //chama o controller login
                         new ControllerLogin().logar(context, email, senha, discente, docente);
                         dialog.dismiss();
+                        ((Activity) context).finish();
+
                     } else if (response.code() == 405) {
                         Toast.makeText(context, response.body(), Toast.LENGTH_SHORT).show();
                         dialog.dismiss();

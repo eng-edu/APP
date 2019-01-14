@@ -123,5 +123,10 @@ public class ActCadastro extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), ActLogin.class));
+        finish();
+    }
 }

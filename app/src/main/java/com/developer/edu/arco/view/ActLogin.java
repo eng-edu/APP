@@ -52,6 +52,7 @@ public class ActLogin extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mudarParaCadastro = new Intent(getApplicationContext(), ActCadastro.class);
                 startActivity(mudarParaCadastro);
+                finish();
             }
         });
 
