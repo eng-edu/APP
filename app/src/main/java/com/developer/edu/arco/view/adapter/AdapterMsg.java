@@ -37,9 +37,9 @@ public class AdapterMsg extends ArrayAdapter<Mensagem> {
         final Mensagem msMensagem = mensagens.get(position);
 
         TextView nome = (TextView) view.findViewById(R.id.nome);
-        TextView msg = (TextView) view.findViewById(R.id.msg);
+        TextView msg = (TextView) view.findViewById(R.id.mensagem);
 
-        nome.setText(msMensagem.getNOME_AUTOR());
+        nome.setText(msMensagem.getNOME_AUTOR() + " " + msMensagem.getDATA());
         msg.setText(msMensagem.getTEXTO());
 
         return view;

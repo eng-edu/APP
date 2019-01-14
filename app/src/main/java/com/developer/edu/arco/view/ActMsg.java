@@ -21,9 +21,15 @@ import com.developer.edu.arco.model.Mensagem;
 import com.developer.edu.arco.util.SocketStatic;
 import com.developer.edu.arco.view.adapter.AdapterMsg;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.URISyntaxException;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
@@ -63,7 +69,37 @@ public class ActMsg extends AppCompatActivity {
                     @Override
                     public void run() {
                         String s = args[0].toString();
-                        Toast.makeText(getApplicationContext(), s,  Toast.LENGTH_SHORT).show();
+
+                        List<Mensagem> mensagems = new ArrayList<>();
+
+                        JSONArray array = null;
+                        try {
+                            array = new JSONArray(s);
+                            int sizeArray = array.length();
+
+                            for (int i = 0; i < sizeArray; i++) {
+
+                                JSONObject object = array.getJSONObject(i);
+
+                                Mensagem msg = new Mensagem();
+                                msg.setTEXTO(object.getString("TEXTO"));
+                                msg.setNOME_AUTOR(object.getString("EMAIL_AUTOR"));
+                                msg.setID_AUTOR(object.getString("ID_AUTOR"));
+                                msg.setDATA(object.getString("DATA"));
+                                msg.setARCO_ID(object.getString("ARCO_ID"));
+                                mensagems.add(msg);
+
+
+                            }
+
+                            arrayAdapter.clear();
+                            arrayAdapter.addAll(mensagems);
+                            arrayAdapter.notifyDataSetChanged();
+                            listMSG.setAdapter(arrayAdapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                     }
                 });
