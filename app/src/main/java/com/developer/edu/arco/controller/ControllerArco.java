@@ -51,7 +51,7 @@ import retrofit2.Response;
 
 public class ControllerArco {
 
-    public void selecionarDocente(final Context context, LayoutInflater inflater, final EditText orientador) {
+      public void selecionarDocente(final Context context, LayoutInflater inflater, final EditText orientador) {
 
         final AlertDialog[] alert = new AlertDialog[1];
 
